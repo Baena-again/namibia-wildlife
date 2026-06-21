@@ -4,9 +4,9 @@ import type { Zone, ZoneId } from "../types";
  * The seven main wildlife regions a traveller actually recognises in Namibia
  * (not the 14 administrative regions — too many, too confusing).
  *
- * `mx` / `my` place the clickable pin over the hand-drawn map image
- * (`assets/namibia-map.webp`), as a percentage of its width / height. They sit
- * next to the region labels already printed on the artwork.
+ * `polygon` is the clickable area over the hand-drawn map image
+ * (`assets/namibia-map.webp`), as `[x, y]` points in percentages of its
+ * width / height, so it scales to any display size.
  */
 export const zones: Zone[] = [
   {
@@ -16,8 +16,16 @@ export const zones: Zone[] = [
     region: "Noreste",
     blurb:
       "Ríos y humedales en la franja de Caprivi: la cara más verde y tropical de Namibia.",
-    mx: 84,
-    my: 27,
+    climate: "Subtropical; húmedo y caluroso en verano, suave en invierno.",
+    terrain:
+      "Ríos permanentes, llanuras de inundación y bosques ribereños: la zona más acuática del país.",
+    polygon: [
+      [58, 23],
+      [95, 23],
+      [95, 27],
+      [62, 28],
+      [56, 25],
+    ],
   },
   {
     id: "etosha",
@@ -26,8 +34,19 @@ export const zones: Zone[] = [
     region: "Norte-centro",
     blurb:
       "La gran sabana de safari alrededor de la salina: el mejor sitio para ver fauna en abundancia.",
-    mx: 43,
-    my: 37,
+    climate:
+      "Semiárido; muy caluroso y seco de mayo a octubre, con lluvias en verano.",
+    terrain:
+      "Sabana abierta y mopane en torno a una enorme salina blanca; las charcas concentran la fauna en la estación seca.",
+    polygon: [
+      [40, 22],
+      [57, 22],
+      [60, 28],
+      [72, 33],
+      [74, 46],
+      [36, 50],
+      [38, 40],
+    ],
   },
   {
     id: "kaokoland",
@@ -36,8 +55,18 @@ export const zones: Zone[] = [
     region: "Noroeste",
     blurb:
       "Desierto montañoso y remoto: elefantes del desierto, rinoceronte negro y cebra de montaña.",
-    mx: 17,
-    my: 31,
+    climate: "Desértico y caluroso, de los rincones más áridos del país.",
+    terrain:
+      "Montañas rocosas, lechos de ríos secos y llanuras de grava; un refugio salvaje y poco transitado.",
+    polygon: [
+      [7, 25],
+      [40, 22],
+      [38, 40],
+      [36, 50],
+      [27, 52],
+      [20, 42],
+      [16, 33],
+    ],
   },
   {
     id: "central",
@@ -46,8 +75,17 @@ export const zones: Zone[] = [
     region: "Windhoek y Erongo",
     blurb:
       "Bosque seco y montañas en torno a Windhoek: leopardo, guepardo, kudu y mucha vida en granjas y reservas.",
-    mx: 47,
-    my: 57,
+    climate:
+      "Semiárido de altiplano; templado de día y con noches frescas por la altitud.",
+    terrain:
+      "Mesetas, montañas de granito (Erongo) y bosque seco de acacias en torno a la capital.",
+    polygon: [
+      [36, 50],
+      [74, 46],
+      [77, 54],
+      [74, 64],
+      [46, 64],
+    ],
   },
   {
     id: "costa",
@@ -56,8 +94,25 @@ export const zones: Zone[] = [
     region: "Swakopmund–Walvis Bay",
     blurb:
       "Donde el desierto se encuentra con el frío Atlántico: focas, delfines, ballenas y aves marinas.",
-    mx: 14,
-    my: 57,
+    climate:
+      "Fresco y brumoso todo el año por la corriente fría de Benguela.",
+    terrain:
+      "Playas, lagunas y dunas junto al mar; niebla frecuente y prácticamente sin lluvia.",
+    polygon: [
+      [7, 25],
+      [9, 31],
+      [13, 40],
+      [20, 52],
+      [28, 62],
+      [36, 71],
+      [44, 80],
+      [47, 78],
+      [41, 70],
+      [34, 61],
+      [27, 52],
+      [20, 42],
+      [16, 33],
+    ],
   },
   {
     id: "namib",
@@ -66,8 +121,21 @@ export const zones: Zone[] = [
     region: "Sossusvlei y Naukluft",
     blurb:
       "Las dunas más antiguas del mundo: órice, avestruz y especialistas del desierto (reptiles e insectos).",
-    mx: 30,
-    my: 68,
+    climate:
+      "Desierto hiperárido; días muy calurosos, noches frías y casi sin lluvia.",
+    terrain:
+      "Mares de arena con dunas altísimas y llanuras de grava; vida adaptada a la niebla costera.",
+    polygon: [
+      [36, 50],
+      [46, 64],
+      [50, 70],
+      [60, 80],
+      [53, 87],
+      [47, 78],
+      [41, 70],
+      [34, 61],
+      [27, 52],
+    ],
   },
   {
     id: "kalahari",
@@ -76,8 +144,17 @@ export const zones: Zone[] = [
     region: "Sureste",
     blurb:
       "Dunas rojas y praderas semiáridas: suricatas, hiena parda, guepardo y antílopes adaptados a la sequía.",
-    mx: 72,
-    my: 71,
+    climate:
+      "Semiárido; días muy calurosos y noches frías, con lluvias estivales irregulares.",
+    terrain:
+      "Dunas rojas fosilizadas y praderas salpicadas de acacias, con agua escasa.",
+    polygon: [
+      [46, 64],
+      [74, 64],
+      [69, 72],
+      [60, 80],
+      [50, 70],
+    ],
   },
 ];
 
