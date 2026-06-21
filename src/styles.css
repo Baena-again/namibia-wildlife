@@ -960,6 +960,55 @@ h3,
   color: var(--terracotta-deep);
 }
 
+.itin-address {
+  display: block;
+  margin-top: 0.2rem;
+  font-style: italic;
+  color: var(--stone);
+}
+
+.itin-maps {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.itin-coords {
+  font-size: 0.85rem;
+  color: var(--stone);
+}
+
+.itin-tips {
+  margin-top: 1rem;
+}
+
+.itin-tips-label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.itin-tips ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.itin-tips li {
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink);
+  padding: 0.25rem 0 0.25rem 1.1rem;
+  position: relative;
+}
+
+.itin-tips li::before {
+  content: "•";
+  position: absolute;
+  left: 0.1rem;
+  color: var(--terracotta);
+}
+
 .itin-animals {
   display: flex;
   flex-wrap: wrap;

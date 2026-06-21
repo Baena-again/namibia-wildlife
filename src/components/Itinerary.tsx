@@ -85,10 +85,35 @@ export function Itinerary({
                   {day.lodging.phone && (
                     <>
                       {" · "}
-                      <a href={`tel:${day.lodging.phone.replace(/\s+/g, "")}`}>
+                      <a href={`tel:${day.lodging.phone.replace(/[^+\d]/g, "")}`}>
                         {day.lodging.phone}
                       </a>
                     </>
+                  )}
+                  {day.lodging.altPhones?.map((p) => (
+                    <span key={p}>
+                      {" / "}
+                      <a href={`tel:${p.replace(/[^+\d]/g, "")}`}>{p}</a>
+                    </span>
+                  ))}
+                  {day.lodging.address && (
+                    <span className="itin-address">{day.lodging.address}</span>
+                  )}
+                  {(day.lodging.mapUrl || day.lodging.coords) && (
+                    <span className="itin-maps">
+                      {day.lodging.mapUrl && (
+                        <a
+                          href={day.lodging.mapUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          📍 Abrir en Maps
+                        </a>
+                      )}
+                      {day.lodging.coords && (
+                        <span className="itin-coords">{day.lodging.coords}</span>
+                      )}
+                    </span>
                   )}
                 </p>
               )}
@@ -141,6 +166,17 @@ export function Itinerary({
                       <span className="itin-thumb-name">{a.commonName}</span>
                     </button>
                   ))}
+                </div>
+              )}
+
+              {day.tips && day.tips.length > 0 && (
+                <div className="itin-tips">
+                  <h3 className="itin-tips-label label">En el camino</h3>
+                  <ul>
+                    {day.tips.map((tip) => (
+                      <li key={tip}>{tip}</li>
+                    ))}
+                  </ul>
                 </div>
               )}
 
