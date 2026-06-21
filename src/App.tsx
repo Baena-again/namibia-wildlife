@@ -30,6 +30,7 @@ import { ZoneView } from "./components/ZoneView";
 import { Settings } from "./components/Settings";
 import { Itinerary } from "./components/Itinerary";
 import { SafariTips } from "./components/SafariTips";
+import { ShoppingList } from "./components/ShoppingList";
 
 type View =
   | { name: "list" }
@@ -38,7 +39,8 @@ type View =
   | { name: "detail"; animal: Animal; from: View }
   | { name: "settings" }
   | { name: "itinerary" }
-  | { name: "tips" };
+  | { name: "tips" }
+  | { name: "shopping" };
 
 const nowIso = () => new Date().toISOString();
 
@@ -51,6 +53,8 @@ export default function App() {
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState<Difficulty | null>(null);
   const [view, setView] = useState<View>({ name: "map" });
+  // Which shopping stop to scroll to when opened from the logbook (null = top).
+  const [shoppingFocus, setShoppingFocus] = useState<string | null>(null);
 
   // Persist whenever the seen-state changes.
   useEffect(() => {
@@ -83,6 +87,11 @@ export default function App() {
 
   function handleSetNote(dayId: string, text: string) {
     setJournal((prev) => ({ ...prev, [dayId]: text }));
+  }
+
+  function openShopping(dayId: string) {
+    setShoppingFocus(dayId);
+    setView({ name: "shopping" });
   }
 
   function handleImport(seen: SeenState, journalIn: JournalState) {
@@ -142,15 +151,17 @@ export default function App() {
     );
   }
 
-  // The four top-level tabs, in display order.
+  // The top-level tabs, in display order (Catálogo stays last).
   const tabs = [
     { name: "map", label: "Mapa" },
     { name: "itinerary", label: "Cuaderno" },
     { name: "tips", label: "Trucos" },
+    { name: "shopping", label: "Compra" },
     { name: "list", label: "Catálogo" },
   ] as const;
 
   function goTab(name: (typeof tabs)[number]["name"]) {
+    if (name === "shopping") setShoppingFocus(null);
     setView({ name } as View);
     window.scrollTo(0, 0);
   }
@@ -207,10 +218,13 @@ export default function App() {
             setView({ name: "detail", animal, from: { name: "itinerary" } })
           }
           onOpenZone={(zoneId) => openZone(zoneId, { name: "itinerary" })}
+          onOpenShopping={openShopping}
         />
       )}
 
       {view.name === "tips" && <SafariTips />}
+
+      {view.name === "shopping" && <ShoppingList focus={shoppingFocus} />}
 
       {view.name === "list" && (
         <>

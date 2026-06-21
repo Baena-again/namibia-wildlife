@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import type { Animal, JournalState, SeenState, ZoneId } from "../types";
 import { itinerary } from "../data/itinerary";
+import { shopping } from "../data/shopping";
 import { getZone } from "../lib/zones";
 import { AnimalImage } from "./AnimalImage";
 
@@ -11,6 +12,7 @@ type Props = {
   onSetNote: (dayId: string, text: string) => void;
   onSelectAnimal: (animal: Animal) => void;
   onOpenZone: (zoneId: ZoneId) => void;
+  onOpenShopping: (dayId: string) => void;
   onBack?: () => void;
 };
 
@@ -21,11 +23,16 @@ export function Itinerary({
   onSetNote,
   onSelectAnimal,
   onOpenZone,
+  onOpenShopping,
   onBack,
 }: Props) {
   const byId = useMemo(
     () => new Map(animals.map((a) => [a.id, a])),
     [animals],
+  );
+  const shoppingByDay = useMemo(
+    () => new Map(shopping.map((s) => [s.dayId, s])),
+    [],
   );
 
   return (
@@ -45,6 +52,7 @@ export function Itinerary({
       <ol className="itin-list">
         {itinerary.map((day) => {
           const zone = day.zone ? getZone(day.zone) : undefined;
+          const stop = shoppingByDay.get(day.id);
           const dayAnimals = day.animalIds
             .map((id) => byId.get(id))
             .filter((a): a is Animal => Boolean(a));
@@ -108,6 +116,15 @@ export function Itinerary({
                     </>
                   )}
                 </p>
+              )}
+
+              {stop && (
+                <button
+                  className="itin-shopping-link"
+                  onClick={() => onOpenShopping(day.id)}
+                >
+                  {stop.title} ›
+                </button>
               )}
 
               {dayAnimals.length > 0 && (
