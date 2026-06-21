@@ -38,7 +38,7 @@ export default function App() {
   const [filter, setFilter] = useState<FilterMode>("all");
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState<Difficulty | null>(null);
-  const [view, setView] = useState<View>({ name: "list" });
+  const [view, setView] = useState<View>({ name: "map" });
 
   // Persist whenever the seen-state changes.
   useEffect(() => {
@@ -122,16 +122,16 @@ export default function App() {
 
       <nav className="tabs">
         <button
-          className={`tab ${!isMap ? "active" : ""}`}
-          onClick={() => setView({ name: "list" })}
-        >
-          Catálogo
-        </button>
-        <button
           className={`tab ${isMap ? "active" : ""}`}
           onClick={() => setView({ name: "map" })}
         >
           Mapa
+        </button>
+        <button
+          className={`tab ${!isMap ? "active" : ""}`}
+          onClick={() => setView({ name: "list" })}
+        >
+          Catálogo
         </button>
       </nav>
 
