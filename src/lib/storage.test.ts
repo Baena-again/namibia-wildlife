@@ -3,9 +3,10 @@ import {
   toggleSeen,
   buildBackup,
   mergeBackup,
+  mergeJournal,
   parseBackup,
 } from "./storage";
-import type { SeenState } from "../types";
+import type { JournalState, SeenState } from "../types";
 
 const NOW = "2026-06-21T10:00:00.000Z";
 
@@ -28,10 +29,16 @@ describe("toggleSeen", () => {
 describe("buildBackup / parseBackup round-trip", () => {
   it("round-trips state through JSON", () => {
     const state: SeenState = { lion: { seen: true, seenAt: NOW } };
-    const json = JSON.stringify(buildBackup(state, NOW));
+    const notes: JournalState = { "2026-07-10": "Vimos un rinoceronte." };
+    const json = JSON.stringify(buildBackup(state, notes, NOW));
     const parsed = parseBackup(json);
     expect(parsed.seen).toEqual(state);
+    expect(parsed.journal).toEqual(notes);
     expect(parsed.app).toBe("namibia-wildlife");
+  });
+  it("defaults journal to empty for older backups", () => {
+    const json = JSON.stringify({ app: "namibia-wildlife", seen: {} });
+    expect(parseBackup(json).journal).toEqual({});
   });
 });
 
@@ -64,5 +71,18 @@ describe("mergeBackup", () => {
   });
   it("adds animals only present in the import", () => {
     expect(mergeBackup({}, { oryx: { seen: true } }).oryx.seen).toBe(true);
+  });
+});
+
+describe("mergeJournal", () => {
+  it("fills empty days from the import", () => {
+    expect(mergeJournal({}, { d1: "hola" }).d1).toBe("hola");
+  });
+  it("does not clobber a non-empty local note", () => {
+    const merged = mergeJournal({ d1: "mío" }, { d1: "importado" });
+    expect(merged.d1).toBe("mío");
+  });
+  it("ignores blank imported notes", () => {
+    expect(mergeJournal({}, { d1: "   " }).d1).toBeUndefined();
   });
 });
