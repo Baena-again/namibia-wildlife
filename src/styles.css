@@ -1,7 +1,7 @@
 :root {
   /* Earthy, sober palette */
-  --ivory: #f4ecd8;
-  --ivory-deep: #ece2c8;
+  --ivory: #fef7f1; /* matches the unified cream baked into the cut-outs */
+  --ivory-deep: #f3e9dd;
   --ink: #2b261d; /* dark text for sunlight legibility */
   --sepia: #6f5c43;
   --olive: #6d6f44;
@@ -190,8 +190,7 @@ h3,
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  /* soft shadow beneath the cut-out */
-  filter: drop-shadow(0 8px 10px rgba(58, 46, 30, 0.28));
+  /* soft shadow is baked into the image on the matching cream background */
   transition: var(--transition-slow);
 }
 
@@ -240,7 +239,6 @@ h3,
 
 .detail-figure img {
   width: 100%;
-  filter: drop-shadow(0 14px 18px rgba(58, 46, 30, 0.3));
 }
 
 .detail h1 {
