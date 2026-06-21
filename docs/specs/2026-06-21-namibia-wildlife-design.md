@@ -55,26 +55,51 @@ type Animal = {
 
 ### Content sourcing & verification (mandatory)
 
-The per-animal content (`scientificName`, `description`, `distinguish`,
-`spottingTips`, `whereToSee`, `funFacts`) **must be verified against
-authoritative sources** before being committed — never written from memory
-alone.
+> **Golden rule:** every fact about an animal **must come from official /
+> authoritative documentation that has been looked up for this project**. It is
+> **forbidden** to write content from the language model's own general or
+> training knowledge ("from memory"). If a statement cannot be traced to a real
+> source consulted at research time, it does **not** go in. When sources
+> disagree or are missing, leave the field empty rather than guess.
 
-- **Always verify.** Scientific names, Namibian occurrence and facts are
-  cross-checked against recognised references; prefer the conservative,
-  well-supported statement when in doubt.
-- **Preferred sources:** IUCN Red List, GBIF, the Reptile Database,
-  AmphibiaWeb and Avibase / Birds of the World for taxonomy; IUCN range data,
-  Namibian park/tourism references and standard field guides (Roberts, Sasol,
-  Stuart's) plus reputable safari/birding operators for distribution and
-  spotting tips; ADW and SANBI for general natural history.
-- **Research workflow.** Bulk research is fanned out across sub-agents that
-  search the web, confirm each name against a taxonomic authority, confirm
-  Namibian distribution, and return the facts with source URLs. Flagged or
-  uncertain items are reviewed by hand before merging.
-- **Two source animals were dropped** because their slideshow images could not
-  be trusted: a Giant Anteater (a South American species) and a "Namibian
-  Roadrunner" (not a real African bird).
+#### What must be gathered for each animal
+
+Every catalogue entry must be researched and each field backed by a source:
+
+| Field | What to gather | Where to verify it |
+|-------|----------------|--------------------|
+| `scientificName` | The **currently accepted** binomial (note relevant Namibian subspecies). Reject outdated synonyms. | IUCN Red List, GBIF, Reptile Database, AmphibiaWeb, Avibase / Birds of the World |
+| `commonName` / `commonNameEn` | Standard Spanish and English common names of that exact species. | Field guides, Avibase, IUCN |
+| `description` | 1–2 sentences: appearance, size, behaviour, key adaptation. | ADW, SANBI, IUCN, recognised field guides |
+| `distinguish` | How to tell it from the species it is most often confused with, using concrete field marks. | Field guides / authoritative species accounts |
+| `spottingTips` | Practical field advice: micro-habitat, best time of day/season, behaviour & sound cues, technique. | Namibian park/tourism refs, reputable safari & birding operators, eBird hotspots |
+| `whereToSee` | 2–4 **real** Namibian parks/regions where the species actually occurs. | IUCN range data, Namibian park references |
+| `funFacts` | 2 short, correct, verifiable facts. | Any of the above |
+
+Also record, for review: the **source URLs** used per animal, and a **note**
+flagging anything uncertain, corrected, or where the slideshow image did not
+match the species.
+
+#### Rules
+
+- **Only official / authoritative sources.** Acceptable: IUCN Red List, GBIF,
+  Reptile Database, AmphibiaWeb, Avibase / Birds of the World, eBird, ADW,
+  SANBI, recognised regional field guides (Roberts, Sasol, Stuart's), and
+  official Namibian park / established safari-operator references. **Not**
+  acceptable: the model's unaided recollection, or unsourced text.
+- **Verify the species first.** Confirm the animal genuinely occurs in Namibia
+  and that the name is current before writing anything else. If the source
+  image cannot be trusted, re-identify it or drop the entry — never invent a
+  plausible-sounding species. (Two entries were dropped for this reason: a
+  Giant Anteater — a South American species — and a "Namibian Roadrunner",
+  which is not a real African bird.)
+- **Prefer the conservative statement.** When sources conflict, choose the
+  better-supported, more cautious wording, and add a note.
+- **Cite as you go.** Research keeps the source URLs; reviewers can re-check any
+  claim. Flagged/uncertain items are reviewed by hand before merging.
+- **Workflow.** Bulk research is fanned out across sub-agents that search the
+  web, confirm each name against a taxonomic authority, confirm Namibian
+  distribution, and return the facts **with the source URLs they used**.
 - **Language.** User-facing content is in Spanish; the scientific name is
   always rendered in italics.
 
