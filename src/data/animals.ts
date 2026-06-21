@@ -81,6 +81,22 @@ import img_damara_tern from "../assets/animals/damara-tern.png";
 import img_wandering_albatross from "../assets/animals/wandering-albatross.png";
 import img_southern_elephant_seal from "../assets/animals/southern-elephant-seal.png";
 import img_ghost_crab from "../assets/animals/ghost-crab.png";
+import img_nile_crocodile from "../assets/animals/nile-crocodile.png";
+import img_bat_eared_fox from "../assets/animals/bat-eared-fox.png";
+import img_cape_ground_squirrel from "../assets/animals/cape-ground-squirrel.png";
+import img_sociable_weaver from "../assets/animals/sociable-weaver.png";
+import img_klipspringer from "../assets/animals/klipspringer.png";
+import img_red_hartebeest from "../assets/animals/red-hartebeest.png";
+import img_ground_pangolin from "../assets/animals/ground-pangolin.png";
+import img_aardvark from "../assets/animals/aardvark.png";
+import img_aardwolf from "../assets/animals/aardwolf.png";
+import img_rosy_faced_lovebird from "../assets/animals/rosy-faced-lovebird.png";
+import img_lappet_faced_vulture from "../assets/animals/lappet-faced-vulture.png";
+import img_greater_flamingo from "../assets/animals/greater-flamingo.png";
+import img_pale_chanting_goshawk from "../assets/animals/pale-chanting-goshawk.png";
+import img_waterbuck from "../assets/animals/waterbuck.png";
+import img_wattled_crane from "../assets/animals/wattled-crane.png";
+import img_puff_adder from "../assets/animals/puff-adder.png";
 
 /**
  * Catalogue extracted from the source presentation (cut-out images + names).
@@ -1161,6 +1177,214 @@ export const animals: Animal[] = [
     funFacts: [
       "Su color arenoso lo vuelve casi invisible sobre la playa, de ahí el nombre de cangrejo fantasma.",
       "Es uno de los crustáceos más veloces y se refugia en profundas galerías que excava en la arena.",
+    ],
+  },
+  {
+    id: "nile-crocodile",
+    commonName: "Cocodrilo del Nilo",
+    commonNameEn: "Nile Crocodile",
+    scientificName: "Crocodylus niloticus",
+    image: img_nile_crocodile,
+    category: "Reptiles, anfibios e invertebrados",
+    whereToSee: ["Franja de Caprivi/Zambezi", "Ríos Kavango y Chobe", "Parque Nacional de Nkasa Rupara"],
+    funFacts: [
+      "Es el mayor depredador de agua dulce de África; puede superar los 5 m y vivir varias décadas.",
+      "La madre traslada con cuidado a sus crías recién nacidas dentro de la boca hasta el agua.",
+    ],
+  },
+  {
+    id: "bat-eared-fox",
+    commonName: "Zorro orejudo",
+    commonNameEn: "Bat-eared Fox",
+    scientificName: "Otocyon megalotis",
+    image: img_bat_eared_fox,
+    category: "Mamíferos pequeños y medianos",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Llanuras semiáridas"],
+    funFacts: [
+      "Sus enormes orejas detectan bajo tierra el sonido de termitas e insectos, su alimento principal.",
+      "Tiene más dientes que casi cualquier otro mamífero terrestre, adaptados a triturar insectos.",
+    ],
+  },
+  {
+    id: "cape-ground-squirrel",
+    commonName: "Ardilla terrestre de El Cabo",
+    commonNameEn: "Cape Ground Squirrel",
+    scientificName: "Xerus inauris",
+    image: img_cape_ground_squirrel,
+    category: "Mamíferos pequeños y medianos",
+    whereToSee: ["Kalahari", "Parque Nacional de Etosha", "Llanuras áridas del interior"],
+    funFacts: [
+      "Usa su tupida cola como parasol, sujetándola sobre el lomo para darse sombra bajo el sol.",
+      "Vive en colonias y a veces comparte madrigueras con suricatas y mangostas.",
+    ],
+  },
+  {
+    id: "sociable-weaver",
+    commonName: "Tejedor republicano",
+    commonNameEn: "Sociable Weaver",
+    scientificName: "Philetairus socius",
+    image: img_sociable_weaver,
+    category: "Aves",
+    whereToSee: ["Kalahari", "Tierras Altas Centrales", "Sur de Namibia"],
+    funFacts: [
+      "Construye los mayores nidos comunales del mundo, usados por cientos de aves durante generaciones.",
+      "El nido está tan bien aislado que mantiene una temperatura estable de día y de noche.",
+    ],
+  },
+  {
+    id: "klipspringer",
+    commonName: "Saltarrocas",
+    commonNameEn: "Klipspringer",
+    scientificName: "Oreotragus oreotragus",
+    image: img_klipspringer,
+    category: "Herbívoros",
+    whereToSee: ["Damaraland", "Montañas Erongo", "Naukluft"],
+    funFacts: [
+      "Camina de puntillas sobre la punta de las pezuñas, adaptado a saltar entre rocas con precisión.",
+      "Las parejas son monógamas y casi siempre permanecen juntas, vigilando por turnos.",
+    ],
+  },
+  {
+    id: "red-hartebeest",
+    commonName: "Búbalo rojo",
+    commonNameEn: "Red Hartebeest",
+    scientificName: "Alcelaphus buselaphus caama",
+    image: img_red_hartebeest,
+    category: "Herbívoros",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Tierras Altas Centrales"],
+    funFacts: [
+      "Es uno de los antílopes más veloces y resistentes, capaz de correr a más de 50 km/h.",
+      "Su cara alargada y sus cuernos en forma de soporte lo hacen inconfundible en las llanuras.",
+    ],
+  },
+  {
+    id: "ground-pangolin",
+    commonName: "Pangolín de Temminck",
+    commonNameEn: "Ground Pangolin",
+    scientificName: "Smutsia temminckii",
+    image: img_ground_pangolin,
+    category: "Mamíferos pequeños y medianos",
+    whereToSee: ["Kalahari", "Tierras Altas Centrales", "Sabanas del interior"],
+    funFacts: [
+      "Es el único mamífero cubierto de escamas y se enrolla en una bola cuando se siente amenazado.",
+      "Está entre los animales más traficados del mundo, lo que lo hace rarísimo de ver.",
+    ],
+  },
+  {
+    id: "aardvark",
+    commonName: "Oricteropo",
+    commonNameEn: "Aardvark",
+    scientificName: "Orycteropus afer",
+    image: img_aardvark,
+    category: "Mamíferos pequeños y medianos",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Tierras Altas Centrales"],
+    funFacts: [
+      "Excava madrigueras enormes con sus potentes garras; muchas otras especies las reutilizan después.",
+      "Es nocturno y solitario: recorre kilómetros de noche siguiendo el rastro de los termiteros.",
+    ],
+  },
+  {
+    id: "aardwolf",
+    commonName: "Protelo",
+    commonNameEn: "Aardwolf",
+    scientificName: "Proteles cristata",
+    image: img_aardwolf,
+    category: "Carnívoros y otros mamíferos",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Tierras Altas Centrales"],
+    funFacts: [
+      "Pese a parecer una hiena pequeña, se alimenta casi solo de termitas: hasta 250.000 en una noche.",
+      "Cuando se asusta, eriza la melena del lomo para parecer mucho más grande.",
+    ],
+  },
+  {
+    id: "rosy-faced-lovebird",
+    commonName: "Inseparable de Namibia",
+    commonNameEn: "Rosy-faced Lovebird",
+    scientificName: "Agapornis roseicollis",
+    image: img_rosy_faced_lovebird,
+    category: "Aves",
+    whereToSee: ["Damaraland", "Montañas Erongo", "Cauces y escarpes del oeste"],
+    funFacts: [
+      "Es casi endémico de Namibia y suele verse en bandadas ruidosas cerca del agua.",
+      "Las hembras transportan material para el nido metido entre las plumas de la rabadilla.",
+    ],
+  },
+  {
+    id: "lappet-faced-vulture",
+    commonName: "Buitre orejudo",
+    commonNameEn: "Lappet-faced Vulture",
+    scientificName: "Torgos tracheliotos",
+    image: img_lappet_faced_vulture,
+    category: "Aves",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Namib-Naukluft"],
+    funFacts: [
+      "Es el buitre más grande y poderoso de África; su pico abre carcasas que otros no pueden.",
+      "Suele dominar en las carroñas, donde el resto de buitres espera su turno.",
+    ],
+  },
+  {
+    id: "greater-flamingo",
+    commonName: "Flamenco común",
+    commonNameEn: "Greater Flamingo",
+    scientificName: "Phoenicopterus roseus",
+    image: img_greater_flamingo,
+    category: "Aves",
+    whereToSee: ["Walvis Bay", "Sandwich Harbour", "Salina de Etosha (en años de lluvia)"],
+    funFacts: [
+      "Filtra algas e invertebrados con el pico invertido, de los que obtiene su tono rosado.",
+      "En Etosha solo cría cuando las lluvias llenan la salina, en colonias multitudinarias.",
+    ],
+  },
+  {
+    id: "pale-chanting-goshawk",
+    commonName: "Azor lagartijero pálido",
+    commonNameEn: "Pale Chanting Goshawk",
+    scientificName: "Melierax canorus",
+    image: img_pale_chanting_goshawk,
+    category: "Aves",
+    whereToSee: ["Namib-Naukluft", "Kalahari", "Tierras Altas Centrales", "Parque Nacional de Etosha"],
+    funFacts: [
+      "Es una de las rapaces más visibles, posada en postes y árboles junto a las carreteras.",
+      "A veces sigue a pie a mangostas y melívoros para cazar lo que estos levantan.",
+    ],
+  },
+  {
+    id: "waterbuck",
+    commonName: "Antílope acuático",
+    commonNameEn: "Common Waterbuck",
+    scientificName: "Kobus ellipsiprymnus",
+    image: img_waterbuck,
+    category: "Herbívoros",
+    whereToSee: ["Franja de Caprivi/Zambezi", "Ríos del noreste", "Waterberg"],
+    funFacts: [
+      "Nunca se aleja del agua y se mete en ella para escapar de los depredadores.",
+      "El anillo blanco de su grupa lo hace inconfundible entre los antílopes.",
+    ],
+  },
+  {
+    id: "wattled-crane",
+    commonName: "Grulla carunculada",
+    commonNameEn: "Wattled Crane",
+    scientificName: "Bugeranus carunculatus",
+    image: img_wattled_crane,
+    category: "Aves",
+    whereToSee: ["Franja de Caprivi/Zambezi", "Humedales del Kavango", "Llanuras de inundación"],
+    funFacts: [
+      "Es la grulla más grande de África y una de las aves más amenazadas de la región.",
+      "Depende de humedales prístinos, por lo que su presencia indica un ecosistema sano.",
+    ],
+  },
+  {
+    id: "puff-adder",
+    commonName: "Víbora bufadora",
+    commonNameEn: "Puff Adder",
+    scientificName: "Bitis arietans",
+    image: img_puff_adder,
+    category: "Reptiles, anfibios e invertebrados",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Tierras Altas Centrales", "Sabanas de todo el país"],
+    funFacts: [
+      "Su quietud y camuflaje la hacen responsable de muchas mordeduras: pasa totalmente desapercibida.",
+      "Avisa hinchándose y soplando con fuerza, de ahí su nombre.",
     ],
   },
 ];
