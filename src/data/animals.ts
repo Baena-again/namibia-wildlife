@@ -553,7 +553,8 @@ export const animals: Animal[] = [
   },
   {
     id: "ruppells-bustard",
-    commonName: "Ruppell's Bustard",
+    commonName: "Rüppell's Korhaan",
+    scientificName: "Eupodotis rueppellii",
     image: img_ruppells_bustard,
     category: "Aves",
     whereToSee: [],
