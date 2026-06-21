@@ -9,9 +9,11 @@ import "@fontsource/eb-garamond/500.css";
 
 import "./styles.css";
 import App from "./App";
+import { UpdatePrompt } from "./components/UpdatePrompt";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
+    <UpdatePrompt />
   </StrictMode>,
 );
