@@ -81,6 +81,22 @@ import img_damara_tern from "../assets/animals/damara-tern.png";
 import img_wandering_albatross from "../assets/animals/wandering-albatross.png";
 import img_southern_elephant_seal from "../assets/animals/southern-elephant-seal.png";
 import img_ghost_crab from "../assets/animals/ghost-crab.png";
+import img_nile_crocodile from "../assets/animals/nile-crocodile.png";
+import img_bat_eared_fox from "../assets/animals/bat-eared-fox.png";
+import img_cape_ground_squirrel from "../assets/animals/cape-ground-squirrel.png";
+import img_sociable_weaver from "../assets/animals/sociable-weaver.png";
+import img_klipspringer from "../assets/animals/klipspringer.png";
+import img_red_hartebeest from "../assets/animals/red-hartebeest.png";
+import img_ground_pangolin from "../assets/animals/ground-pangolin.png";
+import img_aardvark from "../assets/animals/aardvark.png";
+import img_aardwolf from "../assets/animals/aardwolf.png";
+import img_rosy_faced_lovebird from "../assets/animals/rosy-faced-lovebird.png";
+import img_lappet_faced_vulture from "../assets/animals/lappet-faced-vulture.png";
+import img_greater_flamingo from "../assets/animals/greater-flamingo.png";
+import img_pale_chanting_goshawk from "../assets/animals/pale-chanting-goshawk.png";
+import img_waterbuck from "../assets/animals/waterbuck.png";
+import img_wattled_crane from "../assets/animals/wattled-crane.png";
+import img_puff_adder from "../assets/animals/puff-adder.png";
 
 /**
  * Catalogue extracted from the source presentation (cut-out images + names).
@@ -1407,6 +1423,262 @@ export const animals: Animal[] = [
     funFacts: [
       "Su color arenoso lo vuelve casi invisible sobre la playa, de ahí el nombre de cangrejo fantasma.",
       "Es uno de los crustáceos más veloces y se refugia en profundas galerías que excava en la arena.",
+    ],
+  },
+  {
+    id: "nile-crocodile",
+    commonName: "Cocodrilo del Nilo",
+    commonNameEn: "Nile Crocodile",
+    scientificName: "Crocodylus niloticus",
+    image: img_nile_crocodile,
+    category: "Reptiles, anfibios e invertebrados",
+    description: "El mayor reptil y depredador de agua dulce de África, de cuerpo robusto cubierto de escamas óseas, hocico ancho y poderoso y dorso pardo verdoso oscuro; emboscador paciente que acecha inmóvil a flor de agua y arrastra a sus presas bajo la superficie.",
+    distinguish: "Es el único cocodrilo grande de los ríos del norte de Namibia, así que la confusión suele ser con los grandes varanos del agua (lagarto monitor del Nilo, Varanus niloticus): el varano es mucho menor, de cuerpo alargado y delgado, lengua bífida y patas estilizadas, mientras que el cocodrilo es macizo, de hocico ancho y crestas óseas dorsales.",
+    spottingTips: "Búscalo en la estación seca tomando el sol en bancos de arena y orillas fangosas de los ríos Kavango, Chobe y Zambezi y en el Parque Nacional de Nkasa Rupara, sobre todo a media mañana; haz cruceros en barca por la Franja de Caprivi/Zambezi y rastrea con prismáticos los ojos y el hocico asomando inmóviles sobre el agua.",
+    whereToSee: ["Franja de Caprivi/Zambezi", "Ríos Kavango y Chobe", "Parque Nacional de Nkasa Rupara"],
+    funFacts: [
+      "Es el mayor depredador de agua dulce de África; puede superar los 5 m y vivir varias décadas.",
+      "La madre traslada con cuidado a sus crías recién nacidas dentro de la boca hasta el agua.",
+    ],
+  },
+  {
+    id: "bat-eared-fox",
+    commonName: "Zorro orejudo",
+    commonNameEn: "Bat-eared Fox",
+    scientificName: "Otocyon megalotis",
+    image: img_bat_eared_fox,
+    category: "Mamíferos pequeños y medianos",
+    description: "Pequeño cánido de pelaje pardo grisáceo con orejas enormes (de más de 11 cm), antifaz oscuro en la cara, patas y punta de la cola negras; insectívoro principalmente nocturno y crepuscular que forrajea en pareja o en grupo familiar usando el oído para localizar termitas bajo tierra.",
+    distinguish: "Sus orejas desproporcionadamente grandes y el antifaz negro lo separan al instante del zorro de El Cabo (Vulpes chama), que es más esbelto, de tonos plateados con cabeza rojiza y orejas más pequeñas. Frente al chacal de lomo negro (Lupulella mesomelas) es mucho menor, de hocico corto y sin la silla de montar negra y plateada del dorso.",
+    spottingTips: "Recórrelo al amanecer y al atardecer en las llanuras abiertas y semiáridas de Etosha (zona de Okaukuejo y las planicies del oeste) y del Kalahari, donde se le ve forrajeando en pareja o en pequeños grupos; busca el característico perfil de las orejas erguidas recortado a baja altura sobre el suelo raso.",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Llanuras semiáridas"],
+    funFacts: [
+      "Sus enormes orejas detectan bajo tierra el sonido de termitas e insectos, su alimento principal.",
+      "Tiene más dientes que casi cualquier otro mamífero terrestre, adaptados a triturar insectos.",
+    ],
+  },
+  {
+    id: "cape-ground-squirrel",
+    commonName: "Ardilla terrestre de El Cabo",
+    commonNameEn: "Cape Ground Squirrel",
+    scientificName: "Xerus inauris",
+    image: img_cape_ground_squirrel,
+    category: "Mamíferos pequeños y medianos",
+    description: "Ardilla terrestre diurna de pelaje canela con una nítida franja blanca a cada lado del cuerpo, vientre claro y una cola larga y tupida que mantiene abovedada sobre el lomo a modo de parasol; vive en colonias sociales que excavan extensas madrigueras en suelos áridos.",
+    distinguish: "Se distingue de la suricata (Suricata suricatta), con la que comparte madrigueras, por su tupida cola en penacho que alza sobre el lomo y por las franjas blancas laterales; la suricata es más esbelta, de cola fina y oscura en la punta y suele erguirse vertical sobre las patas traseras. Carece de las bandas dorsales oscuras de las mangostas.",
+    spottingTips: "Es fácil de ver de día, incluso en pleno calor, en las planicies áridas del Kalahari y en torno a las charcas y campamentos del sur de Etosha, donde colonias de madrigueras salpican el suelo abierto; busca a los animales erguidos junto a las bocas de las galerías o con la cola desplegada como sombrilla.",
+    whereToSee: ["Kalahari", "Parque Nacional de Etosha", "Llanuras áridas del interior"],
+    funFacts: [
+      "Usa su tupida cola como parasol, sujetándola sobre el lomo para darse sombra bajo el sol.",
+      "Vive en colonias y a veces comparte madrigueras con suricatas y mangostas.",
+    ],
+  },
+  {
+    id: "sociable-weaver",
+    commonName: "Tejedor republicano",
+    commonNameEn: "Sociable Weaver",
+    scientificName: "Philetairus socius",
+    image: img_sociable_weaver,
+    category: "Aves",
+    description: "Pequeño pájaro tejedor de unos 14 cm, de plumaje pardo arenoso con dorso escamado, flancos barrados, babero negro en la garganta y pico cónico gris azulado; es famoso por construir en colonia gigantescos nidos comunales de paja que albergan a cientos de aves durante generaciones.",
+    distinguish: "Pese al tamaño del nido, el ave es menor que un gorrión común (Passer domesticus) y se reconoce por el babero negro, el dorso con escamado oscuro y el pico azulado. Frente al pájaro moteado (Sporopipes squamifrons), que comparte sus nidos, es mayor, sin el píleo escamoso ni el bigote negro y con pico gris azulado en lugar de rosado.",
+    spottingTips: "Busca primero sus enormes nidos colgantes con forma de almiar sobre acacias camelludas y postes en el Kalahari, el sur de Namibia y las Tierras Altas Centrales; al amanecer y al anochecer verás entrar y salir a las bandadas, lo que delata la colonia incluso a distancia en el paisaje árido.",
+    whereToSee: ["Kalahari", "Tierras Altas Centrales", "Sur de Namibia"],
+    funFacts: [
+      "Construye los mayores nidos comunales del mundo, usados por cientos de aves durante generaciones.",
+      "El nido está tan bien aislado que mantiene una temperatura estable de día y de noche.",
+    ],
+  },
+  {
+    id: "klipspringer",
+    commonName: "Saltarrocas",
+    commonNameEn: "Klipspringer",
+    scientificName: "Oreotragus oreotragus",
+    image: img_klipspringer,
+    category: "Herbívoros",
+    description: "Pequeño antílope rupícola de pelaje áspero gris-amarillento que parece moteado, con grupa redondeada, pezuñas cilíndricas romas sobre las que camina de puntillas y cuernos cortos y rectos solo en los machos; vive en parejas monógamas muy ligadas al terreno rocoso.",
+    distinguish: "Se diferencia del steenbok y del oribi, también pequeños, por su exclusivo hábitat rocoso y por caminar sobre la punta de las pezuñas: el steenbok y el oribi habitan llanuras abiertas y carecen del andar de puntillas, y el oribi además luce una mancha negra glandular bajo la oreja y un cuello más largo.",
+    spottingTips: "Búscalo a primera y última hora del día sobre koppies, riscos y laderas pedregosas de Damaraland, las Montañas Erongo y Naukluft, donde suele posarse inmóvil en lo alto de una roca; rastrea las parejas, pues casi siempre van de dos y uno vigila erguido sobre un peñasco.",
+    whereToSee: ["Damaraland", "Montañas Erongo", "Naukluft"],
+    funFacts: [
+      "Camina de puntillas sobre la punta de las pezuñas, adaptado a saltar entre rocas con precisión.",
+      "Las parejas son monógamas y casi siempre permanecen juntas, vigilando por turnos.",
+    ],
+  },
+  {
+    id: "red-hartebeest",
+    commonName: "Búbalo rojo",
+    commonNameEn: "Red Hartebeest",
+    scientificName: "Alcelaphus buselaphus caama",
+    image: img_red_hartebeest,
+    category: "Herbívoros",
+    description: "Gran antílope rojizo-canela de hombros altos y grupa inclinada, con cara muy alargada, marcas faciales oscuras y vientre claro; ambos sexos portan recios cuernos en forma de soporte unidos en la base, y forma rebaños veloces y resistentes en llanuras abiertas.",
+    distinguish: "Frente al sasebí (tsessebe), con el que se confunde, el búbalo rojo es de tono rojizo más claro (el sasebí es pardo-púrpura lustroso), tiene la cara más larga y estrecha y cuernos mucho más largos, gruesos y angulados; el sasebí es más compacto, de cara más corta y cuernos en lira más abierta.",
+    spottingTips: "Recórrelo en las llanuras y pastizales abiertos del Parque Nacional de Etosha —donde está su mayor población namibia— y en el Kalahari y las Tierras Altas Centrales, buscando grupos a media distancia; localiza al centinela, que suele apostarse en un montículo o termitero para vigilar mientras el rebaño pasta.",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Tierras Altas Centrales"],
+    funFacts: [
+      "Es uno de los antílopes más veloces y resistentes, capaz de correr a más de 50 km/h.",
+      "Su cara alargada y sus cuernos en forma de soporte lo hacen inconfundible en las llanuras.",
+    ],
+  },
+  {
+    id: "ground-pangolin",
+    commonName: "Pangolín de Temminck",
+    commonNameEn: "Ground Pangolin",
+    scientificName: "Smutsia temminckii",
+    image: img_ground_pangolin,
+    category: "Mamíferos pequeños y medianos",
+    description: "Mamífero insectívoro inconfundible cubierto de grandes escamas córneas superpuestas de color pardo, con cabeza pequeña sin dientes, patas cortas y larga cola; es nocturno y solitario, camina erguido apoyado en las patas traseras y se enrolla en una bola cuando se siente amenazado.",
+    distinguish: "Es el único mamífero escamoso de Namibia, así que apenas se confunde; a diferencia del oricteropo, con el que comparte dieta de termitas, el pangolín está revestido de escamas (no de piel desnuda), es mucho más pequeño y se enrolla en bola, mientras el oricteropo tiene orejas largas tipo conejo y hocico porcino.",
+    spottingTips: "Es rarísimo y muy difícil de ver por su escasez y hábitos nocturnos: explora de noche, con linterna, las sabanas espinosas y de camelthorn del Kalahari, las Tierras Altas Centrales y las sabanas del interior, atento a su andar bípedo y al rastro que deja al excavar termiteros.",
+    whereToSee: ["Kalahari", "Tierras Altas Centrales", "Sabanas del interior"],
+    funFacts: [
+      "Es el único mamífero cubierto de escamas y se enrolla en una bola cuando se siente amenazado.",
+      "Está entre los animales más traficados del mundo, lo que lo hace rarísimo de ver.",
+    ],
+  },
+  {
+    id: "aardvark",
+    commonName: "Oricteropo",
+    commonNameEn: "Aardvark",
+    scientificName: "Orycteropus afer",
+    image: img_aardvark,
+    category: "Mamíferos pequeños y medianos",
+    description: "Mamífero excavador de cuerpo robusto casi lampiño y color pardo-grisáceo, con hocico largo y porcino, orejas largas como las de un conejo y cola gruesa tipo canguro; es nocturno y solitario, y usa sus potentes garras para abrir termiteros y cavar grandes madrigueras.",
+    distinguish: "Se distingue del pangolín de Temminck, con el que comparte la dieta de hormigas y termitas, por tener la piel desnuda en lugar de escamas, orejas largas erguidas y hocico alargado; el pangolín, en cambio, va cubierto de escamas córneas y se enrolla en bola.",
+    spottingTips: "Es esquivo y estrictamente nocturno: tus mejores opciones son los recorridos nocturnos por el Parque Nacional de Etosha, el Kalahari y las Tierras Altas Centrales, barriendo con foco las llanuras en busca de su silueta o de las bocas frescas de sus madrigueras; las noches frías de invierno a veces sale antes del anochecer.",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Tierras Altas Centrales"],
+    funFacts: [
+      "Excava madrigueras enormes con sus potentes garras; muchas otras especies las reutilizan después.",
+      "Es nocturno y solitario: recorre kilómetros de noche siguiendo el rastro de los termiteros.",
+    ],
+  },
+  {
+    id: "aardwolf",
+    commonName: "Protelo",
+    commonNameEn: "Aardwolf",
+    scientificName: "Proteles cristata",
+    image: img_aardwolf,
+    category: "Carnívoros y otros mamíferos",
+    description: "Pequeño carnívoro nocturno parecido a una hiena en miniatura, de pelaje pardo-amarillento con franjas verticales oscuras en los flancos y una crin dorsal eréctil; los cuartos delanteros son más altos que los traseros y se alimenta casi en exclusiva de termitas, que lame con su lengua pegajosa.",
+    distinguish: "Frente a la hiena parda y la hiena manchada, el protelo es muchísimo más pequeño (apenas un cuarto del peso de una hiena), con un hocico fino y puntiagudo, franjas verticales nítidas en el cuerpo y una crin que eriza al asustarse; no tritura huesos ni caza, sino que come termitas del género Trinervitermes.",
+    spottingTips: "Estrictamente nocturno y solitario, es difícil de ver: prueba en safaris nocturnos con foco en las llanuras abiertas de Etosha, el Kalahari y las Tierras Altas Centrales, buscando su silueta de hiena pequeña con crin erizada mientras lame termiteros al anochecer y al amanecer.",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Tierras Altas Centrales"],
+    funFacts: [
+      "Pese a parecer una hiena pequeña, se alimenta casi solo de termitas: hasta 250.000 en una noche.",
+      "Cuando se asusta, eriza la melena del lomo para parecer mucho más grande.",
+    ],
+  },
+  {
+    id: "rosy-faced-lovebird",
+    commonName: "Inseparable de Namibia",
+    commonNameEn: "Rosy-faced Lovebird",
+    scientificName: "Agapornis roseicollis",
+    image: img_rosy_faced_lovebird,
+    category: "Aves",
+    description: "Pequeño loro rechoncho y bullicioso de plumaje verde hierba, cara, garganta y pecho de un rosa intenso, frente rojo rosado y rabadilla azul cobalto brillante; vuela en bandadas ruidosas y veloces muy ligadas al agua en las zonas áridas del oeste.",
+    distinguish: "Es el único inseparable (Agapornis) de Namibia, así que su combinación de cuerpo verde compacto con cara rosa y rabadilla azul lo separa de inmediato de otros loros y cotorras de la región, que carecen de la cara rosada; el color rosa, no rojo, de la cara lo distingue además del inseparable carirrojo.",
+    spottingTips: "Casi endémico de Namibia, búscalo en Damaraland, las montañas Erongo y los cauces y escarpes del oeste, sobre todo a primera hora cerca de presas, abrevaderos y afloramientos rocosos donde anida; las bandadas se delatan por sus chillidos agudos y su vuelo rápido y directo al ir a beber.",
+    whereToSee: ["Damaraland", "Montañas Erongo", "Cauces y escarpes del oeste"],
+    funFacts: [
+      "Es casi endémico de Namibia y suele verse en bandadas ruidosas cerca del agua.",
+      "Las hembras transportan material para el nido metido entre las plumas de la rabadilla.",
+    ],
+  },
+  {
+    id: "lappet-faced-vulture",
+    commonName: "Buitre orejudo",
+    commonNameEn: "Lappet-faced Vulture",
+    scientificName: "Torgos tracheliotos",
+    image: img_lappet_faced_vulture,
+    category: "Aves",
+    description: "El buitre más grande y poderoso de África, de plumaje pardo negruzco con muslos blancos contrastados, cabeza desnuda de tono rojizo a rosado con pliegues carnosos de piel (los lóbulos o lappets) a los lados y un pico enorme y macizo capaz de abrir carcasas que otros buitres no pueden.",
+    distinguish: "Frente al buitre dorsiblanco africano, es mucho mayor, con cabeza desnuda rojiza (no grisácea y emplumada de plumón), pliegues carnosos faciales, muslos blancos llamativos y un pico inmenso; suele dominar en las carroñas, donde el dorsiblanco, más pequeño y de tonos pardo claro, espera su turno.",
+    spottingTips: "En Etosha, el Kalahari y el Namib-Naukluft, busca en el cielo a media mañana el buitre más grande y de vuelo pesado planeando sobre las llanuras, o el ejemplar dominante posado en una carcasa; en zonas áridas también anida en lo alto de acacias aisladas, donde su mole y cabeza roja lo delatan.",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Namib-Naukluft"],
+    funFacts: [
+      "Es el buitre más grande y poderoso de África; su pico abre carcasas que otros no pueden.",
+      "Suele dominar en las carroñas, donde el resto de buitres espera su turno.",
+    ],
+  },
+  {
+    id: "greater-flamingo",
+    commonName: "Flamenco común",
+    commonNameEn: "Greater Flamingo",
+    scientificName: "Phoenicopterus roseus",
+    image: img_greater_flamingo,
+    category: "Aves",
+    description: "El mayor de los flamencos, alto y estilizado, de plumaje rosado-blanquecino con cobertoras alares rojas y plumas de vuelo negras, patas rosadas y un pico curvado, claro y con la punta negra, que invierte para filtrar pequeños invertebrados y algas en aguas someras.",
+    distinguish: "Frente al flamenco enano (Phoeniconaias minor), el común es notablemente más grande y de tono más pálido, con pico claro de punta negra y patas rosadas; el enano es más pequeño, de rosa más intenso, con pico que parece todo oscuro (rojo muy oscuro) y patas rojizas.",
+    spottingTips: "Búscalo durante todo el año en la laguna de Walvis Bay y en Sandwich Harbour, donde se concentran grandes bandadas filtrando en el agua somera; en la salina de Etosha solo aparece en años lluviosos, cuando las lluvias llenan la cubeta y forma colonias multitudinarias.",
+    whereToSee: ["Walvis Bay", "Sandwich Harbour", "Salina de Etosha (en años de lluvia)"],
+    funFacts: [
+      "Filtra algas e invertebrados con el pico invertido, de los que obtiene su tono rosado.",
+      "En Etosha solo cría cuando las lluvias llenan la salina, en colonias multitudinarias.",
+    ],
+  },
+  {
+    id: "pale-chanting-goshawk",
+    commonName: "Azor lagartijero pálido",
+    commonNameEn: "Pale Chanting Goshawk",
+    scientificName: "Melierax canorus",
+    image: img_pale_chanting_goshawk,
+    category: "Aves",
+    description: "Rapaz esbelta de tamaño medio, gris pálida por encima y finamente barreada de blanco en el vientre, con cere y largas patas de un rojo intenso; suele posarse muy erguida y visible en postes y arbustos junto a las pistas, desde donde acecha reptiles y pequeños mamíferos.",
+    distinguish: "Frente al azor gabar (Micronisus gabar), mucho más pequeño, el azor lagartijero pálido es notablemente mayor, con patas y cere rojos y panel alar pálido; del azor lagartijero oscuro (Melierax metabates), con el que solapa en el norte, se separa por su tono general más claro, la rabadilla blanca lisa y las partes inferiores casi blancas.",
+    spottingTips: "Recórrelo desde el coche en las llanuras áridas del Namib-Naukluft, el Kalahari y las Tierras Altas Centrales, escudriñando las cimas de postes telegráficos y arbustos junto a las carreteras a primera hora; en Etosha búscalo también caminando tras mangostas y melívoros para cazar lo que estos levantan.",
+    whereToSee: ["Namib-Naukluft", "Kalahari", "Tierras Altas Centrales", "Parque Nacional de Etosha"],
+    funFacts: [
+      "Es una de las rapaces más visibles, posada en postes y árboles junto a las carreteras.",
+      "A veces sigue a pie a mangostas y melívoros para cazar lo que estos levantan.",
+    ],
+  },
+  {
+    id: "waterbuck",
+    commonName: "Antílope acuático",
+    commonNameEn: "Common Waterbuck",
+    scientificName: "Kobus ellipsiprymnus",
+    image: img_waterbuck,
+    category: "Herbívoros",
+    description: "Antílope grande y robusto, de pelaje hirsuto pardo-grisáceo que se oscurece con la edad, glándulas que segregan una grasa impermeable de olor fuerte, y solo los machos portan largos cuernos anillados curvados hacia delante; nunca se aleja del agua y se refugia en ella ante los depredadores.",
+    distinguish: "Es inconfundible por el característico anillo blanco hueco que rodea la grupa (la subespecie común, a diferencia del defassa, que muestra un parche blanco macizo); frente al kudú o al lechwe rojo, su complexión es más pesada, el pelaje más basto y oscuro, y carece de las franjas blancas en los flancos de otros antílopes acuáticos.",
+    spottingTips: "Búscalo siempre junto al agua: en las riberas y llanuras de inundación de la Franja de Caprivi/Zambezi y los ríos del noreste al amanecer y al atardecer, y en el Waterberg cerca de manantiales; los machos suelen estar solos o con pequeños grupos de hembras pastando a poca distancia de la orilla.",
+    whereToSee: ["Franja de Caprivi/Zambezi", "Ríos del noreste", "Waterberg"],
+    funFacts: [
+      "Nunca se aleja del agua y se mete en ella para escapar de los depredadores.",
+      "El anillo blanco de su grupa lo hace inconfundible entre los antílopes.",
+    ],
+  },
+  {
+    id: "wattled-crane",
+    commonName: "Grulla carunculada",
+    commonNameEn: "Wattled Crane",
+    scientificName: "Bugeranus carunculatus",
+    image: img_wattled_crane,
+    category: "Aves",
+    description: "La grulla más grande de África, de hasta 175 cm de altura, con cuello y pecho blancos, corona y nuca gris oscuro, cara desnuda roja y dos largas carúnculas blancas colgando de la garganta; el dorso y las alas son gris ceniza y las partes traseras casi negras, y depende de humedales prístinos.",
+    distinguish: "Las carúnculas blancas colgantes, el cuello blanco y la cara roja la separan al instante de la grulla azul (Anthropoides paradiseus), de plumaje gris azulado uniforme y sin carúnculas, y de la grulla coronada cuelligrís (Balearica regulorum), que luce un penacho dorado en la cabeza, mejillas blancas y carece de carúnculas.",
+    spottingTips: "En Namibia es rara y muy localizada: busca las pocas parejas residentes en las llanuras de inundación y humedales permanentes de la Franja de Caprivi/Zambezi y el Kavango, especialmente en zonas como Mahango, Nkasa Rupara y Mamili durante la estación de aguas altas; explora los pastizales inundados con prismáticos a distancia para no molestarla.",
+    whereToSee: ["Franja de Caprivi/Zambezi", "Humedales del Kavango", "Llanuras de inundación"],
+    funFacts: [
+      "Es la grulla más grande de África y una de las aves más amenazadas de la región.",
+      "Depende de humedales prístinos, por lo que su presencia indica un ecosistema sano.",
+    ],
+  },
+  {
+    id: "puff-adder",
+    commonName: "Víbora bufadora",
+    commonNameEn: "Puff Adder",
+    scientificName: "Bitis arietans",
+    image: img_puff_adder,
+    category: "Reptiles, anfibios e invertebrados",
+    description: "Víbora corta y muy gruesa, de cabeza ancha y triangular bien diferenciada del cuello y pupila vertical, con un patrón de galones o chevrones oscuros en forma de V sobre fondo pajizo, pardo o amarillento; permanece inmóvil confiando en su camuflaje y, amenazada, se hincha y resopla con fuerza.",
+    distinguish: "Frente a la víbora nocturna rómbica (Causus rhombeatus) y a la culebra come-huevos (Dasypeltis), que la imitan, la bufadora es mucho más robusta y pesada, con cabeza más ancha y galones (no rombos o manchas dorsales); las víboras nocturnas y come-huevos son delgadas y de cabeza menos marcada, y la come-huevos es totalmente inofensiva.",
+    spottingTips: "Está muy extendida pero pasa desapercibida: en Etosha, el Kalahari, las Tierras Altas Centrales y sabanas de todo el país vigila dónde pisas en senderos, bordes de pistas y al pie de arbustos, sobre todo cuando toma el sol al amanecer o al atardecer en noches cálidas; nunca la manipules y mantén la distancia.",
+    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Tierras Altas Centrales", "Sabanas de todo el país"],
+    funFacts: [
+      "Su quietud y camuflaje la hacen responsable de muchas mordeduras: pasa totalmente desapercibida.",
+      "Avisa hinchándose y soplando con fuerza, de ahí su nombre.",
     ],
   },
 ];
