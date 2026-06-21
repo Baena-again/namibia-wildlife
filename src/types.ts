@@ -6,6 +6,8 @@ export type Animal = {
   scientificName?: string;
   /** Bundled image asset URL (resolved at build time). */
   image: string;
+  /** Plate/category from the source presentation. */
+  category?: string;
   /** Where to see it in Namibia: parks / regions. */
   whereToSee: string[];
   /** A few fun facts. */
