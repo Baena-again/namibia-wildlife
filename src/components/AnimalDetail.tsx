@@ -34,6 +34,9 @@ export function AnimalDetail({
       </figure>
 
       <h1 className="title">{animal.commonName}</h1>
+      {animal.commonNameEn && (
+        <span className="common-en">{animal.commonNameEn}</span>
+      )}
       {animal.scientificName && (
         <span className="scientific">{animal.scientificName}</span>
       )}

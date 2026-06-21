@@ -99,7 +99,8 @@ import img_ghost_crab from "../assets/animals/ghost-crab.png";
 export const animals: Animal[] = [
   {
     id: "african-elephant",
-    commonName: "African Elephant",
+    commonName: "Elefante africano",
+    commonNameEn: "African Elephant",
     scientificName: "Loxodonta africana",
     image: img_african_elephant,
     category: "Grandes mamíferos",
@@ -111,7 +112,8 @@ export const animals: Animal[] = [
   },
   {
     id: "lion",
-    commonName: "Lion",
+    commonName: "León",
+    commonNameEn: "Lion",
     scientificName: "Panthera leo",
     image: img_lion,
     category: "Grandes mamíferos",
@@ -123,7 +125,8 @@ export const animals: Animal[] = [
   },
   {
     id: "leopard",
-    commonName: "Leopard",
+    commonName: "Leopardo",
+    commonNameEn: "Leopard",
     scientificName: "Panthera pardus",
     image: img_leopard,
     category: "Grandes mamíferos",
@@ -135,7 +138,8 @@ export const animals: Animal[] = [
   },
   {
     id: "cheetah",
-    commonName: "Cheetah",
+    commonName: "Guepardo",
+    commonNameEn: "Cheetah",
     scientificName: "Acinonyx jubatus",
     image: img_cheetah,
     category: "Grandes mamíferos",
@@ -147,7 +151,8 @@ export const animals: Animal[] = [
   },
   {
     id: "black-rhinoceros",
-    commonName: "Black Rhinoceros",
+    commonName: "Rinoceronte negro",
+    commonNameEn: "Black Rhinoceros",
     scientificName: "Diceros bicornis",
     image: img_black_rhinoceros,
     category: "Grandes mamíferos",
@@ -159,7 +164,8 @@ export const animals: Animal[] = [
   },
   {
     id: "white-rhinoceros",
-    commonName: "White Rhinoceros",
+    commonName: "Rinoceronte blanco",
+    commonNameEn: "White Rhinoceros",
     scientificName: "Ceratotherium simum",
     image: img_white_rhinoceros,
     category: "Grandes mamíferos",
@@ -171,7 +177,8 @@ export const animals: Animal[] = [
   },
   {
     id: "african-buffalo",
-    commonName: "African Buffalo",
+    commonName: "Búfalo cafre",
+    commonNameEn: "African Buffalo",
     scientificName: "Syncerus caffer",
     image: img_african_buffalo,
     category: "Grandes mamíferos",
@@ -183,7 +190,8 @@ export const animals: Animal[] = [
   },
   {
     id: "giraffe",
-    commonName: "Giraffe",
+    commonName: "Jirafa",
+    commonNameEn: "Giraffe",
     scientificName: "Giraffa camelopardalis",
     image: img_giraffe,
     category: "Grandes mamíferos",
@@ -195,7 +203,8 @@ export const animals: Animal[] = [
   },
   {
     id: "hippopotamus",
-    commonName: "Hippopotamus",
+    commonName: "Hipopótamo",
+    commonNameEn: "Hippopotamus",
     scientificName: "Hippopotamus amphibius",
     image: img_hippopotamus,
     category: "Grandes mamíferos",
@@ -207,7 +216,8 @@ export const animals: Animal[] = [
   },
   {
     id: "oryx-gemsbok",
-    commonName: "Oryx (Gemsbok)",
+    commonName: "Órice (gemsbok)",
+    commonNameEn: "Oryx (Gemsbok)",
     scientificName: "Oryx gazella",
     image: img_oryx_gemsbok,
     category: "Herbívoros",
@@ -220,6 +230,7 @@ export const animals: Animal[] = [
   {
     id: "springbok",
     commonName: "Springbok",
+    commonNameEn: "Springbok",
     scientificName: "Antidorcas marsupialis",
     image: img_springbok,
     category: "Herbívoros",
@@ -232,6 +243,7 @@ export const animals: Animal[] = [
   {
     id: "impala",
     commonName: "Impala",
+    commonNameEn: "Impala",
     scientificName: "Aepyceros melampus",
     image: img_impala,
     category: "Herbívoros",
@@ -243,7 +255,8 @@ export const animals: Animal[] = [
   },
   {
     id: "blue-wildebeest",
-    commonName: "Blue Wildebeest",
+    commonName: "Ñu azul",
+    commonNameEn: "Blue Wildebeest",
     scientificName: "Connochaetes taurinus",
     image: img_blue_wildebeest,
     category: "Herbívoros",
@@ -255,7 +268,8 @@ export const animals: Animal[] = [
   },
   {
     id: "plains-zebra",
-    commonName: "Plains Zebra",
+    commonName: "Cebra común",
+    commonNameEn: "Plains Zebra",
     scientificName: "Equus quagga",
     image: img_plains_zebra,
     category: "Herbívoros",
@@ -267,7 +281,8 @@ export const animals: Animal[] = [
   },
   {
     id: "hartmanns-mountain-zebra",
-    commonName: "Hartmann's Mountain Zebra",
+    commonName: "Cebra de montaña de Hartmann",
+    commonNameEn: "Hartmann's Mountain Zebra",
     scientificName: "Equus zebra hartmannae",
     image: img_hartmanns_mountain_zebra,
     category: "Herbívoros",
@@ -279,7 +294,8 @@ export const animals: Animal[] = [
   },
   {
     id: "kudu",
-    commonName: "Kudu",
+    commonName: "Kudú mayor",
+    commonNameEn: "Greater Kudu",
     scientificName: "Tragelaphus strepsiceros",
     image: img_kudu,
     category: "Herbívoros",
@@ -291,7 +307,8 @@ export const animals: Animal[] = [
   },
   {
     id: "eland",
-    commonName: "Eland",
+    commonName: "Eland común",
+    commonNameEn: "Eland",
     scientificName: "Taurotragus oryx",
     image: img_eland,
     category: "Herbívoros",
@@ -303,7 +320,8 @@ export const animals: Animal[] = [
   },
   {
     id: "dik-dik",
-    commonName: "Dik-dik",
+    commonName: "Dik-dik de Damara",
+    commonNameEn: "Damara Dik-dik",
     scientificName: "Madoqua kirkii",
     image: img_dik_dik,
     category: "Herbívoros",
@@ -316,6 +334,7 @@ export const animals: Animal[] = [
   {
     id: "steenbok",
     commonName: "Steenbok",
+    commonNameEn: "Steenbok",
     scientificName: "Raphicerus campestris",
     image: img_steenbok,
     category: "Herbívoros",
@@ -327,7 +346,8 @@ export const animals: Animal[] = [
   },
   {
     id: "sable-antelope",
-    commonName: "Sable Antelope",
+    commonName: "Antílope sable",
+    commonNameEn: "Sable Antelope",
     scientificName: "Hippotragus niger",
     image: img_sable_antelope,
     category: "Herbívoros",
@@ -339,7 +359,8 @@ export const animals: Animal[] = [
   },
   {
     id: "roan-antelope",
-    commonName: "Roan Antelope",
+    commonName: "Antílope ruano",
+    commonNameEn: "Roan Antelope",
     scientificName: "Hippotragus equinus",
     image: img_roan_antelope,
     category: "Herbívoros",
@@ -351,7 +372,8 @@ export const animals: Animal[] = [
   },
   {
     id: "red-lechwe",
-    commonName: "Red Lechwe",
+    commonName: "Lechwe rojo",
+    commonNameEn: "Red Lechwe",
     scientificName: "Kobus leche",
     image: img_red_lechwe,
     category: "Herbívoros",
@@ -364,6 +386,7 @@ export const animals: Animal[] = [
   {
     id: "puku",
     commonName: "Puku",
+    commonNameEn: "Puku",
     scientificName: "Kobus vardonii",
     image: img_puku,
     category: "Herbívoros",
@@ -376,6 +399,7 @@ export const animals: Animal[] = [
   {
     id: "tsessebe",
     commonName: "Tsessebe",
+    commonNameEn: "Tsessebe",
     scientificName: "Damaliscus lunatus",
     image: img_tsessebe,
     category: "Herbívoros",
@@ -387,7 +411,8 @@ export const animals: Animal[] = [
   },
   {
     id: "reedbuck-redunca",
-    commonName: "Reedbuck (Redunca)",
+    commonName: "Redunca común",
+    commonNameEn: "Southern Reedbuck",
     scientificName: "Redunca arundinum",
     image: img_reedbuck_redunca,
     category: "Herbívoros",
@@ -399,7 +424,8 @@ export const animals: Animal[] = [
   },
   {
     id: "spotted-hyena",
-    commonName: "Spotted Hyena",
+    commonName: "Hiena manchada",
+    commonNameEn: "Spotted Hyena",
     scientificName: "Crocuta crocuta",
     image: img_spotted_hyena,
     category: "Carnívoros y otros mamíferos",
@@ -411,7 +437,8 @@ export const animals: Animal[] = [
   },
   {
     id: "brown-hyena",
-    commonName: "Brown Hyena",
+    commonName: "Hiena parda",
+    commonNameEn: "Brown Hyena",
     scientificName: "Parahyaena brunnea",
     image: img_brown_hyena,
     category: "Carnívoros y otros mamíferos",
@@ -423,7 +450,8 @@ export const animals: Animal[] = [
   },
   {
     id: "black-backed-jackal",
-    commonName: "Black-backed Jackal",
+    commonName: "Chacal de lomo negro",
+    commonNameEn: "Black-backed Jackal",
     scientificName: "Lupulella mesomelas",
     image: img_black_backed_jackal,
     category: "Carnívoros y otros mamíferos",
@@ -435,7 +463,8 @@ export const animals: Animal[] = [
   },
   {
     id: "african-wild-dog",
-    commonName: "African Wild Dog",
+    commonName: "Licaón",
+    commonNameEn: "African Wild Dog",
     scientificName: "Lycaon pictus",
     image: img_african_wild_dog,
     category: "Carnívoros y otros mamíferos",
@@ -447,7 +476,8 @@ export const animals: Animal[] = [
   },
   {
     id: "warthog",
-    commonName: "Warthog",
+    commonName: "Facóquero común",
+    commonNameEn: "Warthog",
     scientificName: "Phacochoerus africanus",
     image: img_warthog,
     category: "Carnívoros y otros mamíferos",
@@ -459,7 +489,8 @@ export const animals: Animal[] = [
   },
   {
     id: "chacma-baboon",
-    commonName: "Chacma Baboon",
+    commonName: "Babuino chacma",
+    commonNameEn: "Chacma Baboon",
     scientificName: "Papio ursinus",
     image: img_chacma_baboon,
     category: "Carnívoros y otros mamíferos",
@@ -471,7 +502,8 @@ export const animals: Animal[] = [
   },
   {
     id: "vervet-monkey",
-    commonName: "Vervet Monkey",
+    commonName: "Cercopiteco verde",
+    commonNameEn: "Vervet Monkey",
     scientificName: "Chlorocebus pygerythrus",
     image: img_vervet_monkey,
     category: "Carnívoros y otros mamíferos",
@@ -483,7 +515,8 @@ export const animals: Animal[] = [
   },
   {
     id: "meerkat",
-    commonName: "Meerkat",
+    commonName: "Suricato",
+    commonNameEn: "Meerkat",
     scientificName: "Suricata suricatta",
     image: img_meerkat,
     category: "Carnívoros y otros mamíferos",
@@ -496,6 +529,7 @@ export const animals: Animal[] = [
   {
     id: "caracal",
     commonName: "Caracal",
+    commonNameEn: "Caracal",
     scientificName: "Caracal caracal",
     image: img_caracal,
     category: "Mamíferos pequeños y medianos",
@@ -507,7 +541,8 @@ export const animals: Animal[] = [
   },
   {
     id: "cape-fox",
-    commonName: "Cape Fox",
+    commonName: "Zorro de El Cabo",
+    commonNameEn: "Cape Fox",
     scientificName: "Vulpes chama",
     image: img_cape_fox,
     category: "Mamíferos pequeños y medianos",
@@ -519,7 +554,8 @@ export const animals: Animal[] = [
   },
   {
     id: "cape-porcupine",
-    commonName: "Cape Porcupine",
+    commonName: "Puercoespín sudafricano",
+    commonNameEn: "Cape Porcupine",
     scientificName: "Hystrix africaeaustralis",
     image: img_cape_porcupine,
     category: "Mamíferos pequeños y medianos",
@@ -531,7 +567,8 @@ export const animals: Animal[] = [
   },
   {
     id: "african-wildcat",
-    commonName: "African Wildcat",
+    commonName: "Gato salvaje africano",
+    commonNameEn: "African Wildcat",
     scientificName: "Felis lybica",
     image: img_african_wildcat,
     category: "Mamíferos pequeños y medianos",
@@ -543,7 +580,8 @@ export const animals: Animal[] = [
   },
   {
     id: "honey-badger",
-    commonName: "Honey Badger",
+    commonName: "Ratel",
+    commonNameEn: "Honey Badger",
     scientificName: "Mellivora capensis",
     image: img_honey_badger,
     category: "Mamíferos pequeños y medianos",
@@ -555,7 +593,8 @@ export const animals: Animal[] = [
   },
   {
     id: "african-civet",
-    commonName: "African Civet",
+    commonName: "Civeta africana",
+    commonNameEn: "African Civet",
     scientificName: "Civettictis civetta",
     image: img_african_civet,
     category: "Mamíferos pequeños y medianos",
@@ -567,7 +606,8 @@ export const animals: Animal[] = [
   },
   {
     id: "spotted-genet",
-    commonName: "Spotted Genet",
+    commonName: "Gineta común",
+    commonNameEn: "Common Genet",
     scientificName: "Genetta genetta",
     image: img_spotted_genet,
     category: "Mamíferos pequeños y medianos",
@@ -579,7 +619,8 @@ export const animals: Animal[] = [
   },
   {
     id: "yellow-mongoose",
-    commonName: "Yellow Mongoose",
+    commonName: "Mangosta amarilla",
+    commonNameEn: "Yellow Mongoose",
     scientificName: "Cynictis penicillata",
     image: img_yellow_mongoose,
     category: "Mamíferos pequeños y medianos",
@@ -591,7 +632,8 @@ export const animals: Animal[] = [
   },
   {
     id: "banded-mongoose",
-    commonName: "Banded Mongoose",
+    commonName: "Mangosta rayada",
+    commonNameEn: "Banded Mongoose",
     scientificName: "Mungos mungo",
     image: img_banded_mongoose,
     category: "Mamíferos pequeños y medianos",
@@ -603,7 +645,8 @@ export const animals: Animal[] = [
   },
   {
     id: "springhare",
-    commonName: "Springhare",
+    commonName: "Liebre saltadora",
+    commonNameEn: "Springhare",
     scientificName: "Pedetes capensis",
     image: img_springhare,
     category: "Mamíferos pequeños y medianos",
@@ -615,7 +658,8 @@ export const animals: Animal[] = [
   },
   {
     id: "rock-hyrax",
-    commonName: "Rock Hyrax",
+    commonName: "Damán de El Cabo",
+    commonNameEn: "Rock Hyrax",
     scientificName: "Procavia capensis",
     image: img_rock_hyrax,
     category: "Mamíferos pequeños y medianos",
@@ -627,7 +671,8 @@ export const animals: Animal[] = [
   },
   {
     id: "ostrich",
-    commonName: "Ostrich",
+    commonName: "Avestruz común",
+    commonNameEn: "Ostrich",
     scientificName: "Struthio camelus",
     image: img_ostrich,
     category: "Aves",
@@ -639,7 +684,8 @@ export const animals: Animal[] = [
   },
   {
     id: "flamingo",
-    commonName: "Flamingo",
+    commonName: "Flamenco enano",
+    commonNameEn: "Lesser Flamingo",
     scientificName: "Phoeniconaias minor",
     image: img_flamingo,
     category: "Aves",
@@ -651,7 +697,8 @@ export const animals: Animal[] = [
   },
   {
     id: "african-white-backed-vulture",
-    commonName: "African White-backed Vulture",
+    commonName: "Buitre dorsiblanco africano",
+    commonNameEn: "White-backed Vulture",
     scientificName: "Gyps africanus",
     image: img_african_white_backed_vulture,
     category: "Aves",
@@ -663,7 +710,8 @@ export const animals: Animal[] = [
   },
   {
     id: "martial-eagle",
-    commonName: "Martial Eagle",
+    commonName: "Águila marcial",
+    commonNameEn: "Martial Eagle",
     scientificName: "Polemaetus bellicosus",
     image: img_martial_eagle,
     category: "Aves",
@@ -675,7 +723,8 @@ export const animals: Animal[] = [
   },
   {
     id: "secretarybird",
-    commonName: "Secretarybird",
+    commonName: "Secretario",
+    commonNameEn: "Secretarybird",
     scientificName: "Sagittarius serpentarius",
     image: img_secretarybird,
     category: "Aves",
@@ -687,7 +736,8 @@ export const animals: Animal[] = [
   },
   {
     id: "dune-lark",
-    commonName: "Dune Lark",
+    commonName: "Alondra de las dunas",
+    commonNameEn: "Dune Lark",
     scientificName: "Calendulauda erythrochlamys",
     image: img_dune_lark,
     category: "Aves",
@@ -699,7 +749,8 @@ export const animals: Animal[] = [
   },
   {
     id: "lilac-breasted-roller",
-    commonName: "Lilac-breasted Roller",
+    commonName: "Carraca lila",
+    commonNameEn: "Lilac-breasted Roller",
     scientificName: "Coracias caudatus",
     image: img_lilac_breasted_roller,
     category: "Aves",
@@ -711,7 +762,8 @@ export const animals: Animal[] = [
   },
   {
     id: "white-pelican",
-    commonName: "Great White Pelican",
+    commonName: "Pelícano común",
+    commonNameEn: "Great White Pelican",
     scientificName: "Pelecanus onocrotalus",
     image: img_white_pelican,
     category: "Aves",
@@ -723,7 +775,8 @@ export const animals: Animal[] = [
   },
   {
     id: "cape-cormorant",
-    commonName: "Cape Cormorant",
+    commonName: "Cormorán de El Cabo",
+    commonNameEn: "Cape Cormorant",
     scientificName: "Phalacrocorax capensis",
     image: img_cape_cormorant,
     category: "Aves",
@@ -735,7 +788,8 @@ export const animals: Animal[] = [
   },
   {
     id: "african-fish-eagle",
-    commonName: "African Fish Eagle",
+    commonName: "Águila pescadora africana",
+    commonNameEn: "African Fish Eagle",
     scientificName: "Haliaeetus vocifer",
     image: img_african_fish_eagle,
     category: "Aves",
@@ -747,7 +801,8 @@ export const animals: Animal[] = [
   },
   {
     id: "southern-ground-hornbill",
-    commonName: "Southern Ground Hornbill",
+    commonName: "Cálao terrestre sureño",
+    commonNameEn: "Southern Ground Hornbill",
     scientificName: "Bucorvus leadbeateri",
     image: img_southern_ground_hornbill,
     category: "Aves",
@@ -759,7 +814,8 @@ export const animals: Animal[] = [
   },
   {
     id: "bateleur",
-    commonName: "Bateleur",
+    commonName: "Águila volatinera",
+    commonNameEn: "Bateleur",
     scientificName: "Terathopius ecaudatus",
     image: img_bateleur,
     category: "Aves",
@@ -771,7 +827,8 @@ export const animals: Animal[] = [
   },
   {
     id: "kori-bustard",
-    commonName: "Kori Bustard",
+    commonName: "Avutarda kori",
+    commonNameEn: "Kori Bustard",
     scientificName: "Ardeotis kori",
     image: img_kori_bustard,
     category: "Aves",
@@ -783,7 +840,8 @@ export const animals: Animal[] = [
   },
   {
     id: "grey-crowned-crane",
-    commonName: "Grey Crowned Crane",
+    commonName: "Grulla coronada cuelligrís",
+    commonNameEn: "Grey Crowned Crane",
     scientificName: "Balearica regulorum",
     image: img_grey_crowned_crane,
     category: "Aves",
@@ -795,7 +853,8 @@ export const animals: Animal[] = [
   },
   {
     id: "ruppells-bustard",
-    commonName: "Rüppell's Korhaan",
+    commonName: "Sisón de Rüppell",
+    commonNameEn: "Rüppell's Korhaan",
     scientificName: "Eupodotis rueppellii",
     image: img_ruppells_bustard,
     category: "Aves",
@@ -807,7 +866,8 @@ export const animals: Animal[] = [
   },
   {
     id: "african-marabou",
-    commonName: "Marabou Stork",
+    commonName: "Marabú africano",
+    commonNameEn: "Marabou Stork",
     scientificName: "Leptoptilos crumenifer",
     image: img_african_marabou,
     category: "Aves",
@@ -819,7 +879,8 @@ export const animals: Animal[] = [
   },
   {
     id: "saddle-billed-stork",
-    commonName: "Saddle-billed Stork",
+    commonName: "Jabirú africano",
+    commonNameEn: "Saddle-billed Stork",
     scientificName: "Ephippiorhynchus senegalensis",
     image: img_saddle_billed_stork,
     category: "Aves",
@@ -832,6 +893,7 @@ export const animals: Animal[] = [
   {
     id: "gecko-del-namib",
     commonName: "Geco terrestre gigante",
+    commonNameEn: "Giant Ground Gecko",
     scientificName: "Chondrodactylus angulifer",
     image: img_gecko_del_namib,
     category: "Reptiles, anfibios e invertebrados",
@@ -844,6 +906,7 @@ export const animals: Animal[] = [
   {
     id: "vibora-del-desierto",
     commonName: "Víbora cornuda",
+    commonNameEn: "Horned Adder",
     scientificName: "Bitis caudalis",
     image: img_vibora_del_desierto,
     category: "Reptiles, anfibios e invertebrados",
@@ -856,6 +919,7 @@ export const animals: Animal[] = [
   {
     id: "culebra-del-desierto",
     commonName: "Culebra de arena del Namib",
+    commonNameEn: "Namib Sand Snake",
     scientificName: "Psammophis namibensis",
     image: img_culebra_del_desierto,
     category: "Reptiles, anfibios e invertebrados",
@@ -868,6 +932,7 @@ export const animals: Animal[] = [
   {
     id: "lagarto-del-desierto",
     commonName: "Lagarto de hocico en cuña",
+    commonNameEn: "Wedge-snouted Lizard",
     scientificName: "Meroles cuneirostris",
     image: img_lagarto_del_desierto,
     category: "Reptiles, anfibios e invertebrados",
@@ -880,6 +945,7 @@ export const animals: Animal[] = [
   {
     id: "camaleon",
     commonName: "Camaleón de Namaqua",
+    commonNameEn: "Namaqua Chameleon",
     scientificName: "Chamaeleo namaquensis",
     image: img_camaleon,
     category: "Reptiles, anfibios e invertebrados",
@@ -892,6 +958,7 @@ export const animals: Animal[] = [
   {
     id: "tortuga-terrestre",
     commonName: "Tortuga leopardo",
+    commonNameEn: "Leopard Tortoise",
     scientificName: "Stigmochelys pardalis",
     image: img_tortuga_terrestre,
     category: "Reptiles, anfibios e invertebrados",
@@ -904,6 +971,7 @@ export const animals: Animal[] = [
   {
     id: "anfibio-del-desierto",
     commonName: "Sapo gutural",
+    commonNameEn: "Guttural Toad",
     scientificName: "Sclerophrys gutturalis",
     image: img_anfibio_del_desierto,
     category: "Reptiles, anfibios e invertebrados",
@@ -916,6 +984,7 @@ export const animals: Animal[] = [
   {
     id: "escarabajo-del-desierto",
     commonName: "Escarabajo del Namib",
+    commonNameEn: "Fog-basking Beetle",
     scientificName: "Onymacris unguicularis",
     image: img_escarabajo_del_desierto,
     category: "Reptiles, anfibios e invertebrados",
@@ -928,6 +997,7 @@ export const animals: Animal[] = [
   {
     id: "arana-del-desierto",
     commonName: "Araña dama blanca bailarina",
+    commonNameEn: "Dancing White Lady Spider",
     scientificName: "Leucorchestris arenicola",
     image: img_arana_del_desierto,
     category: "Reptiles, anfibios e invertebrados",
@@ -940,6 +1010,7 @@ export const animals: Animal[] = [
   {
     id: "escorpion-del-desierto",
     commonName: "Escorpión de cola gruesa",
+    commonNameEn: "Granulated Thick-tailed Scorpion",
     scientificName: "Parabuthus granulatus",
     image: img_escorpion_del_desierto,
     category: "Reptiles, anfibios e invertebrados",
@@ -952,6 +1023,7 @@ export const animals: Animal[] = [
   {
     id: "insecto-del-desierto",
     commonName: "Langosta parda",
+    commonNameEn: "Brown Locust",
     scientificName: "Locustana pardalina",
     image: img_insecto_del_desierto,
     category: "Reptiles, anfibios e invertebrados",
@@ -963,7 +1035,8 @@ export const animals: Animal[] = [
   },
   {
     id: "cape-fur-seal",
-    commonName: "Cape Fur Seal",
+    commonName: "Lobo marino de El Cabo",
+    commonNameEn: "Cape Fur Seal",
     scientificName: "Arctocephalus pusillus",
     image: img_cape_fur_seal,
     category: "Especies costeras",
@@ -975,7 +1048,8 @@ export const animals: Animal[] = [
   },
   {
     id: "heavisides-dolphin",
-    commonName: "Heaviside's Dolphin",
+    commonName: "Delfín de Heaviside",
+    commonNameEn: "Heaviside's Dolphin",
     scientificName: "Cephalorhynchus heavisidii",
     image: img_heavisides_dolphin,
     category: "Especies costeras",
@@ -987,7 +1061,8 @@ export const animals: Animal[] = [
   },
   {
     id: "atlantic-bottlenose-dolphin",
-    commonName: "Bottlenose Dolphin",
+    commonName: "Delfín mular",
+    commonNameEn: "Bottlenose Dolphin",
     scientificName: "Tursiops truncatus",
     image: img_atlantic_bottlenose_dolphin,
     category: "Especies costeras",
@@ -999,7 +1074,8 @@ export const animals: Animal[] = [
   },
   {
     id: "southern-right-whale",
-    commonName: "Southern Right Whale",
+    commonName: "Ballena franca austral",
+    commonNameEn: "Southern Right Whale",
     scientificName: "Eubalaena australis",
     image: img_southern_right_whale,
     category: "Especies costeras",
@@ -1011,7 +1087,8 @@ export const animals: Animal[] = [
   },
   {
     id: "african-penguin",
-    commonName: "African Penguin",
+    commonName: "Pingüino africano",
+    commonNameEn: "African Penguin",
     scientificName: "Spheniscus demersus",
     image: img_african_penguin,
     category: "Especies costeras",
@@ -1023,7 +1100,8 @@ export const animals: Animal[] = [
   },
   {
     id: "cape-gannet",
-    commonName: "Cape Gannet",
+    commonName: "Alcatraz de El Cabo",
+    commonNameEn: "Cape Gannet",
     scientificName: "Morus capensis",
     image: img_cape_gannet,
     category: "Especies costeras",
@@ -1035,7 +1113,8 @@ export const animals: Animal[] = [
   },
   {
     id: "damara-tern",
-    commonName: "Damara Tern",
+    commonName: "Charrancito de Damara",
+    commonNameEn: "Damara Tern",
     scientificName: "Sternula balaenarum",
     image: img_damara_tern,
     category: "Especies costeras",
@@ -1047,7 +1126,8 @@ export const animals: Animal[] = [
   },
   {
     id: "wandering-albatross",
-    commonName: "Wandering Albatross",
+    commonName: "Albatros viajero",
+    commonNameEn: "Wandering Albatross",
     scientificName: "Diomedea exulans",
     image: img_wandering_albatross,
     category: "Especies costeras",
@@ -1059,7 +1139,8 @@ export const animals: Animal[] = [
   },
   {
     id: "southern-elephant-seal",
-    commonName: "Southern Elephant Seal",
+    commonName: "Elefante marino del sur",
+    commonNameEn: "Southern Elephant Seal",
     scientificName: "Mirounga leonina",
     image: img_southern_elephant_seal,
     category: "Especies costeras",
@@ -1071,7 +1152,8 @@ export const animals: Animal[] = [
   },
   {
     id: "ghost-crab",
-    commonName: "Ghost Crab",
+    commonName: "Cangrejo fantasma",
+    commonNameEn: "Ghost Crab",
     scientificName: "Ocypode africana",
     image: img_ghost_crab,
     category: "Especies costeras",

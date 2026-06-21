@@ -1,7 +1,9 @@
 export type Animal = {
   id: string;
-  /** Common name — rendered in small-caps. */
+  /** Common name in Spanish — the primary label, rendered in small-caps. */
   commonName: string;
+  /** Common name in English — shown as a secondary label. */
+  commonNameEn?: string;
   /** Scientific name — always rendered in italic. May be unknown for now. */
   scientificName?: string;
   /** Bundled image asset URL (resolved at build time). */

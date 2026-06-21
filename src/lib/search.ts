@@ -1,4 +1,5 @@
-import type { Animal, FilterMode, SeenState } from "../types";
+import type { Animal, Difficulty, FilterMode, SeenState } from "../types";
+import { difficultyOf } from "./zones";
 
 /** Lowercase + strip accents so "leon" matches "León". */
 export function normalize(text: string): string {
@@ -14,6 +15,7 @@ export function matchesQuery(animal: Animal, query: string): boolean {
   if (!q) return true;
   return (
     normalize(animal.commonName).includes(q) ||
+    (animal.commonNameEn ? normalize(animal.commonNameEn).includes(q) : false) ||
     (animal.scientificName ? normalize(animal.scientificName).includes(q) : false)
   );
 }
@@ -28,15 +30,30 @@ export function matchesFilter(
   return filter === "seen" ? seen : !seen;
 }
 
-/** Apply the search query and the All/Seen/Pending filter together. */
+const UNCATEGORISED = "Otros";
+
+/** Filters applied together in the catalogue. */
+export type CatalogueFilters = {
+  query: string;
+  filter: FilterMode;
+  /** "" = all categories. */
+  category: string;
+  /** null = all difficulties. */
+  difficulty: Difficulty | null;
+};
+
+/** Apply search query, seen/pending, category and difficulty together. */
 export function filterAnimals(
   animals: Animal[],
-  query: string,
-  filter: FilterMode,
+  { query, filter, category, difficulty }: CatalogueFilters,
   seenState: SeenState,
 ): Animal[] {
   return animals.filter(
-    (a) => matchesQuery(a, query) && matchesFilter(a, filter, seenState),
+    (a) =>
+      matchesQuery(a, query) &&
+      matchesFilter(a, filter, seenState) &&
+      (category === "" || (a.category ?? UNCATEGORISED) === category) &&
+      (difficulty === null || difficultyOf(a.id) === difficulty),
   );
 }
 
