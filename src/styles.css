@@ -99,7 +99,8 @@ h3,
 .tabs {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
   margin: 0 0 1.5rem;
   border-bottom: 1px solid var(--ivory-deep);
 }
@@ -109,14 +110,24 @@ h3,
   background: none;
   font-family: "Cinzel", "EB Garamond", serif;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
   color: var(--stone);
   cursor: pointer;
   padding: 0.4rem 0.2rem 0.7rem;
   margin-bottom: -1px;
   border-bottom: 2px solid transparent;
   transition: var(--transition-slow);
+}
+
+@media (max-width: 380px) {
+  .tabs {
+    gap: 0.9rem;
+  }
+  .tab {
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
 }
 
 .tab.active {
@@ -948,6 +959,101 @@ h3,
   line-height: 1.15;
   color: var(--ink);
   text-align: center;
+}
+
+/* shopping list — link in the logbook + its own tab page */
+.itin-shopping-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 0.9rem 0 0.4rem;
+  border: 1px solid var(--terracotta);
+  border-radius: 3px;
+  background: rgba(176, 84, 59, 0.06);
+  color: var(--terracotta-deep);
+  font-family: "EB Garamond", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
+  font-size: 1rem;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  transition: var(--transition-slow);
+}
+
+.itin-shopping-link:hover {
+  background: var(--terracotta);
+  color: var(--ivory);
+}
+
+.shopping-page {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.shopping-page > .title {
+  text-align: center;
+}
+
+.shopping-stop {
+  margin-top: 2rem;
+  scroll-margin-top: 1rem;
+}
+
+.shopping-stop-title {
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ivory-deep);
+  padding-bottom: 0.4rem;
+  text-transform: none;
+}
+
+.shopping-note {
+  margin: 0.2rem 0 0.6rem;
+  font-style: italic;
+  color: var(--sepia);
+  font-size: 0.98rem;
+}
+
+.shopping-group {
+  margin-top: 0.9rem;
+}
+
+.shopping-group-title {
+  font-size: 0.98rem;
+  letter-spacing: 0.04em;
+  color: var(--olive);
+  margin: 0 0 0.2rem;
+  text-transform: none;
+}
+
+.shopping-group-note {
+  margin: 0 0 0.3rem;
+  font-style: italic;
+  color: var(--sepia);
+  font-size: 0.92rem;
+}
+
+.shopping-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.shopping-group li {
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink);
+  padding: 0.18rem 0 0.18rem 1.1rem;
+  position: relative;
+}
+
+.shopping-group li::before {
+  content: "□";
+  position: absolute;
+  left: 0;
+  color: var(--stone);
 }
 
 .journal-field {

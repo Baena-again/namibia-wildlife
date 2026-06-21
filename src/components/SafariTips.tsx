@@ -68,14 +68,16 @@ const SECTIONS: TipSection[] = [
   },
 ];
 
-type Props = { onBack: () => void };
+type Props = { onBack?: () => void };
 
 export function SafariTips({ onBack }: Props) {
   return (
     <section className="detail tips">
-      <button className="back-link" onClick={onBack}>
-        ← Volver
-      </button>
+      {onBack && (
+        <button className="back-link" onClick={onBack}>
+          ← Volver
+        </button>
+      )}
       <h1 className="title">Trucos para el safari</h1>
       <p className="notice">
         Lo que de verdad marca la diferencia para ver más animales en un

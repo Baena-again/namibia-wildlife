@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import type { Animal, JournalState, SeenState, ZoneId } from "../types";
 import { itinerary } from "../data/itinerary";
+import { shopping } from "../data/shopping";
 import { getZone } from "../lib/zones";
 import { AnimalImage } from "./AnimalImage";
 
@@ -11,7 +12,8 @@ type Props = {
   onSetNote: (dayId: string, text: string) => void;
   onSelectAnimal: (animal: Animal) => void;
   onOpenZone: (zoneId: ZoneId) => void;
-  onBack: () => void;
+  onOpenShopping: (dayId: string) => void;
+  onBack?: () => void;
 };
 
 export function Itinerary({
@@ -21,18 +23,25 @@ export function Itinerary({
   onSetNote,
   onSelectAnimal,
   onOpenZone,
+  onOpenShopping,
   onBack,
 }: Props) {
   const byId = useMemo(
     () => new Map(animals.map((a) => [a.id, a])),
     [animals],
   );
+  const shoppingByDay = useMemo(
+    () => new Map(shopping.map((s) => [s.dayId, s])),
+    [],
+  );
 
   return (
     <section className="itinerary">
-      <button className="back-link" onClick={onBack}>
-        ← Volver
-      </button>
+      {onBack && (
+        <button className="back-link" onClick={onBack}>
+          ← Volver
+        </button>
+      )}
       <h1 className="title">Cuaderno de bitácora</h1>
       <p className="notice">
         Nuestra ruta por Namibia, día a día. Toca la zona para ver todos sus
@@ -43,6 +52,7 @@ export function Itinerary({
       <ol className="itin-list">
         {itinerary.map((day) => {
           const zone = day.zone ? getZone(day.zone) : undefined;
+          const stop = shoppingByDay.get(day.id);
           const dayAnimals = day.animalIds
             .map((id) => byId.get(id))
             .filter((a): a is Animal => Boolean(a));
@@ -81,6 +91,40 @@ export function Itinerary({
                     </>
                   )}
                 </p>
+              )}
+              {day.activity && (
+                <p className="itin-lodging">
+                  🚙 {day.activity.name}
+                  {day.activity.phone && (
+                    <>
+                      {" · "}
+                      <a href={`tel:${day.activity.phone.replace(/\s+/g, "")}`}>
+                        {day.activity.phone}
+                      </a>
+                    </>
+                  )}
+                  {day.activity.url && (
+                    <>
+                      {" · "}
+                      <a
+                        href={day.activity.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        web
+                      </a>
+                    </>
+                  )}
+                </p>
+              )}
+
+              {stop && (
+                <button
+                  className="itin-shopping-link"
+                  onClick={() => onOpenShopping(day.id)}
+                >
+                  {stop.title} ›
+                </button>
               )}
 
               {dayAnimals.length > 0 && (
