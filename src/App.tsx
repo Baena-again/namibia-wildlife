@@ -1,8 +1,20 @@
 import { useEffect, useMemo, useState } from "react";
-import type { Animal, FilterMode, SeenState, Zone, ZoneId } from "./types";
+import type {
+  Animal,
+  Difficulty,
+  FilterMode,
+  SeenState,
+  Zone,
+  ZoneId,
+} from "./types";
 import { animals } from "./data/animals";
 import { filterAnimals, countSeen } from "./lib/search";
-import { getZone } from "./lib/zones";
+import {
+  getZone,
+  categoriesOf,
+  DIFFICULTY_ORDER,
+  DIFFICULTY_LABEL,
+} from "./lib/zones";
 import { loadSeen, saveSeen, toggleSeen } from "./lib/storage";
 import { AnimalGrid } from "./components/AnimalGrid";
 import { AnimalDetail } from "./components/AnimalDetail";
@@ -24,6 +36,8 @@ export default function App() {
   const [storageOk, setStorageOk] = useState(true);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<FilterMode>("all");
+  const [category, setCategory] = useState("");
+  const [difficulty, setDifficulty] = useState<Difficulty | null>(null);
   const [view, setView] = useState<View>({ name: "list" });
 
   // Persist whenever the seen-state changes.
@@ -31,9 +45,15 @@ export default function App() {
     setStorageOk(saveSeen(seenState));
   }, [seenState]);
 
+  const categories = useMemo(() => categoriesOf(animals), []);
   const visible = useMemo(
-    () => filterAnimals(animals, query, filter, seenState),
-    [query, filter, seenState],
+    () =>
+      filterAnimals(
+        animals,
+        { query, filter, category, difficulty },
+        seenState,
+      ),
+    [query, filter, category, difficulty, seenState],
   );
   const seenCount = useMemo(
     () => countSeen(animals, seenState),
@@ -71,6 +91,7 @@ export default function App() {
         onSelect={(animal) =>
           setView({ name: "detail", animal, from: view })
         }
+        onToggleSeen={handleToggleSeen}
         onBack={() => setView({ name: "map" })}
       />
     );
@@ -157,6 +178,52 @@ export default function App() {
                 </button>
               ))}
             </div>
+
+            <div className="catalogue-filter">
+              <span className="label catalogue-filter-label">
+                Fáciles de ver
+              </span>
+              <div className="chips">
+                <button
+                  className={`chip ${difficulty === null ? "active" : ""}`}
+                  onClick={() => setDifficulty(null)}
+                >
+                  Todas
+                </button>
+                {DIFFICULTY_ORDER.map((d) => (
+                  <button
+                    key={d}
+                    className={`chip chip-${d} ${difficulty === d ? "active" : ""}`}
+                    onClick={() => setDifficulty(difficulty === d ? null : d)}
+                  >
+                    {DIFFICULTY_LABEL[d]}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="catalogue-filter">
+              <span className="label catalogue-filter-label">
+                Categoría
+              </span>
+              <div className="chips">
+                <button
+                  className={`chip ${category === "" ? "active" : ""}`}
+                  onClick={() => setCategory("")}
+                >
+                  Todas
+                </button>
+                {categories.map((c) => (
+                  <button
+                    key={c}
+                    className={`chip ${category === c ? "active" : ""}`}
+                    onClick={() => setCategory(category === c ? "" : c)}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           <AnimalGrid
@@ -165,6 +232,7 @@ export default function App() {
             onSelect={(animal) =>
               setView({ name: "detail", animal, from: { name: "list" } })
             }
+            onToggleSeen={handleToggleSeen}
           />
         </>
       )}

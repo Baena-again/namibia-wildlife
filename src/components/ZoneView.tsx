@@ -3,7 +3,6 @@ import type { Animal, Difficulty, SeenState, Zone } from "../types";
 import {
   getZoneAnimals,
   countZoneSeen,
-  categoriesOf,
   filterZoneAnimals,
   groupByDifficulty,
   DIFFICULTY_ORDER,
@@ -16,18 +15,24 @@ type Props = {
   animals: Animal[];
   seenState: SeenState;
   onSelect: (animal: Animal) => void;
+  onToggleSeen: (id: string) => void;
   onBack: () => void;
 };
 
-export function ZoneView({ zone, animals, seenState, onSelect, onBack }: Props) {
-  const [category, setCategory] = useState("");
+export function ZoneView({
+  zone,
+  animals,
+  seenState,
+  onSelect,
+  onToggleSeen,
+  onBack,
+}: Props) {
   const [difficulty, setDifficulty] = useState<Difficulty | null>(null);
 
   const zoneAnimals = getZoneAnimals(zone.id, animals);
-  const categories = categoriesOf(zoneAnimals);
   const seen = countZoneSeen(zone.id, animals, seenState);
 
-  const filtered = filterZoneAnimals(zoneAnimals, category, difficulty);
+  const filtered = filterZoneAnimals(zoneAnimals, "", difficulty);
   const groups = groupByDifficulty(filtered);
 
   return (
@@ -56,27 +61,6 @@ export function ZoneView({ zone, animals, seenState, onSelect, onBack }: Props) 
       </header>
 
       <div className="zone-filters">
-        <div className="zone-filter">
-          <span className="label zone-filter-label">Tipo</span>
-          <div className="chips">
-            <button
-              className={`chip ${category === "" ? "active" : ""}`}
-              onClick={() => setCategory("")}
-            >
-              Todos
-            </button>
-            {categories.map((c) => (
-              <button
-                key={c}
-                className={`chip ${category === c ? "active" : ""}`}
-                onClick={() => setCategory(c)}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-        </div>
-
         <div className="zone-filter">
           <span className="label zone-filter-label">Dificultad</span>
           <div className="chips">
@@ -112,6 +96,8 @@ export function ZoneView({ zone, animals, seenState, onSelect, onBack }: Props) 
               animals={group.animals}
               seenState={seenState}
               onSelect={onSelect}
+              onToggleSeen={onToggleSeen}
+              grouped={false}
             />
           </section>
         ))
