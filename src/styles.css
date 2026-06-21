@@ -99,7 +99,8 @@ h3,
 .tabs {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
   margin: 0 0 1.5rem;
   border-bottom: 1px solid var(--ivory-deep);
 }
@@ -109,14 +110,24 @@ h3,
   background: none;
   font-family: "Cinzel", "EB Garamond", serif;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
   color: var(--stone);
   cursor: pointer;
   padding: 0.4rem 0.2rem 0.7rem;
   margin-bottom: -1px;
   border-bottom: 2px solid transparent;
   transition: var(--transition-slow);
+}
+
+@media (max-width: 380px) {
+  .tabs {
+    gap: 0.9rem;
+  }
+  .tab {
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
 }
 
 .tab.active {

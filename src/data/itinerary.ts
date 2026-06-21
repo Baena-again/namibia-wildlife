@@ -22,6 +22,8 @@ export type ItineraryDay = {
   driving?: string;
   /** Where you sleep, with a tappable phone number. */
   lodging?: { name: string; phone?: string };
+  /** Optional booked activity / excursion contact for the day. */
+  activity?: { name: string; phone?: string; url?: string };
   /** Animals you're realistically likely to see here (catalogue ids). */
   animalIds: string[];
 };
@@ -110,8 +112,13 @@ export const itinerary: ItineraryDay[] = [
     end: "Walvis Bay",
     zone: "costa",
     summary:
-      "Día de conducción off-road a Sandwich Harbour (a confirmar con Toni), donde las dunas gigantes caen al mar. Aves marinas, focas y, en pleno invierno austral, posible ballena franca austral.",
+      "Día de conducción off-road a Sandwich Harbour, donde las dunas gigantes caen al mar. Aves marinas, focas y, en pleno invierno austral, posible ballena franca austral.",
     lodging: { name: "The Rez Guesthouse", phone: "+264 81 245 3244" },
+    activity: {
+      name: "Excursión 4x4 — Dominus Dune Tours (ref. Tso 01500)",
+      phone: "+264 81 633 5151",
+      url: "https://dominusdunedtours.com",
+    },
     animalIds: [
       "southern-right-whale",
       "cape-fur-seal",

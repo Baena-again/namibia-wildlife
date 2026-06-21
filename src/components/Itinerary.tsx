@@ -11,7 +11,7 @@ type Props = {
   onSetNote: (dayId: string, text: string) => void;
   onSelectAnimal: (animal: Animal) => void;
   onOpenZone: (zoneId: ZoneId) => void;
-  onBack: () => void;
+  onBack?: () => void;
 };
 
 export function Itinerary({
@@ -30,9 +30,11 @@ export function Itinerary({
 
   return (
     <section className="itinerary">
-      <button className="back-link" onClick={onBack}>
-        ← Volver
-      </button>
+      {onBack && (
+        <button className="back-link" onClick={onBack}>
+          ← Volver
+        </button>
+      )}
       <h1 className="title">Cuaderno de bitácora</h1>
       <p className="notice">
         Nuestra ruta por Namibia, día a día. Toca la zona para ver todos sus
@@ -77,6 +79,31 @@ export function Itinerary({
                       {" · "}
                       <a href={`tel:${day.lodging.phone.replace(/\s+/g, "")}`}>
                         {day.lodging.phone}
+                      </a>
+                    </>
+                  )}
+                </p>
+              )}
+              {day.activity && (
+                <p className="itin-lodging">
+                  🚙 {day.activity.name}
+                  {day.activity.phone && (
+                    <>
+                      {" · "}
+                      <a href={`tel:${day.activity.phone.replace(/\s+/g, "")}`}>
+                        {day.activity.phone}
+                      </a>
+                    </>
+                  )}
+                  {day.activity.url && (
+                    <>
+                      {" · "}
+                      <a
+                        href={day.activity.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        web
                       </a>
                     </>
                   )}

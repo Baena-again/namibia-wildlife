@@ -130,26 +130,6 @@ export default function App() {
     );
   }
 
-  if (view.name === "itinerary") {
-    return (
-      <Itinerary
-        animals={animals}
-        seenState={seenState}
-        journal={journal}
-        onSetNote={handleSetNote}
-        onSelectAnimal={(animal) =>
-          setView({ name: "detail", animal, from: { name: "itinerary" } })
-        }
-        onOpenZone={(zoneId) => openZone(zoneId, { name: "itinerary" })}
-        onBack={() => setView({ name: "list" })}
-      />
-    );
-  }
-
-  if (view.name === "tips") {
-    return <SafariTips onBack={() => setView({ name: "list" })} />;
-  }
-
   if (view.name === "settings") {
     return (
       <Settings
@@ -162,7 +142,18 @@ export default function App() {
     );
   }
 
-  const isMap = view.name === "map";
+  // The four top-level tabs, in display order.
+  const tabs = [
+    { name: "map", label: "Mapa" },
+    { name: "itinerary", label: "Cuaderno" },
+    { name: "tips", label: "Trucos" },
+    { name: "list", label: "Catálogo" },
+  ] as const;
+
+  function goTab(name: (typeof tabs)[number]["name"]) {
+    setView({ name } as View);
+    window.scrollTo(0, 0);
+  }
 
   return (
     <>
@@ -175,18 +166,15 @@ export default function App() {
       </header>
 
       <nav className="tabs">
-        <button
-          className={`tab ${isMap ? "active" : ""}`}
-          onClick={() => setView({ name: "map" })}
-        >
-          Mapa
-        </button>
-        <button
-          className={`tab ${!isMap ? "active" : ""}`}
-          onClick={() => setView({ name: "list" })}
-        >
-          Catálogo
-        </button>
+        {tabs.map((t) => (
+          <button
+            key={t.name}
+            className={`tab ${view.name === t.name ? "active" : ""}`}
+            onClick={() => goTab(t.name)}
+          >
+            {t.label}
+          </button>
+        ))}
       </nav>
 
       {!storageOk && (
@@ -196,7 +184,7 @@ export default function App() {
         </p>
       )}
 
-      {isMap ? (
+      {view.name === "map" && (
         <>
           <p className="map-intro">
             Toca una zona de Namibia para ver qué animales esperar allí.
@@ -207,7 +195,24 @@ export default function App() {
             onSelect={openZone}
           />
         </>
-      ) : (
+      )}
+
+      {view.name === "itinerary" && (
+        <Itinerary
+          animals={animals}
+          seenState={seenState}
+          journal={journal}
+          onSetNote={handleSetNote}
+          onSelectAnimal={(animal) =>
+            setView({ name: "detail", animal, from: { name: "itinerary" } })
+          }
+          onOpenZone={(zoneId) => openZone(zoneId, { name: "itinerary" })}
+        />
+      )}
+
+      {view.name === "tips" && <SafariTips />}
+
+      {view.name === "list" && (
         <>
           <div className="controls">
             <input
@@ -292,12 +297,6 @@ export default function App() {
       )}
 
       <nav className="foot-nav">
-        <button onClick={() => setView({ name: "itinerary" })}>
-          Cuaderno de bitácora
-        </button>
-        <button onClick={() => setView({ name: "tips" })}>
-          Trucos para el safari
-        </button>
         <button onClick={() => setView({ name: "settings" })}>
           Copia de seguridad
         </button>
