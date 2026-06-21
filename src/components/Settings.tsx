@@ -1,16 +1,22 @@
 import { useRef, useState } from "react";
-import type { JournalState, SeenState } from "../types";
+import type { JournalState, SeenState, ShoppingState } from "../types";
 import {
   buildBackup,
   parseBackup,
   mergeBackup,
   mergeJournal,
+  mergeShopping,
 } from "../lib/storage";
 
 type Props = {
   seenState: SeenState;
   journal: JournalState;
-  onImport: (seen: SeenState, journal: JournalState) => void;
+  shopping: ShoppingState;
+  onImport: (
+    seen: SeenState,
+    journal: JournalState,
+    shopping: ShoppingState,
+  ) => void;
   onBack: () => void;
   nowIso: () => string;
 };
@@ -18,6 +24,7 @@ type Props = {
 export function Settings({
   seenState,
   journal,
+  shopping,
   onImport,
   onBack,
   nowIso,
@@ -26,7 +33,7 @@ export function Settings({
   const [message, setMessage] = useState<string | null>(null);
 
   function handleExport() {
-    const backup = buildBackup(seenState, journal, nowIso());
+    const backup = buildBackup(seenState, journal, shopping, nowIso());
     const blob = new Blob([JSON.stringify(backup, null, 2)], {
       type: "application/json",
     });
@@ -46,6 +53,7 @@ export function Settings({
       onImport(
         mergeBackup(seenState, backup.seen),
         mergeJournal(journal, backup.journal),
+        mergeShopping(shopping, backup.shopping),
       );
       setMessage("Copia importada correctamente.");
     } catch (err) {

@@ -49,6 +49,9 @@ export type SeenState = Record<string, SeenRecord>;
 /** Per-day free-text journal notes, keyed by itinerary day id. Persisted. */
 export type JournalState = Record<string, string>;
 
+/** Checked shopping-list items, keyed by a stable per-item key. Persisted. */
+export type ShoppingState = Record<string, boolean>;
+
 export type FilterMode = "all" | "seen" | "pending";
 
 /** How hard the animal is to actually spot on a trip. */

@@ -1,7 +1,13 @@
-import type { SeenState, SeenRecord, JournalState } from "../types";
+import type {
+  SeenState,
+  SeenRecord,
+  JournalState,
+  ShoppingState,
+} from "../types";
 
 const STORAGE_KEY = "namibia-wildlife:seen:v1";
 const JOURNAL_KEY = "namibia-wildlife:journal:v1";
+const SHOPPING_KEY = "namibia-wildlife:shopping:v1";
 const EXPORT_VERSION = 1;
 
 export type BackupFile = {
@@ -11,6 +17,8 @@ export type BackupFile = {
   seen: SeenState;
   /** Trip logbook notes; absent in older backups. */
   journal: JournalState;
+  /** Checked shopping-list items; absent in older backups. */
+  shopping: ShoppingState;
 };
 
 /* ----------------------------- pure logic ----------------------------- */
@@ -32,6 +40,7 @@ export function toggleSeen(
 export function buildBackup(
   state: SeenState,
   journal: JournalState,
+  shopping: ShoppingState,
   now: string,
 ): BackupFile {
   return {
@@ -40,7 +49,20 @@ export function buildBackup(
     exportedAt: now,
     seen: state,
     journal,
+    shopping,
   };
+}
+
+/** Merge imported shopping checks; a locally-known item keeps its own value. */
+export function mergeShopping(
+  current: ShoppingState,
+  incoming: ShoppingState,
+): ShoppingState {
+  const merged: ShoppingState = { ...current };
+  for (const [key, checked] of Object.entries(incoming)) {
+    if (!(key in merged)) merged[key] = checked;
+  }
+  return merged;
 }
 
 /**
@@ -115,6 +137,15 @@ export function parseBackup(raw: string): BackupFile {
       if (typeof value === "string") journal[id] = value;
     }
   }
+  const shoppingRaw = (data as { shopping?: unknown }).shopping;
+  const shopping: ShoppingState = {};
+  if (shoppingRaw && typeof shoppingRaw === "object") {
+    for (const [key, value] of Object.entries(
+      shoppingRaw as Record<string, unknown>,
+    )) {
+      if (typeof value === "boolean") shopping[key] = value;
+    }
+  }
   return {
     app: "namibia-wildlife",
     version: Number((data as { version?: unknown }).version) || EXPORT_VERSION,
@@ -124,6 +155,7 @@ export function parseBackup(raw: string): BackupFile {
         : "",
     seen,
     journal,
+    shopping,
   };
 }
 
@@ -167,6 +199,29 @@ export function loadJournal(): JournalState {
 export function saveJournal(state: JournalState): boolean {
   try {
     localStorage.setItem(JOURNAL_KEY, JSON.stringify(state));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function loadShopping(): ShoppingState {
+  try {
+    const raw = localStorage.getItem(SHOPPING_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object"
+      ? (parsed as ShoppingState)
+      : {};
+  } catch {
+    return {};
+  }
+}
+
+/** Persist the shopping checks. Returns false if storage is unavailable. */
+export function saveShopping(state: ShoppingState): boolean {
+  try {
+    localStorage.setItem(SHOPPING_KEY, JSON.stringify(state));
     return true;
   } catch {
     return false;

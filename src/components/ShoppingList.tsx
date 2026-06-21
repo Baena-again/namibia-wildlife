@@ -1,12 +1,20 @@
 import { useEffect, useRef } from "react";
+import type { ShoppingState } from "../types";
 import { shopping } from "../data/shopping";
 
 type Props = {
   /** Day id of the stop to scroll to when arriving from the logbook. */
   focus?: string | null;
+  checked: ShoppingState;
+  onToggle: (key: string) => void;
 };
 
-export function ShoppingList({ focus }: Props) {
+/** Stable key for a single shopping item. */
+export function itemKey(dayId: string, groupTitle: string, item: string) {
+  return `${dayId}§${groupTitle}§${item}`;
+}
+
+export function ShoppingList({ focus, checked, onToggle }: Props) {
   const refs = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
@@ -21,8 +29,8 @@ export function ShoppingList({ focus }: Props) {
     <section className="detail shopping-page">
       <h1 className="title">Lista de la compra</h1>
       <p className="notice">
-        Una compra gorda al empezar y dos reposiciones por el camino. Se reabre
-        desde cada día del cuaderno de bitácora.
+        Una compra gorda al empezar y dos reposiciones por el camino. Marca lo
+        que vayas metiendo en el carro — se guarda en este dispositivo.
       </p>
 
       {shopping.map((stop) => (
@@ -42,9 +50,24 @@ export function ShoppingList({ focus }: Props) {
                 <p className="shopping-group-note">{group.note}</p>
               )}
               <ul>
-                {group.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
+                {group.items.map((item) => {
+                  const key = itemKey(stop.dayId, group.title, item);
+                  const isChecked = checked[key] ?? false;
+                  return (
+                    <li key={key}>
+                      <label
+                        className={`shopping-item ${isChecked ? "is-checked" : ""}`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => onToggle(key)}
+                        />
+                        <span>{item}</span>
+                      </label>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
