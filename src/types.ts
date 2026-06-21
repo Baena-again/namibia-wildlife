@@ -1,3 +1,16 @@
+/** Quick size & weight reference, to gauge how big an unfamiliar animal is. */
+export type AnimalSize = {
+  /**
+   * The main dimension and how it's measured, e.g. "Alzada 3 m" (shoulder
+   * height), "Longitud 2 m" (body length) or "Envergadura 2,5 m" (wingspan).
+   */
+  measure: string;
+  /** Typical adult weight, as a range. */
+  weight: string;
+  /** A relatable comparison to picture the scale (e.g. "como una vaca"). */
+  compare?: string;
+};
+
 export type Animal = {
   id: string;
   /** Common name in Spanish — the primary label, rendered in small-caps. */
@@ -10,6 +23,8 @@ export type Animal = {
   image: string;
   /** Plate/category from the source presentation. */
   category?: string;
+  /** Quick size & weight reference. */
+  size?: AnimalSize;
   /** A short description of the animal. */
   description?: string;
   /** How to tell it apart from similar-looking species. */

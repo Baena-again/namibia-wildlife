@@ -48,6 +48,25 @@ export function AnimalDetail({
         <span className="scientific">{animal.scientificName}</span>
       )}
 
+      {animal.size && (
+        <dl className="size-card" aria-label="Tamaño y peso">
+          <div className="size-item">
+            <dt>Tamaño</dt>
+            <dd>{animal.size.measure}</dd>
+          </div>
+          <div className="size-item">
+            <dt>Peso</dt>
+            <dd>{animal.size.weight}</dd>
+          </div>
+          {animal.size.compare && (
+            <div className="size-item size-compare">
+              <dt>Referencia</dt>
+              <dd>{animal.size.compare}</dd>
+            </div>
+          )}
+        </dl>
+      )}
+
       {animal.description && (
         <p className="detail-lead">{animal.description}</p>
       )}

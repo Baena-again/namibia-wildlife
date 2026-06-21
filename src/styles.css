@@ -635,6 +635,52 @@ h3,
   color: var(--ink);
 }
 
+/* ----------------------- size & weight reference --------------------- */
+
+.size-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 540px;
+  margin: 1.5rem auto 0;
+  padding: 0;
+}
+
+.size-item {
+  flex: 1 1 140px;
+  min-width: 130px;
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  background-color: var(--ivory-deep);
+  border-radius: 6px;
+}
+
+.size-item dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin: 0 0 0.25rem;
+}
+
+.size-item dd {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.size-compare {
+  flex-basis: 100%;
+}
+
+.size-compare dd {
+  font-style: italic;
+  color: var(--sepia);
+}
+
 .detail-section {
   text-align: left;
   max-width: 540px;
