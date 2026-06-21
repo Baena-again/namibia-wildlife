@@ -41,6 +41,17 @@ export function AnimalDetail({
         <span className="scientific">{animal.scientificName}</span>
       )}
 
+      {animal.description && (
+        <p className="detail-lead">{animal.description}</p>
+      )}
+
+      {animal.distinguish && (
+        <section className="detail-section">
+          <h2 className="label">Cómo distinguirlo</h2>
+          <p className="detail-text">{animal.distinguish}</p>
+        </section>
+      )}
+
       {places.length > 0 && (
         <section className="detail-section">
           <h2 className="label">Dónde verlo</h2>
@@ -49,6 +60,13 @@ export function AnimalDetail({
               <li key={place}>{place}</li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {animal.spottingTips && (
+        <section className="detail-section">
+          <h2 className="label">Trucos para avistarlo</h2>
+          <p className="detail-text">{animal.spottingTips}</p>
         </section>
       )}
 
