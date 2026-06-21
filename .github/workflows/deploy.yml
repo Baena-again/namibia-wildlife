@@ -1,10 +1,7 @@
 # GitHub Pages deploy workflow.
 #
-# NOTE: this lives under docs/ because the CLI token used to create the repo
-# lacked the `workflow` scope needed to push files into `.github/workflows/`.
-# To enable automatic deploys, copy this file to `.github/workflows/deploy.yml`
-# (via the GitHub web UI "Add file", or push it with a token that has the
-# `workflow` scope), then in repo Settings → Pages set Source = "GitHub Actions".
+# Builds the site on every push to main and publishes it to GitHub Pages.
+# Requires repo Settings → Pages → Source = "GitHub Actions".
 
 name: Deploy to GitHub Pages
 
