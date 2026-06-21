@@ -37,9 +37,13 @@ work fully offline and the seen-state must not be lost.
 ```ts
 type Animal = {
   id: string;
-  commonName: string;        // shown in small-caps
+  commonName: string;        // Spanish, shown in small-caps
+  commonNameEn?: string;     // English, secondary label
   scientificName?: string;   // always italic
   image: string;             // bundled asset path
+  description?: string;       // short lead paragraph
+  distinguish?: string;      // how to tell it from similar species
+  spottingTips?: string;     // practical field tips for spotting it
   whereToSee: string[];      // parks / regions in Namibia
   funFacts: string[];
 };
@@ -48,6 +52,31 @@ type Animal = {
 - The catalogue lives in source (`src/data/animals.ts`) → part of the code,
   never lost.
 - Seen-state lives in `localStorage` as `{ [animalId]: { seen, seenAt? } }`.
+
+### Content sourcing & verification (mandatory)
+
+The per-animal content (`scientificName`, `description`, `distinguish`,
+`spottingTips`, `whereToSee`, `funFacts`) **must be verified against
+authoritative sources** before being committed — never written from memory
+alone.
+
+- **Always verify.** Scientific names, Namibian occurrence and facts are
+  cross-checked against recognised references; prefer the conservative,
+  well-supported statement when in doubt.
+- **Preferred sources:** IUCN Red List, GBIF, the Reptile Database,
+  AmphibiaWeb and Avibase / Birds of the World for taxonomy; IUCN range data,
+  Namibian park/tourism references and standard field guides (Roberts, Sasol,
+  Stuart's) plus reputable safari/birding operators for distribution and
+  spotting tips; ADW and SANBI for general natural history.
+- **Research workflow.** Bulk research is fanned out across sub-agents that
+  search the web, confirm each name against a taxonomic authority, confirm
+  Namibian distribution, and return the facts with source URLs. Flagged or
+  uncertain items are reviewed by hand before merging.
+- **Two source animals were dropped** because their slideshow images could not
+  be trusted: a Giant Anteater (a South American species) and a "Namibian
+  Roadrunner" (not a real African bird).
+- **Language.** User-facing content is in Spanish; the scientific name is
+  always rendered in italics.
 
 ### Components / screens
 

@@ -10,6 +10,12 @@ export type Animal = {
   image: string;
   /** Plate/category from the source presentation. */
   category?: string;
+  /** A short description of the animal. */
+  description?: string;
+  /** How to tell it apart from similar-looking species. */
+  distinguish?: string;
+  /** Practical tips for actually spotting it in the field. */
+  spottingTips?: string;
   /** Where to see it in Namibia: parks / regions. */
   whereToSee: string[];
   /** A few fun facts. */
