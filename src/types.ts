@@ -45,13 +45,9 @@ export type Zone = {
   region: string;
   /** One-line description shown under the heading. */
   blurb: string;
-  /** Pin position inside the map's SVG viewBox. */
-  x: number;
-  y: number;
-  /** Text-anchor for the map label. */
-  labelAnchor: "start" | "middle" | "end";
-  /** Vertical offset of the map label from the pin. */
-  labelDy: number;
+  /** Pin position over the map image, as a percentage of width/height. */
+  mx: number;
+  my: number;
 };
 
 /** A group of animals sharing the same `category`, for the zone view. */

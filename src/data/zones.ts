@@ -4,9 +4,9 @@ import type { Zone, ZoneId } from "../types";
  * The seven main wildlife regions a traveller actually recognises in Namibia
  * (not the 14 administrative regions — too many, too confusing).
  *
- * Coordinates (`x`, `y`) are points inside the stylised SVG map in
- * `NamibiaMap.tsx` (viewBox 0 0 320 420). `labelAnchor` / `labelDy` only tune
- * where the text label sits relative to that point.
+ * `mx` / `my` place the clickable pin over the hand-drawn map image
+ * (`assets/namibia-map.webp`), as a percentage of its width / height. They sit
+ * next to the region labels already printed on the artwork.
  */
 export const zones: Zone[] = [
   {
@@ -16,10 +16,8 @@ export const zones: Zone[] = [
     region: "Noreste",
     blurb:
       "Ríos y humedales en la franja de Caprivi: la cara más verde y tropical de Namibia.",
-    x: 270,
-    y: 46,
-    labelAnchor: "middle",
-    labelDy: 16,
+    mx: 84,
+    my: 27,
   },
   {
     id: "etosha",
@@ -28,10 +26,8 @@ export const zones: Zone[] = [
     region: "Norte-centro",
     blurb:
       "La gran sabana de safari alrededor de la salina: el mejor sitio para ver fauna en abundancia.",
-    x: 113,
-    y: 79,
-    labelAnchor: "middle",
-    labelDy: 16,
+    mx: 43,
+    my: 37,
   },
   {
     id: "kaokoland",
@@ -40,10 +36,8 @@ export const zones: Zone[] = [
     region: "Noroeste",
     blurb:
       "Desierto montañoso y remoto: elefantes del desierto, rinoceronte negro y cebra de montaña.",
-    x: 54,
-    y: 104,
-    labelAnchor: "middle",
-    labelDy: 16,
+    mx: 17,
+    my: 31,
   },
   {
     id: "central",
@@ -52,10 +46,8 @@ export const zones: Zone[] = [
     region: "Windhoek y Erongo",
     blurb:
       "Bosque seco y montañas en torno a Windhoek: leopardo, guepardo, kudu y mucha vida en granjas y reservas.",
-    x: 128,
-    y: 192,
-    labelAnchor: "middle",
-    labelDy: 16,
+    mx: 47,
+    my: 57,
   },
   {
     id: "costa",
@@ -64,10 +56,8 @@ export const zones: Zone[] = [
     region: "Swakopmund–Walvis Bay",
     blurb:
       "Donde el desierto se encuentra con el frío Atlántico: focas, delfines, ballenas y aves marinas.",
-    x: 84,
-    y: 206,
-    labelAnchor: "end",
-    labelDy: 4,
+    mx: 14,
+    my: 57,
   },
   {
     id: "namib",
@@ -76,10 +66,8 @@ export const zones: Zone[] = [
     region: "Sossusvlei y Naukluft",
     blurb:
       "Las dunas más antiguas del mundo: órice, avestruz y especialistas del desierto (reptiles e insectos).",
-    x: 98,
-    y: 267,
-    labelAnchor: "middle",
-    labelDy: 16,
+    mx: 30,
+    my: 68,
   },
   {
     id: "kalahari",
@@ -88,10 +76,8 @@ export const zones: Zone[] = [
     region: "Sureste",
     blurb:
       "Dunas rojas y praderas semiáridas: suricatas, hiena parda, guepardo y antílopes adaptados a la sequía.",
-    x: 182,
-    y: 266,
-    labelAnchor: "middle",
-    labelDy: 16,
+    mx: 72,
+    my: 71,
   },
 ];
 

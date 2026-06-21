@@ -138,58 +138,74 @@ h3,
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
-.map-svg {
+.map-figure {
+  position: relative;
   width: 100%;
-  max-width: 360px;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+.map-img {
+  width: 100%;
   height: auto;
   display: block;
+  border-radius: 2px;
+  box-shadow: var(--shadow);
 }
 
-.map-land {
-  fill: var(--ivory-deep);
-  stroke: var(--sepia);
-  stroke-width: 1.5;
-  stroke-linejoin: round;
-}
-
-.map-zone {
+.map-pin-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.map-zone:focus {
+.map-pin-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  border: 2px solid var(--ivory);
+  box-shadow: 0 1px 4px rgba(58, 46, 30, 0.4);
+  color: var(--ivory);
+  font-size: 11px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 200ms ease, background-color 200ms ease;
+}
+
+.map-pin-btn:hover .map-pin-dot,
+.map-pin-btn:focus-visible .map-pin-dot {
+  transform: scale(1.25);
+  background: var(--terracotta-deep);
+}
+
+.map-pin-btn:focus {
   outline: none;
 }
 
-.map-hit {
-  fill: transparent;
+.map-pin-btn:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 4px;
+  border-radius: 50%;
 }
 
-.map-pin {
-  fill: var(--terracotta);
-  stroke: var(--ivory);
-  stroke-width: 1.5;
-  transition: var(--transition-slow);
-}
-
-.map-zone.is-done .map-pin {
-  fill: var(--olive);
-}
-
-.map-zone:hover .map-pin,
-.map-zone:focus .map-pin {
-  fill: var(--terracotta-deep);
-}
-
-.map-label {
-  font-family: "EB Garamond", serif;
-  font-variant-caps: small-caps;
-  letter-spacing: 0.04em;
-  font-size: 12px;
-  fill: var(--ink);
-  pointer-events: none;
+.map-pin-btn.is-done .map-pin-dot {
+  background: var(--olive);
 }
 
 .map-legend {
