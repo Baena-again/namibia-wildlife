@@ -1,15 +1,20 @@
 import { useEffect, useMemo, useState } from "react";
-import type { Animal, FilterMode, SeenState } from "./types";
+import type { Animal, FilterMode, SeenState, Zone, ZoneId } from "./types";
 import { animals } from "./data/animals";
 import { filterAnimals, countSeen } from "./lib/search";
+import { getZone } from "./lib/zones";
 import { loadSeen, saveSeen, toggleSeen } from "./lib/storage";
 import { AnimalGrid } from "./components/AnimalGrid";
 import { AnimalDetail } from "./components/AnimalDetail";
+import { NamibiaMap } from "./components/NamibiaMap";
+import { ZoneView } from "./components/ZoneView";
 import { Settings } from "./components/Settings";
 
 type View =
   | { name: "list" }
-  | { name: "detail"; animal: Animal }
+  | { name: "map" }
+  | { name: "zone"; zone: Zone }
+  | { name: "detail"; animal: Animal; from: View }
   | { name: "settings" };
 
 const nowIso = () => new Date().toISOString();
@@ -39,13 +44,34 @@ export default function App() {
     setSeenState((prev) => toggleSeen(prev, id, nowIso()));
   }
 
+  function openZone(zoneId: ZoneId) {
+    const zone = getZone(zoneId);
+    if (zone) setView({ name: "zone", zone });
+  }
+
   if (view.name === "detail") {
+    const from = view.from;
     return (
       <AnimalDetail
         animal={view.animal}
         seen={seenState[view.animal.id]?.seen ?? false}
         onToggleSeen={() => handleToggleSeen(view.animal.id)}
-        onBack={() => setView({ name: "list" })}
+        onBack={() => setView(from)}
+        backLabel={from.name === "zone" ? `Volver a ${from.zone.short}` : undefined}
+      />
+    );
+  }
+
+  if (view.name === "zone") {
+    return (
+      <ZoneView
+        zone={view.zone}
+        animals={animals}
+        seenState={seenState}
+        onSelect={(animal) =>
+          setView({ name: "detail", animal, from: view })
+        }
+        onBack={() => setView({ name: "map" })}
       />
     );
   }
@@ -61,6 +87,8 @@ export default function App() {
     );
   }
 
+  const isMap = view.name === "map";
+
   return (
     <>
       <header className="app-header">
@@ -71,6 +99,21 @@ export default function App() {
         </div>
       </header>
 
+      <nav className="tabs">
+        <button
+          className={`tab ${!isMap ? "active" : ""}`}
+          onClick={() => setView({ name: "list" })}
+        >
+          Catálogo
+        </button>
+        <button
+          className={`tab ${isMap ? "active" : ""}`}
+          onClick={() => setView({ name: "map" })}
+        >
+          Mapa
+        </button>
+      </nav>
+
       {!storageOk && (
         <p className="notice">
           Este navegador no guarda datos: los animales marcados se perderán al
@@ -78,32 +121,53 @@ export default function App() {
         </p>
       )}
 
-      <div className="controls">
-        <input
-          className="search-input"
-          type="search"
-          placeholder="Buscar por nombre…"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <div className="filters">
-          {(["all", "seen", "pending"] as FilterMode[]).map((mode) => (
-            <button
-              key={mode}
-              className={`filter-btn ${filter === mode ? "active" : ""}`}
-              onClick={() => setFilter(mode)}
-            >
-              {mode === "all" ? "Todos" : mode === "seen" ? "Vistos" : "Pendientes"}
-            </button>
-          ))}
-        </div>
-      </div>
+      {isMap ? (
+        <>
+          <p className="map-intro">
+            Toca una zona de Namibia para ver qué animales esperar allí.
+          </p>
+          <NamibiaMap
+            animals={animals}
+            seenState={seenState}
+            onSelect={openZone}
+          />
+        </>
+      ) : (
+        <>
+          <div className="controls">
+            <input
+              className="search-input"
+              type="search"
+              placeholder="Buscar por nombre…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <div className="filters">
+              {(["all", "seen", "pending"] as FilterMode[]).map((mode) => (
+                <button
+                  key={mode}
+                  className={`filter-btn ${filter === mode ? "active" : ""}`}
+                  onClick={() => setFilter(mode)}
+                >
+                  {mode === "all"
+                    ? "Todos"
+                    : mode === "seen"
+                      ? "Vistos"
+                      : "Pendientes"}
+                </button>
+              ))}
+            </div>
+          </div>
 
-      <AnimalGrid
-        animals={visible}
-        seenState={seenState}
-        onSelect={(animal) => setView({ name: "detail", animal })}
-      />
+          <AnimalGrid
+            animals={visible}
+            seenState={seenState}
+            onSelect={(animal) =>
+              setView({ name: "detail", animal, from: { name: "list" } })
+            }
+          />
+        </>
+      )}
 
       <nav className="foot-nav">
         <button onClick={() => setView({ name: "settings" })}>

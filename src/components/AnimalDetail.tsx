@@ -1,18 +1,32 @@
 import type { Animal } from "../types";
 import { AnimalImage } from "./AnimalImage";
+import { zonesForAnimal } from "../lib/zones";
 
 type Props = {
   animal: Animal;
   seen: boolean;
   onToggleSeen: () => void;
   onBack: () => void;
+  backLabel?: string;
 };
 
-export function AnimalDetail({ animal, seen, onToggleSeen, onBack }: Props) {
+export function AnimalDetail({
+  animal,
+  seen,
+  onToggleSeen,
+  onBack,
+  backLabel = "Volver al catálogo",
+}: Props) {
+  // The catalogue's `whereToSee` is empty for now, so fall back to the map zones.
+  const places =
+    animal.whereToSee.length > 0
+      ? animal.whereToSee
+      : zonesForAnimal(animal.id).map((z) => z.name);
+
   return (
     <article className="detail">
       <button className="back-link" onClick={onBack}>
-        ← Volver al catálogo
+        ← {backLabel}
       </button>
 
       <figure className="detail-figure">
@@ -24,11 +38,11 @@ export function AnimalDetail({ animal, seen, onToggleSeen, onBack }: Props) {
         <span className="scientific">{animal.scientificName}</span>
       )}
 
-      {animal.whereToSee.length > 0 && (
+      {places.length > 0 && (
         <section className="detail-section">
           <h2 className="label">Dónde verlo</h2>
           <ul>
-            {animal.whereToSee.map((place) => (
+            {places.map((place) => (
               <li key={place}>{place}</li>
             ))}
           </ul>

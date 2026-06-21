@@ -37,7 +37,6 @@ import img_cape_fox from "../assets/animals/cape-fox.png";
 import img_cape_porcupine from "../assets/animals/cape-porcupine.png";
 import img_african_wildcat from "../assets/animals/african-wildcat.png";
 import img_honey_badger from "../assets/animals/honey-badger.png";
-import img_giant_anteater from "../assets/animals/giant-anteater.png";
 import img_african_civet from "../assets/animals/african-civet.png";
 import img_spotted_genet from "../assets/animals/spotted-genet.png";
 import img_yellow_mongoose from "../assets/animals/yellow-mongoose.png";
@@ -49,7 +48,6 @@ import img_flamingo from "../assets/animals/flamingo.png";
 import img_african_white_backed_vulture from "../assets/animals/african-white-backed-vulture.png";
 import img_martial_eagle from "../assets/animals/martial-eagle.png";
 import img_secretarybird from "../assets/animals/secretarybird.png";
-import img_namibian_roadrunner from "../assets/animals/namibian-roadrunner.png";
 import img_dune_lark from "../assets/animals/dune-lark.png";
 import img_lilac_breasted_roller from "../assets/animals/lilac-breasted-roller.png";
 import img_white_pelican from "../assets/animals/white-pelican.png";
@@ -89,11 +87,14 @@ import img_ghost_crab from "../assets/animals/ghost-crab.png";
  * scientificName / whereToSee / funFacts researched and filled in for Namibia.
  * A few names from the AI-generated source were corrected to the real,
  * most plausible Namibian species after inspecting each image (see PR notes):
- *   giant-anteater  -> Aardvark (Orycteropus afer)
- *   namibian-roadrunner -> Double-banded Courser (Smutsornis africanus)
  *   atlantic-bottlenose-dolphin -> Common Bottlenose Dolphin (Tursiops truncatus)
+ *   ruppells-bustard -> Rüppell's Korhaan (Eupodotis rueppellii)
  *   the generic Namib reptiles/invertebrates -> real Namib desert species.
  * Ids and image filenames are kept stable; only commonName changed.
+ *
+ * Two entries from the AI source had no real Namibian counterpart whose image
+ * we could trust, so they were removed entirely: "giant-anteater" (a South
+ * American species) and "namibian-roadrunner" (not a real bird).
  */
 export const animals: Animal[] = [
   {
@@ -553,18 +554,6 @@ export const animals: Animal[] = [
     ],
   },
   {
-    id: "giant-anteater",
-    commonName: "Aardvark",
-    scientificName: "Orycteropus afer",
-    image: img_giant_anteater,
-    category: "Mamíferos pequeños y medianos",
-    whereToSee: ["Parque Nacional de Etosha", "Kalahari", "Waterberg"],
-    funFacts: [
-      "Aunque parece un cruce de varios animales, no tiene parientes cercanos vivos: es el único miembro de su orden.",
-      "Excava madrigueras con sus potentes garras y se alimenta de termitas y hormigas con su lengua pegajosa.",
-    ],
-  },
-  {
     id: "african-civet",
     commonName: "African Civet",
     scientificName: "Civettictis civetta",
@@ -697,18 +686,6 @@ export const animals: Animal[] = [
     ],
   },
   {
-    id: "namibian-roadrunner",
-    commonName: "Double-banded Courser",
-    scientificName: "Smutsornis africanus",
-    image: img_namibian_roadrunner,
-    category: "Aves",
-    whereToSee: ["Llanuras de grava del Namib", "Namib-Naukluft", "Damaraland"],
-    funFacts: [
-      "Corre velozmente por las llanuras pedregosas del desierto y solo vuela como último recurso.",
-      "Su plumaje jaspeado lo camufla a la perfección sobre la grava; pone un único huevo directamente en el suelo.",
-    ],
-  },
-  {
     id: "dune-lark",
     commonName: "Dune Lark",
     scientificName: "Calendulauda erythrochlamys",
@@ -818,7 +795,7 @@ export const animals: Animal[] = [
   },
   {
     id: "ruppells-bustard",
-    commonName: "Rüppell's Bustard",
+    commonName: "Rüppell's Korhaan",
     scientificName: "Eupodotis rueppellii",
     image: img_ruppells_bustard,
     category: "Aves",

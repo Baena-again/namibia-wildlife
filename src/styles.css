@@ -94,6 +94,299 @@ h3,
   margin-top: 0.4rem;
 }
 
+/* -------------------------------- tabs ------------------------------- */
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0 0 1.5rem;
+  border-bottom: 1px solid var(--ivory-deep);
+}
+
+.tab {
+  border: none;
+  background: none;
+  font-family: "Cinzel", "EB Garamond", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  color: var(--stone);
+  cursor: pointer;
+  padding: 0.4rem 0.2rem 0.7rem;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition-slow);
+}
+
+.tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--terracotta);
+}
+
+/* -------------------------------- map -------------------------------- */
+
+.map-intro {
+  text-align: center;
+  color: var(--sepia);
+  font-style: italic;
+  margin: 0 auto 1rem;
+  max-width: 420px;
+}
+
+.map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.map-figure {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+.map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+  box-shadow: var(--shadow);
+}
+
+.map-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-area {
+  fill: var(--terracotta);
+  fill-opacity: 0.08;
+  stroke: var(--terracotta);
+  stroke-width: 1.5;
+  stroke-opacity: 0.45;
+  stroke-dasharray: 4 3;
+  cursor: pointer;
+  transition: fill-opacity 200ms ease, stroke-opacity 200ms ease;
+}
+
+.map-area:hover,
+.map-area:focus {
+  fill-opacity: 0.26;
+  stroke-opacity: 0.9;
+  stroke-dasharray: none;
+  outline: none;
+}
+
+.map-area:focus-visible {
+  stroke-width: 2.5;
+}
+
+.map-area.is-done {
+  fill: var(--olive);
+  stroke: var(--olive);
+}
+
+.map-hint {
+  text-align: center;
+  color: var(--stone);
+  font-style: italic;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.map-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 420px;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.map-legend-btn {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: "EB Garamond", serif;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--ivory-deep);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.map-legend-name {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.map-legend-meta {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+  color: var(--stone);
+  white-space: nowrap;
+}
+
+/* ------------------------------ zone view ---------------------------- */
+
+.zone-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.zone-header .subtitle {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.12em;
+  color: var(--olive);
+  font-size: 0.95rem;
+}
+
+.zone-header h1 {
+  font-size: clamp(1.4rem, 5vw, 2.1rem);
+  margin-top: 0.25rem;
+}
+
+.zone-blurb {
+  max-width: 520px;
+  margin: 0.75rem auto 0;
+  color: var(--sepia);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.zone-facts {
+  max-width: 520px;
+  margin: 1.25rem auto 0;
+  display: grid;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.zone-facts div {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.zone-facts dt {
+  font-size: 0.85rem;
+}
+
+.zone-facts dd {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* ------------------------------ zone filters ------------------------- */
+
+.zone-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 600px;
+  margin: 0 auto 2.25rem;
+}
+
+.zone-filter-label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  border: 1px solid var(--stone);
+  background: transparent;
+  color: var(--sepia);
+  font-family: "EB Garamond", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+  padding: 0.28rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition-slow);
+}
+
+.chip.active {
+  background: var(--sepia);
+  border-color: var(--sepia);
+  color: var(--ivory);
+}
+
+.chip.chip-facil.active {
+  background: var(--olive);
+  border-color: var(--olive);
+}
+
+.chip.chip-media.active {
+  background: var(--sepia);
+  border-color: var(--sepia);
+}
+
+.chip.chip-dificil.active {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+}
+
+.zone-group {
+  margin-bottom: 2.5rem;
+}
+
+.zone-group-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: "Cinzel", "EB Garamond", serif;
+  text-transform: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  color: var(--olive);
+  border-bottom: 1px solid var(--ivory-deep);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.zone-group-title.diff-facil {
+  color: var(--olive);
+}
+
+.zone-group-title.diff-media {
+  color: var(--sepia);
+}
+
+.zone-group-title.diff-dificil {
+  color: var(--terracotta);
+}
+
+.zone-group-count {
+  font-family: "EB Garamond", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+  color: var(--stone);
+}
+
 /* ------------------------------ controls ----------------------------- */
 
 .controls {

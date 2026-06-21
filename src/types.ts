@@ -24,3 +24,50 @@ export type SeenRecord = {
 export type SeenState = Record<string, SeenRecord>;
 
 export type FilterMode = "all" | "seen" | "pending";
+
+/** How hard the animal is to actually spot on a trip. */
+export type Difficulty = "facil" | "media" | "dificil";
+
+/** The seven main wildlife regions of Namibia used by the map. */
+export type ZoneId =
+  | "etosha"
+  | "kaokoland"
+  | "zambezi"
+  | "costa"
+  | "namib"
+  | "central"
+  | "kalahari";
+
+export type Zone = {
+  id: ZoneId;
+  /** Full name, shown as the heading. */
+  name: string;
+  /** Short label drawn on the map. */
+  short: string;
+  /** Where it is, in plain words (e.g. "Noroeste"). */
+  region: string;
+  /** One-line general description shown under the heading. */
+  blurb: string;
+  /** Short note on the climate. */
+  climate: string;
+  /** Short note on the terrain / characteristics. */
+  terrain: string;
+  /**
+   * Clickable area over the map image, as `[x, y]` points in percentages of
+   * the image width / height (so it scales with any display size).
+   */
+  polygon: [number, number][];
+};
+
+/** A group of animals sharing the same `category`, for the zone view. */
+export type CategoryGroup = {
+  category: string;
+  animals: Animal[];
+};
+
+/** A group of animals sharing the same spotting difficulty. */
+export type DifficultyGroup = {
+  difficulty: Difficulty;
+  label: string;
+  animals: Animal[];
+};
