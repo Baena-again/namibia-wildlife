@@ -37,7 +37,6 @@ import img_cape_fox from "../assets/animals/cape-fox.png";
 import img_cape_porcupine from "../assets/animals/cape-porcupine.png";
 import img_african_wildcat from "../assets/animals/african-wildcat.png";
 import img_honey_badger from "../assets/animals/honey-badger.png";
-import img_giant_anteater from "../assets/animals/giant-anteater.png";
 import img_african_civet from "../assets/animals/african-civet.png";
 import img_spotted_genet from "../assets/animals/spotted-genet.png";
 import img_yellow_mongoose from "../assets/animals/yellow-mongoose.png";
@@ -49,7 +48,6 @@ import img_flamingo from "../assets/animals/flamingo.png";
 import img_african_white_backed_vulture from "../assets/animals/african-white-backed-vulture.png";
 import img_martial_eagle from "../assets/animals/martial-eagle.png";
 import img_secretarybird from "../assets/animals/secretarybird.png";
-import img_namibian_roadrunner from "../assets/animals/namibian-roadrunner.png";
 import img_dune_lark from "../assets/animals/dune-lark.png";
 import img_lilac_breasted_roller from "../assets/animals/lilac-breasted-roller.png";
 import img_white_pelican from "../assets/animals/white-pelican.png";
@@ -394,14 +392,6 @@ export const animals: Animal[] = [
     funFacts: [],
   },
   {
-    id: "giant-anteater",
-    commonName: "Giant Anteater",
-    image: img_giant_anteater,
-    category: "Mamíferos pequeños y medianos",
-    whereToSee: [],
-    funFacts: [],
-  },
-  {
     id: "african-civet",
     commonName: "African Civet",
     image: img_african_civet,
@@ -485,14 +475,6 @@ export const animals: Animal[] = [
     id: "secretarybird",
     commonName: "Secretarybird",
     image: img_secretarybird,
-    category: "Aves",
-    whereToSee: [],
-    funFacts: [],
-  },
-  {
-    id: "namibian-roadrunner",
-    commonName: "Namibian Roadrunner",
-    image: img_namibian_roadrunner,
     category: "Aves",
     whereToSee: [],
     funFacts: [],

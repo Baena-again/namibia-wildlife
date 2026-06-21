@@ -16,7 +16,8 @@ export const zones: Zone[] = [
     region: "Noreste",
     blurb:
       "Ríos y humedales en la franja de Caprivi: la cara más verde y tropical de Namibia.",
-    climate: "Subtropical; húmedo y caluroso en verano, suave en invierno.",
+    climate:
+      "Subtropical; veranos húmedos y calurosos con tormentas, inviernos suaves de día y fríos de noche. La región más lluviosa del país (600–700 mm).",
     terrain:
       "Ríos permanentes, llanuras de inundación y bosques ribereños: la zona más acuática del país.",
     polygon: [
@@ -35,7 +36,7 @@ export const zones: Zone[] = [
     blurb:
       "La gran sabana de safari alrededor de la salina: el mejor sitio para ver fauna en abundancia.",
     climate:
-      "Semiárido; muy caluroso y seco de mayo a octubre, con lluvias en verano.",
+      "Semiárido; estación seca de mayo a octubre (días cálidos, noches frías) y máximo calor y lluvias en verano (nov–abr).",
     terrain:
       "Sabana abierta y mopane en torno a una enorme salina blanca; las charcas concentran la fauna en la estación seca.",
     polygon: [
@@ -55,7 +56,8 @@ export const zones: Zone[] = [
     region: "Noroeste",
     blurb:
       "Desierto montañoso y remoto: elefantes del desierto, rinoceronte negro y cebra de montaña.",
-    climate: "Desértico y caluroso, de los rincones más áridos del país.",
+    climate:
+      "Árido; días muy calurosos y noches frías, de los rincones más secos del país (menos de 150 mm de lluvia al año).",
     terrain:
       "Montañas rocosas, lechos de ríos secos y llanuras de grava; un refugio salvaje y poco transitado.",
     polygon: [
@@ -76,7 +78,7 @@ export const zones: Zone[] = [
     blurb:
       "Bosque seco y montañas en torno a Windhoek: leopardo, guepardo, kudu y mucha vida en granjas y reservas.",
     climate:
-      "Semiárido de altiplano; templado de día y con noches frescas por la altitud.",
+      "Semiárido de altiplano (1.700–2.000 m); días cálidos y noches frescas por la altitud.",
     terrain:
       "Mesetas, montañas de granito (Erongo) y bosque seco de acacias en torno a la capital.",
     polygon: [
@@ -122,7 +124,7 @@ export const zones: Zone[] = [
     blurb:
       "Las dunas más antiguas del mundo: órice, avestruz y especialistas del desierto (reptiles e insectos).",
     climate:
-      "Desierto hiperárido; días muy calurosos, noches frías y casi sin lluvia.",
+      "Hiperárido; días muy calurosos, noches frías y casi sin lluvia: la niebla costera es la principal fuente de agua.",
     terrain:
       "Mares de arena con dunas altísimas y llanuras de grava; vida adaptada a la niebla costera.",
     polygon: [
@@ -147,7 +149,7 @@ export const zones: Zone[] = [
     climate:
       "Semiárido; días muy calurosos y noches frías, con lluvias estivales irregulares.",
     terrain:
-      "Dunas rojas fosilizadas y praderas salpicadas de acacias, con agua escasa.",
+      "Dunas rojas fijadas por la vegetación (fósiles) y sabana de espinos (camelthorn), con agua superficial escasa.",
     polygon: [
       [46, 64],
       [74, 64],
@@ -280,7 +282,6 @@ export const zoneAnimalIds: Record<ZoneId, string[]> = {
     "caracal",
     "cape-fox",
     "ostrich",
-    "namibian-roadrunner",
     "dune-lark",
     "kori-bustard",
     "ruppells-bustard",
@@ -312,17 +313,13 @@ export const zoneAnimalIds: Record<ZoneId, string[]> = {
     "warthog",
     "chacma-baboon",
     "vervet-monkey",
-    "meerkat",
     "caracal",
     "cape-fox",
     "cape-porcupine",
     "african-wildcat",
     "honey-badger",
-    "giant-anteater",
-    "african-civet",
     "spotted-genet",
     "yellow-mongoose",
-    "banded-mongoose",
     "springhare",
     "rock-hyrax",
     "ostrich",
@@ -335,7 +332,6 @@ export const zoneAnimalIds: Record<ZoneId, string[]> = {
     "camaleon",
   ],
   kalahari: [
-    "lion",
     "cheetah",
     "oryx-gemsbok",
     "springbok",
