@@ -26,7 +26,7 @@ export const shopping: ShoppingStop[] = [
     title: "🛒 COMPRA GORDA — SuperSpar Maerua (jue 2)",
     groups: [
       {
-        title: "🔥 Carne para braai (bbq)",
+        title: "🥩 Carnicería",
         note: "Congela la mitad — te hace de hielo los primeros días.",
         items: [
           "Boerewors (salchicha gruesa en espiral) – 2 paquetes",
@@ -34,70 +34,75 @@ export const shopping: ShoppingStop[] = [
           "Pollo (muslos/contramuslos) – 1-2 bandejas",
           "Sosaties (brochetas ya marinadas) – 1-2 bandejas",
           "Filetes de ternera – 1 paquete (1-2 cenas)",
-        ],
-      },
-      {
-        title: "🥚 Desayunos",
-        items: [
-          "Huevos – 2 docenas",
           "Bacon – 2 paquetes",
-          "Avena (porridge) – 1 bolsa grande",
-          "Rusks (biscotes para mojar en café) – 1-2 paquetes",
-          "Café molido + rooibos (infusión roja sin teína)",
-          "Leche UHT (larga duración) – 3 L",
         ],
       },
       {
-        title: "🦠 Barriga sana / probióticos",
+        title: "🧀 Charcutería y quesos",
         items: [
-          "Maas (leche fermentada tipo kéfir) – 1-2 (es fresco, repón por el camino)",
-          "Yogur con cultivos vivos – 1 pack",
-          "Legumbre en bote: garbanzos, alubias, lentejas – 5-6 botes",
-          "Ajo, cebolla, jengibre fresco (prebióticos)",
-        ],
-      },
-      {
-        title: "🥪 Comidas de carretera",
-        items: [
-          "Wraps/tortillas (aguantan más que el pan) – 2 paquetes",
-          "Latas: atún, sardinas, caballa – 6",
           "Queso curado – 1 buena cuña",
           "Chorizo/salchichón (sección importación) – 1-2",
           "Biltong (cecina) + droëwors (cecina en salchicha, tipo fuet) – bolsa generosa",
-          "Crackers / picos",
         ],
       },
       {
-        title: "🥦 Verdura y guarnición (la resistente)",
+        title: "🥛 Lácteos y huevos",
+        items: [
+          "Huevos – 2 docenas",
+          "Leche UHT (larga duración) – 3 L",
+          "Maas (leche fermentada tipo kéfir) – 1-2 (es fresco, repón por el camino)",
+          "Yogur con cultivos vivos – 1 pack",
+        ],
+      },
+      {
+        title: "🥦 Frutería — verdura",
         items: [
           "Patata + boniato – buena bolsa",
           "Butternut (calabaza alargada) + gem squash (calabacita verde redonda)",
           "Repollo (ensalada de col, dura mucho) + zanahoria",
           "Tomate, pimiento",
+          "Ajo, cebolla, jengibre fresco (prebióticos)",
+        ],
+      },
+      {
+        title: "🍊 Frutería — fruta",
+        items: ["Naranjas, limones, manzanas, plátanos"],
+      },
+      {
+        title: "🥫 Conservas y legumbre",
+        items: [
+          "Legumbre en bote: garbanzos, alubias, lentejas – 5-6 botes",
+          "Latas de pescado: atún, sardinas, caballa – 6",
+          "Tomate triturado en lata – 3-4 (shakshuka, salsas)",
+        ],
+      },
+      {
+        title: "🍞 Panadería y cereales",
+        items: [
+          "Wraps/tortillas (aguantan más que el pan) – 2 paquetes",
+          "Crackers / picos",
+          "Rusks (biscotes para mojar en café) – 1-2 paquetes",
+          "Avena (porridge) – 1 bolsa grande",
           "Pap (harina de maíz, tipo polenta) – 1 bolsa (opcional)",
         ],
       },
       {
-        title: "🍊 Fruta",
-        items: ["Naranjas, limones, manzanas, plátanos"],
-      },
-      {
-        title: "🧂 Despensa / condimentos",
+        title: "🧂 Despensa y condimentos",
         items: [
+          "Café molido + rooibos (infusión roja sin teína)",
           "Aceite de oliva, sal, pimienta",
           "Especias braai (mezcla para bbq, tipo Robertsons), pimentón, peri-peri (guindilla picante)",
-          "Tomate triturado en lata – 3-4 (shakshuka, salsas)",
           "Mantequilla de cacahuete, miel",
           "Mostaza, kétchup",
           "Mrs Ball's chutney (salsa agridulce local, va con todo)",
         ],
       },
       {
-        title: "🥜 Snacks",
+        title: "🍫 Snacks y dulce",
         items: ["Frutos secos + fruta deshidratada", "Chocolate negro"],
       },
       {
-        title: "🍺 Bebida (entre semana = sin problema; cubre el domingo 5)",
+        title: "🍺 Bebidas (cubre el domingo 5)",
         items: [
           "Cerveza Windhoek / Tafel (las locales) – a tu criterio 😏 (2 cajas como base)",
           "Vino SA (sudafricano) / Savanna (sidra) – opcional",
@@ -106,7 +111,7 @@ export const shopping: ShoppingStop[] = [
         ],
       },
       {
-        title: "🧊 No comida (clave en camping)",
+        title: "🧼 Droguería y camping",
         items: [
           "Leña/carbón para braai (bbq) + pastillas de encendido",
           "Hielo en bolsa",

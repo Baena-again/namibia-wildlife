@@ -743,6 +743,53 @@ h3,
   border-color: var(--terracotta-deep);
 }
 
+/* --------------------------- update toast ---------------------------- */
+
+.update-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: calc(100% - 2rem);
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 0.6rem 0.7rem 0.6rem 1rem;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+}
+
+.update-text {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
+  font-size: 1rem;
+}
+
+.update-btn {
+  border: 1px solid var(--ivory);
+  background: var(--terracotta);
+  color: var(--ivory);
+  font-family: "EB Garamond", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.update-dismiss {
+  border: none;
+  background: none;
+  color: var(--stone);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.3rem;
+}
+
 /* ------------------------------ settings ----------------------------- */
 
 .settings-actions {
