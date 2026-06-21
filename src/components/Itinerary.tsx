@@ -85,11 +85,17 @@ export function Itinerary({
                   {day.lodging.phone && (
                     <>
                       {" · "}
-                      <a href={`tel:${day.lodging.phone.replace(/\s+/g, "")}`}>
+                      <a href={`tel:${day.lodging.phone.replace(/[^+\d]/g, "")}`}>
                         {day.lodging.phone}
                       </a>
                     </>
                   )}
+                  {day.lodging.altPhones?.map((p) => (
+                    <span key={p}>
+                      {" / "}
+                      <a href={`tel:${p.replace(/[^+\d]/g, "")}`}>{p}</a>
+                    </span>
+                  ))}
                   {day.lodging.address && (
                     <span className="itin-address">{day.lodging.address}</span>
                   )}

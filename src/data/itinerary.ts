@@ -24,6 +24,8 @@ export type ItineraryDay = {
   lodging?: {
     name: string;
     phone?: string;
+    /** Extra numbers to try if the main one doesn't answer (may carry a label). */
+    altPhones?: string[];
     /** Postal/road address as provided by the traveller's bookings. */
     address?: string;
     /** Verified GPS coordinates "lat, long" (omitted if unverified). */
@@ -60,6 +62,7 @@ export const itinerary: ItineraryDay[] = [
     lodging: {
       name: "Sossus Oasis Campsite (Sesriem)",
       phone: "+264 63 293 636",
+      altPhones: ["+264 63 293 632 (recepción)", "+27 21 930 4564 (reservas)"],
       address: "C27, Sesriem",
       coords: "-24.48903, 15.80128",
       mapUrl: "https://www.google.com/maps/search/?api=1&query=-24.48903,15.80128",
@@ -269,6 +272,7 @@ export const itinerary: ItineraryDay[] = [
     lodging: {
       name: "Granietkop Campsite",
       phone: "+264 61 248 137",
+      altPhones: ["+264 81 727 3163 (Michael)", "+264 61 255 977"],
       address: "D2612, Damaraland",
       coords: "-20.635521, 14.568150",
       mapUrl:
