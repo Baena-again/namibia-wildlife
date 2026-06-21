@@ -128,9 +128,9 @@ export const itinerary: ItineraryDay[] = [
     lodging: {
       name: "The Rez Guesthouse",
       phone: "+264 81 245 3244",
-      address: "16 Riebeeck Circle, Walvis Bay",
+      address: "16 Mandume Ndemufayo Circle, Meersig, 9000, Walvis Bay",
       mapUrl:
-        "https://www.google.com/maps/search/?api=1&query=The+Rez+Guesthouse+Walvis+Bay+Namibia",
+        "https://www.google.com/maps/search/?api=1&query=The+Rez+Guesthouse+16+Mandume+Ndemufayo+Circle+Meersig+Walvis+Bay+Namibia",
     },
     tips: [
       "La C14 cruza el cañón del Kuiseb por el Kuiseb Pass, excavado durante millones de años en el borde del Namib-Naukluft.",
@@ -162,9 +162,9 @@ export const itinerary: ItineraryDay[] = [
     lodging: {
       name: "The Rez Guesthouse",
       phone: "+264 81 245 3244",
-      address: "16 Riebeeck Circle, Walvis Bay",
+      address: "16 Mandume Ndemufayo Circle, Meersig, 9000, Walvis Bay",
       mapUrl:
-        "https://www.google.com/maps/search/?api=1&query=The+Rez+Guesthouse+Walvis+Bay+Namibia",
+        "https://www.google.com/maps/search/?api=1&query=The+Rez+Guesthouse+16+Mandume+Ndemufayo+Circle+Meersig+Walvis+Bay+Namibia",
     },
     activity: {
       name: "Excursión 4x4 — Dominus Dune Tours (ref. Tso 01500)",
@@ -443,9 +443,9 @@ export const itinerary: ItineraryDay[] = [
     lodging: {
       name: "Out of Africa Town Lodge",
       phone: "+264 67 302 230",
-      address: "45 Long Street, Otjiwarongo",
+      address: "Long Street, 9000, Otjiwarongo",
       mapUrl:
-        "https://www.google.com/maps/search/?api=1&query=Out+of+Africa+Town+Lodge+Otjiwarongo+Namibia",
+        "https://www.google.com/maps/search/?api=1&query=Out+of+Africa+Town+Lodge+Long+Street+Otjiwarongo+Namibia",
     },
     tips: [
       "Waterberg tiene senderos guiados de varios días y rutas cortas autoguiadas desde el resort.",
