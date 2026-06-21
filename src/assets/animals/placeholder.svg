@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160">
+  <!-- Generic field-guide silhouette placeholder, sepia on transparent. -->
+  <g fill="#6f5c43" opacity="0.55">
+    <ellipse cx="92" cy="96" rx="58" ry="34"/>
+    <path d="M138 78c10-4 22-10 30-22 3-5 9-3 8 3-2 14-14 26-30 30z"/>
+    <circle cx="150" cy="64" r="14"/>
+    <path d="M150 52c-3-10 0-22 8-28 4-3 9 1 7 6-3 9-4 16-3 22z"/>
+    <rect x="58" y="118" width="9" height="34" rx="4"/>
+    <rect x="80" y="118" width="9" height="34" rx="4"/>
+    <rect x="104" y="118" width="9" height="34" rx="4"/>
+    <rect x="126" y="118" width="9" height="34" rx="4"/>
+    <path d="M40 92c-10 2-20 8-26 18-2 4 2 8 6 5 8-6 16-9 24-10z"/>
+  </g>
+</svg>

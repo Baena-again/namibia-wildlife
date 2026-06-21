@@ -1,0 +1,372 @@
+:root {
+  /* Earthy, sober palette */
+  --ivory: #f4ecd8;
+  --ivory-deep: #ece2c8;
+  --ink: #2b261d; /* dark text for sunlight legibility */
+  --sepia: #6f5c43;
+  --olive: #6d6f44;
+  --stone: #8a8479;
+  --terracotta: #b0543b; /* the single action accent */
+  --terracotta-deep: #92422d;
+
+  --shadow: 0 10px 18px rgba(58, 46, 30, 0.22);
+  --transition-slow: opacity 600ms ease;
+
+  font-family: "EB Garamond", Georgia, serif;
+  color: var(--ink);
+  background-color: var(--ivory);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--ivory);
+  min-height: 100%;
+}
+
+body {
+  /* uniform warm ivory canvas across the whole app */
+  background-color: var(--ivory);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+/* ----------------------------- typography ---------------------------- */
+
+h1,
+h2,
+h3,
+.title {
+  font-family: "Cinzel", "EB Garamond", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+.label,
+.smallcaps {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--sepia);
+}
+
+.scientific {
+  font-style: italic;
+  color: var(--stone);
+}
+
+/* ------------------------------- header ------------------------------ */
+
+.app-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.app-header h1 {
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+}
+
+.app-header .subtitle {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.12em;
+  color: var(--olive);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+.counter {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--sepia);
+  font-size: 1rem;
+  margin-top: 0.4rem;
+}
+
+/* ------------------------------ controls ----------------------------- */
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--stone);
+  background: transparent;
+  font-family: "EB Garamond", serif;
+  font-size: 1.15rem;
+  color: var(--ink);
+  padding: 0.4rem 0.2rem;
+  text-align: center;
+}
+
+.search-input::placeholder {
+  color: var(--stone);
+  font-style: italic;
+}
+
+.search-input:focus {
+  outline: none;
+  border-bottom-color: var(--sepia);
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.filter-btn {
+  border: none;
+  background: none;
+  font-family: "EB Garamond", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 1rem;
+  color: var(--stone);
+  cursor: pointer;
+  padding: 0.2rem 0;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition-slow);
+}
+
+.filter-btn.active {
+  color: var(--ink);
+  border-bottom-color: var(--sepia);
+}
+
+/* -------------------------------- grid ------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1.25rem;
+}
+
+@media (min-width: 560px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.specimen {
+  /* no card, no border, no box — just the animal on the ivory */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: inherit;
+}
+
+.specimen-figure {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.specimen-figure img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* soft shadow beneath the cut-out */
+  filter: drop-shadow(0 8px 10px rgba(58, 46, 30, 0.28));
+  transition: var(--transition-slow);
+}
+
+.specimen.is-pending .specimen-figure img {
+  opacity: 0.85;
+}
+
+.specimen-name {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.05em;
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.specimen-seen {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--terracotta);
+  min-height: 1em;
+}
+
+/* ------------------------------ detail ------------------------------- */
+
+.back-link {
+  border: none;
+  background: none;
+  font-family: "EB Garamond", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--sepia);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 0 1rem;
+}
+
+.detail {
+  text-align: center;
+}
+
+.detail-figure {
+  margin: 0 auto 1rem;
+  max-width: 320px;
+}
+
+.detail-figure img {
+  width: 100%;
+  filter: drop-shadow(0 14px 18px rgba(58, 46, 30, 0.3));
+}
+
+.detail h1 {
+  font-size: clamp(1.5rem, 5vw, 2.1rem);
+}
+
+.detail .scientific {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.1rem;
+}
+
+.detail-section {
+  text-align: left;
+  max-width: 540px;
+  margin: 2rem auto 0;
+}
+
+.detail-section h2 {
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  color: var(--olive);
+  border-bottom: 1px solid var(--ivory-deep);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.detail-section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.detail-section li {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--ink);
+  padding: 0.3rem 0 0.3rem 1.1rem;
+  position: relative;
+}
+
+.detail-section li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--stone);
+}
+
+/* ------------------------- seen toggle (action) ---------------------- */
+
+.seen-toggle {
+  margin: 2.5rem auto 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1.5px solid var(--terracotta);
+  background: transparent;
+  color: var(--terracotta);
+  font-family: "EB Garamond", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 1.05rem;
+  padding: 0.55rem 1.4rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition-slow);
+}
+
+.seen-toggle.is-seen {
+  background: var(--terracotta);
+  color: var(--ivory);
+  border-color: var(--terracotta-deep);
+}
+
+/* ------------------------------ settings ----------------------------- */
+
+.settings-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 360px;
+  margin: 1.5rem auto 0;
+}
+
+.action-btn {
+  border: 1.5px solid var(--sepia);
+  background: transparent;
+  color: var(--ink);
+  font-family: "EB Garamond", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 1.05rem;
+  padding: 0.6rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.notice {
+  text-align: center;
+  color: var(--sepia);
+  font-style: italic;
+  margin: 1rem auto;
+  max-width: 480px;
+}
+
+.empty {
+  text-align: center;
+  color: var(--stone);
+  font-style: italic;
+  margin-top: 3rem;
+}
+
+/* ------------------------------ footer nav --------------------------- */
+
+.foot-nav {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.foot-nav button {
+  border: none;
+  background: none;
+  font-family: "EB Garamond", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--stone);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
