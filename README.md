@@ -5,6 +5,11 @@ Offline-first naturalist field guide for a trip to Namibia. A fixed catalogue of
 and a few fun facts — with search by name and a "seen" check. Styled as a
 classic Audubon-style natural-history plate.
 
+Two ways to browse: the **Catálogo** (search + grid) and a **Mapa** of Namibia's
+seven main wildlife regions — tap a region to see the animals you can expect
+there, grouped by category. The region/animal mapping lives in
+`src/data/zones.ts`; pure helpers (and their tests) are in `src/lib/zones.ts`.
+
 Built to work **fully offline** (installable PWA) so it keeps working in the
 parks where there's no signal. The seen-state is stored on the device, with an
 export/import backup so nothing gets lost.

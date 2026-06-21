@@ -94,6 +94,186 @@ h3,
   margin-top: 0.4rem;
 }
 
+/* -------------------------------- tabs ------------------------------- */
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0 0 1.5rem;
+  border-bottom: 1px solid var(--ivory-deep);
+}
+
+.tab {
+  border: none;
+  background: none;
+  font-family: "Cinzel", "EB Garamond", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  color: var(--stone);
+  cursor: pointer;
+  padding: 0.4rem 0.2rem 0.7rem;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition-slow);
+}
+
+.tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--terracotta);
+}
+
+/* -------------------------------- map -------------------------------- */
+
+.map-intro {
+  text-align: center;
+  color: var(--sepia);
+  font-style: italic;
+  margin: 0 auto 1rem;
+  max-width: 420px;
+}
+
+.map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.map-svg {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  display: block;
+}
+
+.map-land {
+  fill: var(--ivory-deep);
+  stroke: var(--sepia);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.map-zone {
+  cursor: pointer;
+}
+
+.map-zone:focus {
+  outline: none;
+}
+
+.map-hit {
+  fill: transparent;
+}
+
+.map-pin {
+  fill: var(--terracotta);
+  stroke: var(--ivory);
+  stroke-width: 1.5;
+  transition: var(--transition-slow);
+}
+
+.map-zone.is-done .map-pin {
+  fill: var(--olive);
+}
+
+.map-zone:hover .map-pin,
+.map-zone:focus .map-pin {
+  fill: var(--terracotta-deep);
+}
+
+.map-label {
+  font-family: "EB Garamond", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+  fill: var(--ink);
+  pointer-events: none;
+}
+
+.map-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 420px;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.map-legend-btn {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: "EB Garamond", serif;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--ivory-deep);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.map-legend-name {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.map-legend-meta {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+  color: var(--stone);
+  white-space: nowrap;
+}
+
+/* ------------------------------ zone view ---------------------------- */
+
+.zone-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.zone-header .subtitle {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.12em;
+  color: var(--olive);
+  font-size: 0.95rem;
+}
+
+.zone-header h1 {
+  font-size: clamp(1.4rem, 5vw, 2.1rem);
+  margin-top: 0.25rem;
+}
+
+.zone-blurb {
+  max-width: 520px;
+  margin: 0.75rem auto 0;
+  color: var(--sepia);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.zone-group {
+  margin-bottom: 2.5rem;
+}
+
+.zone-group-title {
+  font-family: "Cinzel", "EB Garamond", serif;
+  text-transform: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  color: var(--olive);
+  border-bottom: 1px solid var(--ivory-deep);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
 /* ------------------------------ controls ----------------------------- */
 
 .controls {
