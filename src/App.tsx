@@ -3,6 +3,7 @@ import type {
   Animal,
   Difficulty,
   FilterMode,
+  JournalState,
   SeenState,
   Zone,
   ZoneId,
@@ -15,24 +16,35 @@ import {
   DIFFICULTY_ORDER,
   DIFFICULTY_LABEL,
 } from "./lib/zones";
-import { loadSeen, saveSeen, toggleSeen } from "./lib/storage";
+import {
+  loadSeen,
+  saveSeen,
+  toggleSeen,
+  loadJournal,
+  saveJournal,
+} from "./lib/storage";
 import { AnimalGrid } from "./components/AnimalGrid";
 import { AnimalDetail } from "./components/AnimalDetail";
 import { NamibiaMap } from "./components/NamibiaMap";
 import { ZoneView } from "./components/ZoneView";
 import { Settings } from "./components/Settings";
+import { Itinerary } from "./components/Itinerary";
+import { SafariTips } from "./components/SafariTips";
 
 type View =
   | { name: "list" }
   | { name: "map" }
-  | { name: "zone"; zone: Zone }
+  | { name: "zone"; zone: Zone; from?: View }
   | { name: "detail"; animal: Animal; from: View }
-  | { name: "settings" };
+  | { name: "settings" }
+  | { name: "itinerary" }
+  | { name: "tips" };
 
 const nowIso = () => new Date().toISOString();
 
 export default function App() {
   const [seenState, setSeenState] = useState<SeenState>(() => loadSeen());
+  const [journal, setJournal] = useState<JournalState>(() => loadJournal());
   const [storageOk, setStorageOk] = useState(true);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<FilterMode>("all");
@@ -44,6 +56,11 @@ export default function App() {
   useEffect(() => {
     setStorageOk(saveSeen(seenState));
   }, [seenState]);
+
+  // Persist the trip logbook notes as they're written.
+  useEffect(() => {
+    saveJournal(journal);
+  }, [journal]);
 
   const categories = useMemo(() => categoriesOf(animals), []);
   const visible = useMemo(
@@ -64,9 +81,18 @@ export default function App() {
     setSeenState((prev) => toggleSeen(prev, id, nowIso()));
   }
 
-  function openZone(zoneId: ZoneId) {
+  function handleSetNote(dayId: string, text: string) {
+    setJournal((prev) => ({ ...prev, [dayId]: text }));
+  }
+
+  function handleImport(seen: SeenState, journalIn: JournalState) {
+    setSeenState(seen);
+    setJournal(journalIn);
+  }
+
+  function openZone(zoneId: ZoneId, from?: View) {
     const zone = getZone(zoneId);
-    if (zone) setView({ name: "zone", zone });
+    if (zone) setView({ name: "zone", zone, from });
   }
 
   if (view.name === "detail") {
@@ -77,12 +103,19 @@ export default function App() {
         seen={seenState[view.animal.id]?.seen ?? false}
         onToggleSeen={() => handleToggleSeen(view.animal.id)}
         onBack={() => setView(from)}
-        backLabel={from.name === "zone" ? `Volver a ${from.zone.short}` : undefined}
+        backLabel={
+          from.name === "zone"
+            ? `Volver a ${from.zone.short}`
+            : from.name === "itinerary"
+              ? "Volver al cuaderno"
+              : undefined
+        }
       />
     );
   }
 
   if (view.name === "zone") {
+    const back = view.from ?? { name: "map" as const };
     return (
       <ZoneView
         zone={view.zone}
@@ -92,16 +125,37 @@ export default function App() {
           setView({ name: "detail", animal, from: view })
         }
         onToggleSeen={handleToggleSeen}
-        onBack={() => setView({ name: "map" })}
+        onBack={() => setView(back)}
       />
     );
+  }
+
+  if (view.name === "itinerary") {
+    return (
+      <Itinerary
+        animals={animals}
+        seenState={seenState}
+        journal={journal}
+        onSetNote={handleSetNote}
+        onSelectAnimal={(animal) =>
+          setView({ name: "detail", animal, from: { name: "itinerary" } })
+        }
+        onOpenZone={(zoneId) => openZone(zoneId, { name: "itinerary" })}
+        onBack={() => setView({ name: "list" })}
+      />
+    );
+  }
+
+  if (view.name === "tips") {
+    return <SafariTips onBack={() => setView({ name: "list" })} />;
   }
 
   if (view.name === "settings") {
     return (
       <Settings
         seenState={seenState}
-        onImport={setSeenState}
+        journal={journal}
+        onImport={handleImport}
         onBack={() => setView({ name: "list" })}
         nowIso={nowIso}
       />
@@ -238,6 +292,12 @@ export default function App() {
       )}
 
       <nav className="foot-nav">
+        <button onClick={() => setView({ name: "itinerary" })}>
+          Cuaderno de bitácora
+        </button>
+        <button onClick={() => setView({ name: "tips" })}>
+          Trucos para el safari
+        </button>
         <button onClick={() => setView({ name: "settings" })}>
           Copia de seguridad
         </button>

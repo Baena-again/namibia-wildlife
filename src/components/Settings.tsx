@@ -1,20 +1,32 @@
 import { useRef, useState } from "react";
-import type { SeenState } from "../types";
-import { buildBackup, parseBackup, mergeBackup } from "../lib/storage";
+import type { JournalState, SeenState } from "../types";
+import {
+  buildBackup,
+  parseBackup,
+  mergeBackup,
+  mergeJournal,
+} from "../lib/storage";
 
 type Props = {
   seenState: SeenState;
-  onImport: (next: SeenState) => void;
+  journal: JournalState;
+  onImport: (seen: SeenState, journal: JournalState) => void;
   onBack: () => void;
   nowIso: () => string;
 };
 
-export function Settings({ seenState, onImport, onBack, nowIso }: Props) {
+export function Settings({
+  seenState,
+  journal,
+  onImport,
+  onBack,
+  nowIso,
+}: Props) {
   const fileInput = useRef<HTMLInputElement>(null);
   const [message, setMessage] = useState<string | null>(null);
 
   function handleExport() {
-    const backup = buildBackup(seenState, nowIso());
+    const backup = buildBackup(seenState, journal, nowIso());
     const blob = new Blob([JSON.stringify(backup, null, 2)], {
       type: "application/json",
     });
@@ -31,7 +43,10 @@ export function Settings({ seenState, onImport, onBack, nowIso }: Props) {
     try {
       const text = await file.text();
       const backup = parseBackup(text);
-      onImport(mergeBackup(seenState, backup.seen));
+      onImport(
+        mergeBackup(seenState, backup.seen),
+        mergeJournal(journal, backup.journal),
+      );
       setMessage("Copia importada correctamente.");
     } catch (err) {
       setMessage(err instanceof Error ? err.message : "No se pudo importar.");
@@ -45,8 +60,9 @@ export function Settings({ seenState, onImport, onBack, nowIso }: Props) {
       </button>
       <h1 className="title">Copia de seguridad</h1>
       <p className="notice">
-        Los animales marcados se guardan en este dispositivo. Exporta una copia
-        para no perderlos si cambias de móvil o borras los datos del navegador.
+        Los animales marcados y las notas del cuaderno de bitácora se guardan en
+        este dispositivo. Exporta una copia para no perderlos si cambias de móvil
+        o borras los datos del navegador.
       </p>
 
       <div className="settings-actions">

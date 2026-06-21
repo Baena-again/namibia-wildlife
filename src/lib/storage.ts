@@ -1,6 +1,7 @@
-import type { SeenState, SeenRecord } from "../types";
+import type { SeenState, SeenRecord, JournalState } from "../types";
 
 const STORAGE_KEY = "namibia-wildlife:seen:v1";
+const JOURNAL_KEY = "namibia-wildlife:journal:v1";
 const EXPORT_VERSION = 1;
 
 export type BackupFile = {
@@ -8,6 +9,8 @@ export type BackupFile = {
   version: number;
   exportedAt: string;
   seen: SeenState;
+  /** Trip logbook notes; absent in older backups. */
+  journal: JournalState;
 };
 
 /* ----------------------------- pure logic ----------------------------- */
@@ -26,13 +29,34 @@ export function toggleSeen(
 }
 
 /** Build the JSON-serializable backup payload. */
-export function buildBackup(state: SeenState, now: string): BackupFile {
+export function buildBackup(
+  state: SeenState,
+  journal: JournalState,
+  now: string,
+): BackupFile {
   return {
     app: "namibia-wildlife",
     version: EXPORT_VERSION,
     exportedAt: now,
     seen: state,
+    journal,
   };
+}
+
+/**
+ * Merge imported journal notes into the current ones. To avoid clobbering
+ * notes typed on this device, an imported note only fills a day that is
+ * currently empty.
+ */
+export function mergeJournal(
+  current: JournalState,
+  incoming: JournalState,
+): JournalState {
+  const merged: JournalState = { ...current };
+  for (const [id, text] of Object.entries(incoming)) {
+    if (!merged[id]?.trim() && text?.trim()) merged[id] = text;
+  }
+  return merged;
 }
 
 /** Merge an imported backup into existing state (imported "seen" wins). */
@@ -82,6 +106,15 @@ export function parseBackup(raw: string): BackupFile {
       };
     }
   }
+  const journalRaw = (data as { journal?: unknown }).journal;
+  const journal: JournalState = {};
+  if (journalRaw && typeof journalRaw === "object") {
+    for (const [id, value] of Object.entries(
+      journalRaw as Record<string, unknown>,
+    )) {
+      if (typeof value === "string") journal[id] = value;
+    }
+  }
   return {
     app: "namibia-wildlife",
     version: Number((data as { version?: unknown }).version) || EXPORT_VERSION,
@@ -90,6 +123,7 @@ export function parseBackup(raw: string): BackupFile {
         ? (data as { exportedAt: string }).exportedAt
         : "",
     seen,
+    journal,
   };
 }
 
@@ -110,6 +144,29 @@ export function loadSeen(): SeenState {
 export function saveSeen(state: SeenState): boolean {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function loadJournal(): JournalState {
+  try {
+    const raw = localStorage.getItem(JOURNAL_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object"
+      ? (parsed as JournalState)
+      : {};
+  } catch {
+    return {};
+  }
+}
+
+/** Persist the trip logbook notes. Returns false if storage is unavailable. */
+export function saveJournal(state: JournalState): boolean {
+  try {
+    localStorage.setItem(JOURNAL_KEY, JSON.stringify(state));
     return true;
   } catch {
     return false;
