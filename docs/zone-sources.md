@@ -199,34 +199,3 @@ mapping) and `src/data/difficulty.ts` (per-animal spotting difficulty).
   [Kalahari Game Lodge — lion reintroduction](https://kalaharigamelodge.com/wildlife-and-sustainability/),
   [Wild Wings — Kalahari guide](https://wild-wings-safaris.com/africa-travel-guide/kalahari-desert).
   Specialist: [African Snakebite Institute — Kalahari scorpions](https://www.africansnakebiteinstitute.com/scorpion/kalahari-thicktail-scorpion/).
-
----
-
-## Added species (June 2026)
-
-Sixteen emblematic Namibian animals were added to the catalogue, with their map
-zones and spotting difficulty curated from standard authoritative references:
-**IUCN Red List** (iucnredlist.org), the **Atlas of Namibia** (atlasofnamibia.online),
-**Birds of the World** (Cornell; birdsoftheworld.org) and **The Reptile Database**
-(reptile-database.org), cross-checked with the operator/park sources already
-cited above for sighting frequency.
-
-- **Cocodrilo del Nilo** (*Crocodylus niloticus*) — Zambezi/Caprivi & Kavango–Chobe rivers; the apex freshwater predator of the NE wetlands. Difficulty: media.
-- **Zorro orejudo** (*Otocyon megalotis*) — Etosha, central, Kalahari open plains; insectivore. Media.
-- **Ardilla terrestre de El Cabo** (*Xerus inauris*) — Kalahari, Etosha, central arid plains; very conspicuous. Fácil.
-- **Tejedor republicano** (*Philetairus socius*) — Kalahari, central, Namib edge; famous giant communal nests. Fácil.
-- **Saltarrocas / klipspringer** (*Oreotragus oreotragus*) — rocky Kaokoland/Damaraland, Erongo, Naukluft. Media.
-- **Búbalo rojo** (*Alcelaphus buselaphus caama*) — Etosha, central, Kalahari grasslands. Media.
-- **Pangolín de Temminck** (*Smutsia temminckii*) — Kalahari, central, Etosha; nocturnal, extremely rare. Difícil.
-- **Oricteropo / aardvark** (*Orycteropus afer*) — Etosha, central, Kalahari; nocturnal. Difícil.
-- **Protelo / aardwolf** (*Proteles cristata*) — Etosha, central, Kalahari; nocturnal termite-eater. Difícil.
-- **Inseparable de Namibia** (*Agapornis roseicollis*) — near-endemic; Kaokoland/Damaraland, Erongo, western escarpment. Media.
-- **Buitre orejudo** (*Torgos tracheliotos*) — Etosha, Kalahari, Namib; largest African vulture. Media.
-- **Flamenco común** (*Phoenicopterus roseus*) — Walvis Bay/Sandwich Harbour coast; breeds in Etosha pan in wet years. Fácil.
-- **Azor lagartijero pálido** (*Melierax canorus*) — Namib, Kalahari, central, Etosha; conspicuous roadside raptor. Fácil.
-- **Antílope acuático / waterbuck** (*Kobus ellipsiprymnus*) — Zambezi rivers and Waterberg (central); water-dependent. Media.
-- **Grulla carunculada** (*Bugeranus carunculatus*) — Zambezi/Kavango wetlands; rare, threatened. Difícil.
-- **Víbora bufadora** (*Bitis arietans*) — widespread (Etosha, central, Kalahari, savannas); cryptic. Difícil.
-
-Illustrations were generated in the same Audubon cut-out style on the app's exact
-ivory background (#fef7f1) and sliced from a single 4×4 plate.
