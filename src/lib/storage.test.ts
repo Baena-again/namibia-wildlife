@@ -4,9 +4,10 @@ import {
   buildBackup,
   mergeBackup,
   mergeJournal,
+  mergeShopping,
   parseBackup,
 } from "./storage";
-import type { JournalState, SeenState } from "../types";
+import type { JournalState, SeenState, ShoppingState } from "../types";
 
 const NOW = "2026-06-21T10:00:00.000Z";
 
@@ -30,15 +31,18 @@ describe("buildBackup / parseBackup round-trip", () => {
   it("round-trips state through JSON", () => {
     const state: SeenState = { lion: { seen: true, seenAt: NOW } };
     const notes: JournalState = { "2026-07-10": "Vimos un rinoceronte." };
-    const json = JSON.stringify(buildBackup(state, notes, NOW));
+    const cart: ShoppingState = { "d§g§Huevos": true };
+    const json = JSON.stringify(buildBackup(state, notes, cart, NOW));
     const parsed = parseBackup(json);
     expect(parsed.seen).toEqual(state);
     expect(parsed.journal).toEqual(notes);
+    expect(parsed.shopping).toEqual(cart);
     expect(parsed.app).toBe("namibia-wildlife");
   });
-  it("defaults journal to empty for older backups", () => {
+  it("defaults journal and shopping to empty for older backups", () => {
     const json = JSON.stringify({ app: "namibia-wildlife", seen: {} });
     expect(parseBackup(json).journal).toEqual({});
+    expect(parseBackup(json).shopping).toEqual({});
   });
 });
 
@@ -84,5 +88,14 @@ describe("mergeJournal", () => {
   });
   it("ignores blank imported notes", () => {
     expect(mergeJournal({}, { d1: "   " }).d1).toBeUndefined();
+  });
+});
+
+describe("mergeShopping", () => {
+  it("adds items only present in the import", () => {
+    expect(mergeShopping({}, { a: true }).a).toBe(true);
+  });
+  it("keeps a locally-known item's value over the import", () => {
+    expect(mergeShopping({ a: false }, { a: true }).a).toBe(false);
   });
 });

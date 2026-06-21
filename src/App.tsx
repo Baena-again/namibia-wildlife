@@ -5,6 +5,7 @@ import type {
   FilterMode,
   JournalState,
   SeenState,
+  ShoppingState,
   Zone,
   ZoneId,
 } from "./types";
@@ -22,6 +23,8 @@ import {
   toggleSeen,
   loadJournal,
   saveJournal,
+  loadShopping,
+  saveShopping,
 } from "./lib/storage";
 import { AnimalGrid } from "./components/AnimalGrid";
 import { AnimalDetail } from "./components/AnimalDetail";
@@ -47,6 +50,9 @@ const nowIso = () => new Date().toISOString();
 export default function App() {
   const [seenState, setSeenState] = useState<SeenState>(() => loadSeen());
   const [journal, setJournal] = useState<JournalState>(() => loadJournal());
+  const [shoppingChecked, setShoppingChecked] = useState<ShoppingState>(() =>
+    loadShopping(),
+  );
   const [storageOk, setStorageOk] = useState(true);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<FilterMode>("all");
@@ -65,6 +71,11 @@ export default function App() {
   useEffect(() => {
     saveJournal(journal);
   }, [journal]);
+
+  // Persist the shopping checks as they're ticked.
+  useEffect(() => {
+    saveShopping(shoppingChecked);
+  }, [shoppingChecked]);
 
   const categories = useMemo(() => categoriesOf(animals), []);
   const visible = useMemo(
@@ -94,9 +105,18 @@ export default function App() {
     setView({ name: "shopping" });
   }
 
-  function handleImport(seen: SeenState, journalIn: JournalState) {
+  function handleToggleShopping(key: string) {
+    setShoppingChecked((prev) => ({ ...prev, [key]: !prev[key] }));
+  }
+
+  function handleImport(
+    seen: SeenState,
+    journalIn: JournalState,
+    shoppingIn: ShoppingState,
+  ) {
     setSeenState(seen);
     setJournal(journalIn);
+    setShoppingChecked(shoppingIn);
   }
 
   function openZone(zoneId: ZoneId, from?: View) {
@@ -144,6 +164,7 @@ export default function App() {
       <Settings
         seenState={seenState}
         journal={journal}
+        shopping={shoppingChecked}
         onImport={handleImport}
         onBack={() => setView({ name: "list" })}
         nowIso={nowIso}
@@ -224,7 +245,13 @@ export default function App() {
 
       {view.name === "tips" && <SafariTips />}
 
-      {view.name === "shopping" && <ShoppingList focus={shoppingFocus} />}
+      {view.name === "shopping" && (
+        <ShoppingList
+          focus={shoppingFocus}
+          checked={shoppingChecked}
+          onToggle={handleToggleShopping}
+        />
+      )}
 
       {view.name === "list" && (
         <>

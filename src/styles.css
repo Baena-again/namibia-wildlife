@@ -1045,14 +1045,27 @@ h3,
   font-size: 1rem;
   line-height: 1.45;
   color: var(--ink);
-  padding: 0.18rem 0 0.18rem 1.1rem;
-  position: relative;
 }
 
-.shopping-group li::before {
-  content: "□";
-  position: absolute;
-  left: 0;
+.shopping-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.28rem 0;
+  cursor: pointer;
+}
+
+.shopping-item input {
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--terracotta);
+  cursor: pointer;
+  transform: translateY(0.15rem);
+}
+
+.shopping-item.is-checked span {
+  text-decoration: line-through;
   color: var(--stone);
 }
 
