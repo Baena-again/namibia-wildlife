@@ -1,4 +1,4 @@
-import type { Animal } from "../types";
+import type { Animal, AnimalSize } from "../types";
 import img_african_elephant from "../assets/animals/african-elephant.png";
 import img_lion from "../assets/animals/lion.png";
 import img_leopard from "../assets/animals/leopard.png";
@@ -112,7 +112,7 @@ import img_puff_adder from "../assets/animals/puff-adder.png";
  * we could trust, so they were removed entirely: "giant-anteater" (a South
  * American species) and "namibian-roadrunner" (not a real bird).
  */
-export const animals: Animal[] = [
+const baseAnimals: Animal[] = [
   {
     id: "african-elephant",
     commonName: "Elefante africano",
@@ -1682,3 +1682,508 @@ export const animals: Animal[] = [
     ],
   },
 ];
+
+/**
+ * Quick size & weight reference for every animal, keyed by id. Kept separate
+ * from the entries above so the catalogue stays readable, and merged into the
+ * exported list below. For mammals the main measure is usually the shoulder
+ * height ("Alzada") or body length ("Longitud"); for birds the standing height
+ * or the wingspan ("Envergadura"); for reptiles and invertebrates the length.
+ */
+const sizes: Record<string, AnimalSize> = {
+  "african-elephant": {
+    measure: "Alzada 3–3,2 m",
+    weight: "4.000–6.000 kg",
+    compare: "Más alto que una portería; pesa como 4–5 coches",
+  },
+  lion: {
+    measure: "Longitud 1,7–2,5 m + cola",
+    weight: "Machos ~190 kg, hembras ~130 kg",
+    compare: "Del tamaño de un poni pequeño",
+  },
+  leopard: {
+    measure: "Longitud 1,2–1,9 m + cola",
+    weight: "30–70 kg",
+    compare: "Como un labrador grande, pero más musculoso",
+  },
+  cheetah: {
+    measure: "Alzada ~75 cm, longitud 1,1–1,5 m",
+    weight: "35–65 kg",
+    compare: "Más estilizado y ligero que un leopardo",
+  },
+  "black-rhinoceros": {
+    measure: "Alzada 1,4–1,7 m",
+    weight: "800–1.400 kg",
+    compare: "Como un coche pequeño",
+  },
+  "white-rhinoceros": {
+    measure: "Alzada 1,7–1,85 m",
+    weight: "1.800–2.500 kg",
+    compare: "El terrestre más pesado tras el elefante",
+  },
+  "african-buffalo": {
+    measure: "Alzada 1,4–1,7 m",
+    weight: "500–900 kg",
+    compare: "Como un toro grande",
+  },
+  giraffe: {
+    measure: "Altura 4,5–5,5 m",
+    weight: "800–1.200 kg",
+    compare: "El animal más alto del mundo; alcanza un primer piso",
+  },
+  hippopotamus: {
+    measure: "Longitud 3,3–5 m",
+    weight: "1.500–3.200 kg",
+    compare: "Como un coche grande o una furgoneta",
+  },
+  "oryx-gemsbok": {
+    measure: "Alzada ~1,2 m",
+    weight: "180–240 kg",
+    compare: "Como un poni robusto; cuernos rectos de casi 1 m",
+  },
+  springbok: {
+    measure: "Alzada ~75 cm",
+    weight: "30–48 kg",
+    compare: "Como una oveja esbelta",
+  },
+  impala: {
+    measure: "Alzada 80–90 cm",
+    weight: "40–75 kg",
+    compare: "Algo mayor que una oveja",
+  },
+  "blue-wildebeest": {
+    measure: "Alzada 1,15–1,45 m",
+    weight: "120–270 kg",
+    compare: "Como un poni con cabezón de bóvido",
+  },
+  "plains-zebra": {
+    measure: "Alzada 1,2–1,4 m",
+    weight: "175–385 kg",
+    compare: "Como un poni rechoncho",
+  },
+  "hartmanns-mountain-zebra": {
+    measure: "Alzada 1,2–1,5 m",
+    weight: "240–340 kg",
+    compare: "Algo mayor y más esbelta que la cebra común",
+  },
+  kudu: {
+    measure: "Alzada 1,2–1,5 m",
+    weight: "120–315 kg",
+    compare: "Grande como un ciervo robusto; cuernos en espiral hasta 1,8 m",
+  },
+  eland: {
+    measure: "Alzada 1,5–1,8 m",
+    weight: "400–940 kg",
+    compare: "El antílope más grande del mundo; como un buey",
+  },
+  "dik-dik": {
+    measure: "Alzada 35–45 cm",
+    weight: "3–6 kg",
+    compare: "Diminuto, como un conejo grande o un gato",
+  },
+  steenbok: {
+    measure: "Alzada 45–60 cm",
+    weight: "7–16 kg",
+    compare: "Como un perro pequeño",
+  },
+  "sable-antelope": {
+    measure: "Alzada 1,2–1,4 m",
+    weight: "190–270 kg",
+    compare: "Como un poni; cuernos curvos de hasta 1,6 m",
+  },
+  "roan-antelope": {
+    measure: "Alzada 1,4–1,6 m",
+    weight: "230–320 kg",
+    compare: "Uno de los antílopes más grandes, tras el eland",
+  },
+  "red-lechwe": {
+    measure: "Alzada 90 cm–1 m",
+    weight: "70–130 kg",
+    compare: "Ciervo mediano de fuertes patas traseras",
+  },
+  puku: {
+    measure: "Alzada ~80 cm",
+    weight: "60–90 kg",
+    compare: "Algo mayor que un impala",
+  },
+  tsessebe: {
+    measure: "Alzada 1,1–1,2 m",
+    weight: "120–160 kg",
+    compare: "Como un ñu esbelto; el antílope más rápido de África",
+  },
+  "reedbuck-redunca": {
+    measure: "Alzada 80–90 cm",
+    weight: "40–95 kg",
+    compare: "Como una oveja grande",
+  },
+  "spotted-hyena": {
+    measure: "Alzada 75–85 cm",
+    weight: "45–80 kg",
+    compare: "Como un pastor alemán grande, con el lomo inclinado",
+  },
+  "brown-hyena": {
+    measure: "Alzada 70–80 cm",
+    weight: "35–55 kg",
+    compare: "Como un perro grande de pelo largo y desgreñado",
+  },
+  "black-backed-jackal": {
+    measure: "Alzada 38–48 cm",
+    weight: "6–13 kg",
+    compare: "Como un perro mediano delgado o un zorro grande",
+  },
+  "african-wild-dog": {
+    measure: "Alzada 60–75 cm",
+    weight: "18–36 kg",
+    compare: "Como un perro mediano de orejas enormes",
+  },
+  warthog: {
+    measure: "Alzada 60–85 cm",
+    weight: "45–150 kg",
+    compare: "Como un cerdo o jabalí",
+  },
+  "chacma-baboon": {
+    measure: "Longitud 1–1,2 m + cola",
+    weight: "15–45 kg",
+    compare: "Los machos, como un perro grande o un niño",
+  },
+  "vervet-monkey": {
+    measure: "Longitud 40–60 cm + cola",
+    weight: "3,5–8 kg",
+    compare: "Como un gato",
+  },
+  meerkat: {
+    measure: "Longitud 25–35 cm + cola",
+    weight: "0,6–1 kg",
+    compare: "Como una ardilla grande; cabe en una mano",
+  },
+  caracal: {
+    measure: "Alzada 40–50 cm",
+    weight: "8–20 kg",
+    compare: "El doble de un gato doméstico; orejas con pinceles",
+  },
+  "cape-fox": {
+    measure: "Alzada ~30 cm",
+    weight: "2,5–4 kg",
+    compare: "Como un gato pequeño",
+  },
+  "cape-porcupine": {
+    measure: "Longitud 60–85 cm",
+    weight: "10–24 kg",
+    compare: "El roedor más grande de África; un perro pequeño con púas",
+  },
+  "african-wildcat": {
+    measure: "Longitud 50–75 cm + cola",
+    weight: "3–6,5 kg",
+    compare: "Como un gato doméstico, algo más patilargo",
+  },
+  "honey-badger": {
+    measure: "Longitud 60–80 cm",
+    weight: "7–16 kg",
+    compare: "Como un tejón muy robusto",
+  },
+  "african-civet": {
+    measure: "Longitud 65–90 cm + cola",
+    weight: "7–20 kg",
+    compare: "Como un perro pequeño de patas cortas",
+  },
+  "spotted-genet": {
+    measure: "Longitud 45–55 cm + cola larga",
+    weight: "1,5–3 kg",
+    compare: "Como un gato esbelto y bajito",
+  },
+  "yellow-mongoose": {
+    measure: "Longitud 25–35 cm + cola",
+    weight: "0,4–0,9 kg",
+    compare: "Como un hurón pequeño",
+  },
+  "banded-mongoose": {
+    measure: "Longitud 30–45 cm + cola",
+    weight: "1,5–2,3 kg",
+    compare: "Como un hurón grande",
+  },
+  springhare: {
+    measure: "Longitud 35–45 cm + cola larga",
+    weight: "2,5–3,8 kg",
+    compare: "Un conejo que salta como un canguro en miniatura",
+  },
+  "rock-hyrax": {
+    measure: "Longitud 45–55 cm",
+    weight: "2,5–4,5 kg",
+    compare: "Como un conejo rechoncho; pariente lejano del elefante",
+  },
+  ostrich: {
+    measure: "Altura 2–2,8 m",
+    weight: "90–145 kg",
+    compare: "El ave más grande del mundo; más alta que una persona",
+  },
+  flamingo: {
+    measure: "Altura 80 cm–1 m",
+    weight: "1,5–2 kg",
+    compare: "El flamenco más pequeño; alto pero muy ligero",
+  },
+  "african-white-backed-vulture": {
+    measure: "Envergadura ~2,2 m",
+    weight: "4–7 kg",
+    compare: "Alas como una persona con los brazos abiertos",
+  },
+  "martial-eagle": {
+    measure: "Envergadura 1,9–2,6 m",
+    weight: "3–6 kg",
+    compare: "El águila más grande de África; alas de casi una cama",
+  },
+  secretarybird: {
+    measure: "Altura ~1,3 m",
+    weight: "3,5–4 kg",
+    compare: "Un ave rapaz que anda como una grulla de patas largas",
+  },
+  "dune-lark": {
+    measure: "Longitud ~18 cm",
+    weight: "~25 g",
+    compare: "Como un gorrión",
+  },
+  "lilac-breasted-roller": {
+    measure: "Longitud ~36 cm (con cola)",
+    weight: "~110 g",
+    compare: "Como una tórtola de colores vivos",
+  },
+  "white-pelican": {
+    measure: "Envergadura 2,5–3,6 m",
+    weight: "9–15 kg",
+    compare: "Una de las aves voladoras más pesadas",
+  },
+  "cape-cormorant": {
+    measure: "Longitud ~64 cm",
+    weight: "~1 kg",
+    compare: "Como un pato grande y oscuro",
+  },
+  "african-fish-eagle": {
+    measure: "Envergadura 2–2,4 m",
+    weight: "2–3,6 kg",
+    compare: "Como un águila pescadora robusta",
+  },
+  "southern-ground-hornbill": {
+    measure: "Altura ~1 m",
+    weight: "3–6 kg",
+    compare: "Como un pavo negro de cara roja",
+  },
+  bateleur: {
+    measure: "Envergadura ~1,8 m",
+    weight: "2–3 kg",
+    compare: "Águila de cola corta; planea como una cometa",
+  },
+  "kori-bustard": {
+    measure: "Altura ~1,2 m",
+    weight: "7–18 kg",
+    compare: "De las aves voladoras más pesadas; como un pavo grande",
+  },
+  "grey-crowned-crane": {
+    measure: "Altura ~1 m",
+    weight: "3–4 kg",
+    compare: "Grulla esbelta con penacho dorado",
+  },
+  "ruppells-bustard": {
+    measure: "Altura ~60 cm",
+    weight: "1,2–1,8 kg",
+    compare: "Como una gallina de patas largas",
+  },
+  "african-marabou": {
+    measure: "Altura ~1,5 m, envergadura hasta 3,2 m",
+    weight: "5–9 kg",
+    compare: "Cigüeña enorme; de las mayores envergaduras del mundo",
+  },
+  "saddle-billed-stork": {
+    measure: "Altura ~1,5 m, envergadura ~2,7 m",
+    weight: "5–7,5 kg",
+    compare: "Cigüeña muy alta, casi como una persona",
+  },
+  "gecko-del-namib": {
+    measure: "Longitud ~12–14 cm (con cola)",
+    weight: "~15 g",
+    compare: "Cabe en la palma de la mano",
+  },
+  "vibora-del-desierto": {
+    measure: "Longitud 30–50 cm",
+    weight: "~100–200 g",
+    compare: "Víbora pequeña y gruesa, del largo de un antebrazo",
+  },
+  "culebra-del-desierto": {
+    measure: "Longitud ~60–90 cm",
+    weight: "ligera",
+    compare: "Serpiente fina y veloz, del grosor de un dedo",
+  },
+  "lagarto-del-desierto": {
+    measure: "Longitud ~12–18 cm (con cola)",
+    weight: "muy ligero",
+    compare: "Como un lagarto de jardín",
+  },
+  camaleon: {
+    measure: "Longitud ~25 cm (con cola)",
+    weight: "~80–100 g",
+    compare: "El camaleón más grande del sur de África; como una mano",
+  },
+  "tortuga-terrestre": {
+    measure: "Caparazón 40–70 cm",
+    weight: "13–20 kg (hasta 40)",
+    compare: "La cuarta tortuga terrestre más grande del mundo",
+  },
+  "anfibio-del-desierto": {
+    measure: "Longitud ~8–12 cm",
+    weight: "~50–80 g",
+    compare: "Sapo robusto que cabe en una mano",
+  },
+  "escarabajo-del-desierto": {
+    measure: "Longitud ~2 cm",
+    weight: "muy ligero",
+    compare: "Como un escarabajo común negro",
+  },
+  "arana-del-desierto": {
+    measure: "Cuerpo ~2–3 cm (envergadura hasta 6 cm)",
+    weight: "muy ligera",
+    compare: "Como una araña grande del tamaño de una moneda",
+  },
+  "escorpion-del-desierto": {
+    measure: "Longitud ~10–14 cm",
+    weight: "ligero",
+    compare: "Escorpión grande, de los más venenosos de África",
+  },
+  "insecto-del-desierto": {
+    measure: "Longitud ~3,5–4,5 cm",
+    weight: "muy ligero",
+    compare: "Como un saltamontes grande",
+  },
+  "cape-fur-seal": {
+    measure: "Longitud 1,8–2,3 m (machos)",
+    weight: "Machos 200–360 kg, hembras ~75 kg",
+    compare: "Los machos, como un jugador de rugby muy corpulento",
+  },
+  "heavisides-dolphin": {
+    measure: "Longitud 1,5–1,7 m",
+    weight: "40–75 kg",
+    compare: "Uno de los delfines más pequeños; como una persona",
+  },
+  "atlantic-bottlenose-dolphin": {
+    measure: "Longitud 2,5–3,8 m",
+    weight: "150–650 kg",
+    compare: "El delfín mular clásico; como un sofá grande",
+  },
+  "southern-right-whale": {
+    measure: "Longitud 13–16 m",
+    weight: "40.000–80.000 kg",
+    compare: "Como un autobús articulado; pesa como 10 elefantes",
+  },
+  "african-penguin": {
+    measure: "Altura ~60 cm",
+    weight: "2,2–3,5 kg",
+    compare: "Como un pato grande; llega a la rodilla",
+  },
+  "cape-gannet": {
+    measure: "Envergadura ~1,8 m",
+    weight: "2,6–3,3 kg",
+    compare: "Como una gaviota grande que se zambulle en picado",
+  },
+  "damara-tern": {
+    measure: "Longitud ~23 cm, envergadura ~50 cm",
+    weight: "~50 g",
+    compare: "Charrancito diminuto, como un mirlo",
+  },
+  "wandering-albatross": {
+    measure: "Envergadura 2,5–3,5 m",
+    weight: "6–12 kg",
+    compare: "La mayor envergadura de cualquier ave viva",
+  },
+  "southern-elephant-seal": {
+    measure: "Longitud hasta 5–6 m (machos)",
+    weight: "Machos hasta 3.700 kg",
+    compare: "El mayor de los carnívoros; como una furgoneta",
+  },
+  "ghost-crab": {
+    measure: "Caparazón ~3–5 cm",
+    weight: "muy ligero",
+    compare: "Cangrejo pálido que cabe en una mano",
+  },
+  "nile-crocodile": {
+    measure: "Longitud 3,5–5 m (hasta 6)",
+    weight: "225–750 kg (hasta 1.000)",
+    compare: "Como un coche largo; el mayor reptil de África",
+  },
+  "bat-eared-fox": {
+    measure: "Alzada ~30 cm, longitud ~55 cm + cola",
+    weight: "3–5,3 kg",
+    compare: "Zorro pequeño de orejas enormes; como un gato grande",
+  },
+  "cape-ground-squirrel": {
+    measure: "Longitud ~22–30 cm + cola",
+    weight: "0,4–1 kg",
+    compare: "Como una ardilla grande con cola en penacho",
+  },
+  "sociable-weaver": {
+    measure: "Longitud ~14 cm",
+    weight: "~27 g",
+    compare: "Como un gorrión; construye nidos comunales gigantes",
+  },
+  klipspringer: {
+    measure: "Alzada ~50–60 cm",
+    weight: "8–18 kg",
+    compare: "Antílope pequeño que anda de puntillas; como un perro mediano",
+  },
+  "red-hartebeest": {
+    measure: "Alzada 1,1–1,5 m",
+    weight: "120–200 kg",
+    compare: "Antílope alto de cara larga; como un poni esbelto",
+  },
+  "ground-pangolin": {
+    measure: "Longitud ~70–100 cm (con cola)",
+    weight: "5–18 kg",
+    compare: "Como una piña gigante con patas",
+  },
+  aardvark: {
+    measure: "Longitud 1–1,3 m + cola",
+    weight: "40–65 kg",
+    compare: "Como un cerdo de orejas de burro y hocico largo",
+  },
+  aardwolf: {
+    measure: "Alzada ~45–50 cm",
+    weight: "8–12 kg",
+    compare: "Hiena pequeña que come termitas; como un perro mediano",
+  },
+  "rosy-faced-lovebird": {
+    measure: "Longitud ~17–18 cm",
+    weight: "~50 g",
+    compare: "Como un periquito rechoncho",
+  },
+  "lappet-faced-vulture": {
+    measure: "Envergadura 2,5–2,9 m",
+    weight: "5–9 kg",
+    compare: "El buitre más grande de África; alas enormes",
+  },
+  "greater-flamingo": {
+    measure: "Altura 1,2–1,45 m",
+    weight: "2–4 kg",
+    compare: "El flamenco más alto; llega a la cintura",
+  },
+  "pale-chanting-goshawk": {
+    measure: "Longitud ~55–65 cm",
+    weight: "0,6–1 kg",
+    compare: "Rapaz esbelta de patas rojas; como un cuervo grande",
+  },
+  waterbuck: {
+    measure: "Alzada 1,2–1,36 m",
+    weight: "200–300 kg",
+    compare: "Antílope robusto con anillo blanco en la grupa; como un poni",
+  },
+  "wattled-crane": {
+    measure: "Altura ~1,7 m",
+    weight: "6,4–7,9 kg",
+    compare: "La grulla más grande de África; casi tan alta como una persona",
+  },
+  "puff-adder": {
+    measure: "Longitud ~1 m",
+    weight: "~4–6 kg (hasta 10)",
+    compare: "Víbora corta y muy gruesa, del grosor de un brazo",
+  },
+};
+
+export const animals: Animal[] = baseAnimals.map((animal) => ({
+  ...animal,
+  size: sizes[animal.id],
+}));
