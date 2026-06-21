@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { Animal } from "../types";
 import { AnimalImage } from "./AnimalImage";
 import { zonesForAnimal } from "../lib/zones";
@@ -17,6 +18,12 @@ export function AnimalDetail({
   onBack,
   backLabel = "Volver al catálogo",
 }: Props) {
+  // Open the detail scrolled to the top so the animal is always in view,
+  // regardless of how far the previous list/zone was scrolled down.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [animal.id]);
+
   // The catalogue's `whereToSee` is empty for now, so fall back to the map zones.
   const places =
     animal.whereToSee.length > 0
