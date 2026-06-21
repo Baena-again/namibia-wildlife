@@ -4,3 +4,7 @@ dev-dist
 *.local
 .DS_Store
 .vscode
+*.tsbuildinfo
+
+# Source material (kept locally, not published)
+Working folder/
