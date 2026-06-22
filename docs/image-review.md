@@ -20,6 +20,12 @@ Fecha: 2026-06-21.
 
 ## GRAVE — recomendado reemplazar
 
+> **Actualización:** las 8 imágenes de esta tabla se **regeneraron** (lámina única con
+> prompts correctivos) y se **reemplazaron** en `src/assets/animals/` tras recortarlas y
+> componerlas sobre el fondo crema estándar. Verificadas: animales completos, sin recortes
+> ni trozos de otras especies. Ver `docs/image-regen-prompts.md`.
+
+
 | id | Especie objetivo | Qué muestra la imagen | Qué debería mostrar |
 |---|---|---|---|
 | `flamingo` | Flamenco enano (*Phoeniconaias minor*) | Flamenco rosa pálido con pico claro de punta negra = flamenco común; prácticamente idéntico a `greater-flamingo` | Ave más pequeña, rosa más intenso/carmesí y **pico rojo oscuro casi negro** |
