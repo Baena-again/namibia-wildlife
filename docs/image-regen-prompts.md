@@ -78,30 +78,72 @@ fondo crema, para recortar después cada uno a su `src/assets/animals/<id>.png`.
 
 > A single Audubon-style natural-history plate showing **eight different animals arranged
 > in a clean 4×2 grid**, each animal as a complete full body, **well separated with generous
-> empty space around each (no overlapping, no touching)**, all in the same semi-realistic
-> detailed painted style, consistent soft natural lighting, **plain uniform warm cream /
-> off-white background (#f7f1e8)** across the whole sheet, no text, no labels, no frames,
-> no panel borders. The eight animals are:
+> empty space around each (no overlapping, no touching, each one fully inside its own area)**,
+> all in the same semi-realistic detailed painted style, consistent soft natural lighting from
+> the upper left, **plain uniform warm cream / off-white background (#f7f1e8)** across the whole
+> sheet, subtle soft shadow under each animal, no text, no labels, no captions, no frames, no
+> grid lines, no panel borders. Each animal must be anatomically accurate, in sharp focus, and
+> clearly isolated so it can be cropped out individually. The eight animals are:
 >
-> 1. A **lesser flamingo** standing — deep rosy-crimson plumage and a **dark deep-red,
->    almost black, downcurved bill** (not a pale bill).
-> 2. A **Cape cormorant** — **entirely glossy black** body with blue-green sheen and a small
->    **orange-yellow throat patch** (no white on throat or cheeks).
-> 3. A **Namaqua chameleon** walking on flat sand — terrestrial, grey-brown with mottled
->    flanks and dorsal spines, **short tail** (not on a branch, no long coiled tail).
-> 4. A **Heaviside's dolphin** leaping — stocky, **blunt head with no beak**, **large
->    triangular dorsal fin**, dark grey cape with white belly and white blazes up the flanks.
-> 5. A **horned adder** coiled on sand — short stout sandy viper with dark dorsal blotches and
->    **a single horn-like scale erected above each eye**.
-> 6. A **Namib fog-basking darkling beetle** — jet-black, **very long slender legs holding the
->    body high**, smooth glossy elytra, exactly six legs.
-> 7. A **Damara tern in breeding plumage** — small tern with a **complete solid black cap from
->    bill to nape (no white forehead)**, pale grey back, white underparts.
-> 8. A **red hartebeest** standing in profile — reddish-tan, **long narrow face**, sloping back,
->    **tall ringed horns rising from a single bony pedicel then bending sharply backwards**,
->    with bold dark markings on face and legs.
+> **1. Lesser flamingo (*Phoeniconaias minor*)** — standing upright in side profile on long
+> legs, neck in a graceful S-curve.
+> · DO: deep rosy-pink to crimson plumage, strongest on the wing coverts; a **dark deep-red
+>   bill that looks almost solid black**, strongly downcurved; relatively small and compact.
+> · DON'T: pale-pink/white plumage; a pale pink bill with only a black tip (that is a greater
+>   flamingo).
 >
-> Each animal anatomically accurate and clearly isolated so it can be cropped out individually.
+> **2. Cape cormorant (*Phalacrocorax capensis*)** — standing/perched upright in side profile,
+> long neck, slender hooked bill.
+> · DO: **entirely glossy black plumage** over the whole body and wings with a faint blue-green
+>   sheen; a small **orange-yellow gular (throat) patch** at the base of the bill; dark webbed feet.
+> · DON'T: any white on throat, cheek or breast; brown, pale-scaled wing feathers (that is a
+>   great cormorant).
+>
+> **3. Namaqua chameleon (*Chamaeleo namaquensis*)** — terrestrial, standing or walking on
+> **flat open desert sand / bare ground**, body in side profile.
+> · DO: robust thick body, **grey to grey-brown** colour with darker mottled blotches along the
+>   flanks, a row of enlarged conical spines along the spine, large independently swivelling
+>   turret eyes, and a **short tail clearly shorter than the body**.
+> · DON'T: bright green colour; gripping a branch; a long tail coiled into a spiral.
+>
+> **4. Heaviside's dolphin (*Cephalorhynchus heavisidii*)** — full body in side profile, gently
+> arching/leaping.
+> · DO: small, **stocky, porpoise-like body**; a **blunt, rounded head with NO beak/rostrum**;
+>   a **large triangular dorsal fin**; dark blue-grey cape over the back, lighter grey on the
+>   front flanks, **white belly with finger-like white blazes** running up the sides behind the
+>   flippers.
+> · DON'T: a pointed beak/snout; a curved (falcate) dorsal fin; a slim striped grey body (that is
+>   a common/bottlenose dolphin).
+>
+> **5. Horned adder (*Bitis caudalis*)** — short stout viper loosely coiled on desert sand, head
+> raised and facing the viewer.
+> · DO: sandy buff to pale grey-brown body with a dorsal row of dark squarish blotches/chevrons;
+>   a broad triangular head with vertical pupils; and crucially **a single elongated horn-like
+>   scale standing erect above each eye**.
+> · DON'T: a smooth round head with no horns above the eyes; a long thin body (it is short and thick).
+>
+> **6. Namib fog-basking darkling beetle (*Onymacris unguicularis*)** — side / three-quarter view,
+> walking.
+> · DO: jet-black tenebrionid beetle; **very long, slender legs that hold the rounded body high
+>   off the ground** (athletic, stilt-like stance); **smooth glossy elytra (wing cases)** with
+>   little sculpturing; exactly **six legs** and two short segmented antennae.
+> · DON'T: short stubby legs; a low squat body on the ground; heavily ridged/pitted wing cases; more
+>   or fewer than six legs.
+>
+> **7. Damara tern (*Sternula balaenarum*), breeding plumage** — small tern standing or in flight,
+> side profile.
+> · DO: a **complete solid black cap covering the whole crown, from the base of the bill and the
+>   forehead all the way back to the nape**; pale grey upperparts, white underparts; black bill;
+>   dark legs; slightly forked tail.
+> · DON'T: a white forehead; a black mask only around the eye (those are non-breeding plumages).
+>
+> **8. Red hartebeest (*Alcelaphus buselaphus caama*)** — large antelope standing in side profile.
+> · DO: reddish-tan coat; a **distinctly long, narrow face**; a back that **slopes downward from
+>   high shoulders to a lower rump**; **tall ringed horns that rise close together from a single
+>   raised bony pedicel on top of the head and then bend sharply backwards** (bracket / heart
+>   shape); bold blackish markings on the face, shoulders, thighs and front of the legs; paler rump.
+> · DON'T: a short ordinary face; short simple lyre-shaped horns set wide apart low on the head
+>   (that looks like a generic antelope).
 
 ---
 
