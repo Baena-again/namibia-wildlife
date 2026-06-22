@@ -71,6 +71,40 @@ actual NO tiene.
 >
 > Evitar: frente blanca, antifaz negro solo alrededor del ojo (eso es plumaje no reproductor).
 
+## Alternativa: un solo prompt para una lámina con los 8 (luego recortar)
+
+Genera una única imagen con los 8 animales bien separados en rejilla, mismo estilo y
+fondo crema, para recortar después cada uno a su `src/assets/animals/<id>.png`.
+
+> A single Audubon-style natural-history plate showing **eight different animals arranged
+> in a clean 4×2 grid**, each animal as a complete full body, **well separated with generous
+> empty space around each (no overlapping, no touching)**, all in the same semi-realistic
+> detailed painted style, consistent soft natural lighting, **plain uniform warm cream /
+> off-white background (#f7f1e8)** across the whole sheet, no text, no labels, no frames,
+> no panel borders. The eight animals are:
+>
+> 1. A **lesser flamingo** standing — deep rosy-crimson plumage and a **dark deep-red,
+>    almost black, downcurved bill** (not a pale bill).
+> 2. A **Cape cormorant** — **entirely glossy black** body with blue-green sheen and a small
+>    **orange-yellow throat patch** (no white on throat or cheeks).
+> 3. A **Namaqua chameleon** walking on flat sand — terrestrial, grey-brown with mottled
+>    flanks and dorsal spines, **short tail** (not on a branch, no long coiled tail).
+> 4. A **Heaviside's dolphin** leaping — stocky, **blunt head with no beak**, **large
+>    triangular dorsal fin**, dark grey cape with white belly and white blazes up the flanks.
+> 5. A **horned adder** coiled on sand — short stout sandy viper with dark dorsal blotches and
+>    **a single horn-like scale erected above each eye**.
+> 6. A **Namib fog-basking darkling beetle** — jet-black, **very long slender legs holding the
+>    body high**, smooth glossy elytra, exactly six legs.
+> 7. A **Damara tern in breeding plumage** — small tern with a **complete solid black cap from
+>    bill to nape (no white forehead)**, pale grey back, white underparts.
+> 8. A **red hartebeest** standing in profile — reddish-tan, **long narrow face**, sloping back,
+>    **tall ringed horns rising from a single bony pedicel then bending sharply backwards**,
+>    with bold dark markings on face and legs.
+>
+> Each animal anatomically accurate and clearly isolated so it can be cropped out individually.
+
+---
+
 ### `red-hartebeest` — Alcélafo rojo (*Alcelaphus buselaphus caama*)
 > A **red hartebeest** standing in side profile. Large reddish-tan antelope with a
 > **distinctly long, narrow face**, a back that **slopes down from high shoulders to a lower
