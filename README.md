@@ -24,6 +24,20 @@ Built to work **fully offline** (installable PWA) so it keeps working in the
 parks where there's no signal. The seen-state is stored on the device, with an
 export/import backup so nothing gets lost.
 
+## Idiomas (i18n)
+
+La interfaz es multilingüe (español / inglés) con una capa propia y ligera, sin
+dependencias, en `src/i18n/`:
+
+- Las cadenas de la interfaz viven en `src/i18n/messages.ts`, una por idioma.
+- Los componentes las leen con el hook `useT()` / `useI18n()`.
+- El idioma se detecta del navegador, se puede cambiar desde la cabecera y se
+  recuerda en el dispositivo (funciona offline).
+
+Para añadir un idioma: amplía el tipo `Locale`, añade su tabla en `messages.ts`
+y súmalo a `LOCALES`. El contenido del catálogo (fichas de animales, zonas,
+trucos, itinerario) sigue en español y se traducirá de forma incremental.
+
 ## Stack
 
 - Vite + React + TypeScript

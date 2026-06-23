@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import type { Animal } from "../types";
 import { AnimalImage } from "./AnimalImage";
 import { zonesForAnimal } from "../lib/zones";
+import { useT } from "../i18n";
 
 type Props = {
   animal: Animal;
@@ -16,8 +17,9 @@ export function AnimalDetail({
   seen,
   onToggleSeen,
   onBack,
-  backLabel = "Volver al catálogo",
+  backLabel,
 }: Props) {
+  const t = useT();
   // Open the detail scrolled to the top so the animal is always in view,
   // regardless of how far the previous list/zone was scrolled down.
   useEffect(() => {
@@ -33,7 +35,7 @@ export function AnimalDetail({
   return (
     <article className="detail">
       <button className="back-link" onClick={onBack}>
-        ← {backLabel}
+        ← {backLabel ?? t("detail.backCatalogue")}
       </button>
 
       <figure className="detail-figure">
@@ -49,18 +51,18 @@ export function AnimalDetail({
       )}
 
       {animal.size && (
-        <dl className="size-card" aria-label="Tamaño y peso">
+        <dl className="size-card" aria-label={t("detail.sizeAria")}>
           <div className="size-item">
-            <dt>Tamaño</dt>
+            <dt>{t("detail.size")}</dt>
             <dd>{animal.size.measure}</dd>
           </div>
           <div className="size-item">
-            <dt>Peso</dt>
+            <dt>{t("detail.weight")}</dt>
             <dd>{animal.size.weight}</dd>
           </div>
           {animal.size.compare && (
             <div className="size-item size-compare">
-              <dt>Referencia</dt>
+              <dt>{t("detail.reference")}</dt>
               <dd>{animal.size.compare}</dd>
             </div>
           )}
@@ -73,14 +75,14 @@ export function AnimalDetail({
 
       {animal.distinguish && (
         <section className="detail-section">
-          <h2 className="label">Cómo distinguirlo</h2>
+          <h2 className="label">{t("detail.distinguish")}</h2>
           <p className="detail-text">{animal.distinguish}</p>
         </section>
       )}
 
       {places.length > 0 && (
         <section className="detail-section">
-          <h2 className="label">Dónde verlo</h2>
+          <h2 className="label">{t("detail.whereToSee")}</h2>
           <ul>
             {places.map((place) => (
               <li key={place}>{place}</li>
@@ -91,14 +93,14 @@ export function AnimalDetail({
 
       {animal.spottingTips && (
         <section className="detail-section">
-          <h2 className="label">Trucos para avistarlo</h2>
+          <h2 className="label">{t("detail.spottingTips")}</h2>
           <p className="detail-text">{animal.spottingTips}</p>
         </section>
       )}
 
       {animal.funFacts.length > 0 && (
         <section className="detail-section">
-          <h2 className="label">Datos curiosos</h2>
+          <h2 className="label">{t("detail.funFacts")}</h2>
           <ul>
             {animal.funFacts.map((fact) => (
               <li key={fact}>{fact}</li>
@@ -111,7 +113,7 @@ export function AnimalDetail({
         className={`seen-toggle ${seen ? "is-seen" : ""}`}
         onClick={onToggleSeen}
       >
-        {seen ? "✓ Visto" : "Marcar como visto"}
+        {seen ? t("detail.seen") : t("detail.markSeen")}
       </button>
     </article>
   );

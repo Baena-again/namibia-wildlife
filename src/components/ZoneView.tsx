@@ -6,9 +6,9 @@ import {
   filterZoneAnimals,
   groupByDifficulty,
   DIFFICULTY_ORDER,
-  DIFFICULTY_LABEL,
 } from "../lib/zones";
 import { AnimalGrid } from "./AnimalGrid";
+import { useT } from "../i18n";
 
 type Props = {
   zone: Zone;
@@ -27,6 +27,7 @@ export function ZoneView({
   onToggleSeen,
   onBack,
 }: Props) {
+  const t = useT();
   const [difficulty, setDifficulty] = useState<Difficulty | null>(null);
 
   const zoneAnimals = getZoneAnimals(zone.id, animals);
@@ -38,7 +39,7 @@ export function ZoneView({
   return (
     <div className="zone-view">
       <button className="back-link" onClick={onBack}>
-        ← Volver al mapa
+        ← {t("zone.backMap")}
       </button>
 
       <header className="zone-header">
@@ -47,28 +48,28 @@ export function ZoneView({
         <p className="zone-blurb">{zone.blurb}</p>
         <dl className="zone-facts">
           <div>
-            <dt className="label">Clima</dt>
+            <dt className="label">{t("zone.climate")}</dt>
             <dd>{zone.climate}</dd>
           </div>
           <div>
-            <dt className="label">Terreno</dt>
+            <dt className="label">{t("zone.terrain")}</dt>
             <dd>{zone.terrain}</dd>
           </div>
         </dl>
         <div className="counter">
-          {seen} de {zoneAnimals.length} vistos aquí
+          {t("zone.counterHere", { seen, total: zoneAnimals.length })}
         </div>
       </header>
 
       <div className="zone-filters">
         <div className="zone-filter">
-          <span className="label zone-filter-label">Dificultad</span>
+          <span className="label zone-filter-label">{t("zone.difficulty")}</span>
           <div className="chips">
             <button
               className={`chip ${difficulty === null ? "active" : ""}`}
               onClick={() => setDifficulty(null)}
             >
-              Todas
+              {t("zone.all")}
             </button>
             {DIFFICULTY_ORDER.map((d) => (
               <button
@@ -76,7 +77,7 @@ export function ZoneView({
                 className={`chip chip-${d} ${difficulty === d ? "active" : ""}`}
                 onClick={() => setDifficulty(d)}
               >
-                {DIFFICULTY_LABEL[d]}
+                {t(`difficulty.${d}`)}
               </button>
             ))}
           </div>
@@ -84,12 +85,12 @@ export function ZoneView({
       </div>
 
       {groups.length === 0 ? (
-        <p className="empty">Ningún animal coincide con estos filtros.</p>
+        <p className="empty">{t("zone.empty")}</p>
       ) : (
         groups.map((group) => (
           <section key={group.difficulty} className="zone-group">
             <h2 className={`zone-group-title label diff-${group.difficulty}`}>
-              {group.label}
+              {t(`difficulty.${group.difficulty}`)}
               <span className="zone-group-count">{group.animals.length}</span>
             </h2>
             <AnimalGrid

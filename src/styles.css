@@ -70,8 +70,41 @@ h3,
 /* ------------------------------- header ------------------------------ */
 
 .app-header {
+  position: relative;
   text-align: center;
   margin-bottom: 1.5rem;
+}
+
+/* ------------------------- language switcher ------------------------- */
+
+.lang-switch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-flex;
+  gap: 0.15rem;
+  border: 1px solid var(--ivory-deep);
+  border-radius: 999px;
+  padding: 0.1rem;
+  background: var(--ivory-deep);
+}
+
+.lang-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--sepia);
+  font-family: "Cinzel", "EB Garamond", serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.lang-btn.active {
+  background: var(--terracotta);
+  color: var(--ivory);
 }
 
 .app-header h1 {

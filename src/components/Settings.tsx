@@ -7,6 +7,7 @@ import {
   mergeJournal,
   mergeShopping,
 } from "../lib/storage";
+import { useT } from "../i18n";
 
 type Props = {
   seenState: SeenState;
@@ -29,6 +30,7 @@ export function Settings({
   onBack,
   nowIso,
 }: Props) {
+  const t = useT();
   const fileInput = useRef<HTMLInputElement>(null);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -43,7 +45,7 @@ export function Settings({
     a.download = `namibia-wildlife-copia-${nowIso().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    setMessage("Copia descargada.");
+    setMessage(t("settings.downloaded"));
   }
 
   async function handleImportFile(file: File) {
@@ -55,33 +57,29 @@ export function Settings({
         mergeJournal(journal, backup.journal),
         mergeShopping(shopping, backup.shopping),
       );
-      setMessage("Copia importada correctamente.");
+      setMessage(t("settings.imported"));
     } catch (err) {
-      setMessage(err instanceof Error ? err.message : "No se pudo importar.");
+      setMessage(err instanceof Error ? err.message : t("settings.importFailed"));
     }
   }
 
   return (
     <section className="detail">
       <button className="back-link" onClick={onBack}>
-        ← Volver al catálogo
+        ← {t("detail.backCatalogue")}
       </button>
-      <h1 className="title">Copia de seguridad</h1>
-      <p className="notice">
-        Los animales marcados y las notas del cuaderno de bitácora se guardan en
-        este dispositivo. Exporta una copia para no perderlos si cambias de móvil
-        o borras los datos del navegador.
-      </p>
+      <h1 className="title">{t("settings.title")}</h1>
+      <p className="notice">{t("settings.intro")}</p>
 
       <div className="settings-actions">
         <button className="action-btn" onClick={handleExport}>
-          Exportar copia
+          {t("settings.export")}
         </button>
         <button
           className="action-btn"
           onClick={() => fileInput.current?.click()}
         >
-          Importar copia
+          {t("settings.import")}
         </button>
         <input
           ref={fileInput}

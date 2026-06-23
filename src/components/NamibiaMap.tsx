@@ -2,6 +2,7 @@ import type { Animal, SeenState, ZoneId } from "../types";
 import { zones } from "../data/zones";
 import { countZoneSeen, getZoneAnimals } from "../lib/zones";
 import mapImage from "../assets/namibia-map.webp";
+import { useT } from "../i18n";
 
 type Props = {
   animals: Animal[];
@@ -10,14 +11,11 @@ type Props = {
 };
 
 export function NamibiaMap({ animals, seenState, onSelect }: Props) {
+  const t = useT();
   return (
     <div className="map">
       <div className="map-figure">
-        <img
-          className="map-img"
-          src={mapImage}
-          alt="Mapa ilustrado de Namibia con sus zonas de fauna"
-        />
+        <img className="map-img" src={mapImage} alt={t("map.imgAlt")} />
 
         <svg
           className="map-overlay"
@@ -38,7 +36,11 @@ export function NamibiaMap({ animals, seenState, onSelect }: Props) {
                 vectorEffect="non-scaling-stroke"
                 role="button"
                 tabIndex={0}
-                aria-label={`${zone.name}: ${seen} de ${total} animales vistos`}
+                aria-label={t("map.areaAria", {
+                  zone: zone.name,
+                  seen,
+                  total,
+                })}
                 onClick={() => onSelect(zone.id)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
@@ -54,9 +56,7 @@ export function NamibiaMap({ animals, seenState, onSelect }: Props) {
         </svg>
       </div>
 
-      <p className="map-hint">
-        Toca o selecciona con el tabulador una zona para abrir su ficha.
-      </p>
+      <p className="map-hint">{t("map.hint")}</p>
 
       <ul className="map-legend">
         {zones.map((zone) => {

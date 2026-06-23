@@ -4,6 +4,7 @@ import { itinerary } from "../data/itinerary";
 import { shopping } from "../data/shopping";
 import { getZone } from "../lib/zones";
 import { AnimalImage } from "./AnimalImage";
+import { useT } from "../i18n";
 
 type Props = {
   animals: Animal[];
@@ -26,6 +27,7 @@ export function Itinerary({
   onOpenShopping,
   onBack,
 }: Props) {
+  const t = useT();
   const byId = useMemo(
     () => new Map(animals.map((a) => [a.id, a])),
     [animals],
@@ -39,15 +41,11 @@ export function Itinerary({
     <section className="itinerary">
       {onBack && (
         <button className="back-link" onClick={onBack}>
-          ← Volver
+          ← {t("itinerary.back")}
         </button>
       )}
-      <h1 className="title">Cuaderno de bitácora</h1>
-      <p className="notice">
-        Nuestra ruta por Namibia, día a día. Toca la zona para ver todos sus
-        animales, abre una ficha tocando una foto, y escribe abajo lo que
-        hayáis visto y hecho — se guarda en este dispositivo.
-      </p>
+      <h1 className="title">{t("itinerary.title")}</h1>
+      <p className="notice">{t("itinerary.intro")}</p>
 
       <ol className="itin-list">
         {itinerary.map((day) => {
@@ -59,7 +57,9 @@ export function Itinerary({
           return (
             <li key={day.id} className="itin-day">
               <div className="itin-day-head">
-                <span className="itin-daynum">Día {day.dayNumber}</span>
+                <span className="itin-daynum">
+                  {t("itinerary.day", { n: day.dayNumber })}
+                </span>
                 <span className="itin-date">{day.label}</span>
                 {zone && (
                   <button
@@ -107,7 +107,7 @@ export function Itinerary({
                           target="_blank"
                           rel="noreferrer"
                         >
-                          📍 Abrir en Maps
+                          📍 {t("itinerary.openMaps")}
                         </a>
                       )}
                       {day.lodging.coords && (
@@ -136,7 +136,7 @@ export function Itinerary({
                         target="_blank"
                         rel="noreferrer"
                       >
-                        web
+                        {t("itinerary.web")}
                       </a>
                     </>
                   )}
@@ -171,7 +171,9 @@ export function Itinerary({
 
               {day.tips && day.tips.length > 0 && (
                 <div className="itin-tips">
-                  <h3 className="itin-tips-label label">En el camino</h3>
+                  <h3 className="itin-tips-label label">
+                    {t("itinerary.onTheRoad")}
+                  </h3>
                   <ul>
                     {day.tips.map((tip) => (
                       <li key={tip}>{tip}</li>
@@ -181,10 +183,10 @@ export function Itinerary({
               )}
 
               <label className="journal-field">
-                <span className="label">Mi diario</span>
+                <span className="label">{t("itinerary.myDiary")}</span>
                 <textarea
                   className="journal-note"
-                  placeholder="¿Qué hemos visto y hecho hoy?"
+                  placeholder={t("itinerary.diaryPlaceholder")}
                   value={journal[day.id] ?? ""}
                   onChange={(e) => onSetNote(day.id, e.target.value)}
                   rows={3}

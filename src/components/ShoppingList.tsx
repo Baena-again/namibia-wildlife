@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { ShoppingState } from "../types";
 import { shopping } from "../data/shopping";
+import { useT } from "../i18n";
 
 type Props = {
   /** Day id of the stop to scroll to when arriving from the logbook. */
@@ -15,6 +16,7 @@ export function itemKey(dayId: string, groupTitle: string, item: string) {
 }
 
 export function ShoppingList({ focus, checked, onToggle }: Props) {
+  const t = useT();
   const refs = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
@@ -27,11 +29,8 @@ export function ShoppingList({ focus, checked, onToggle }: Props) {
 
   return (
     <section className="detail shopping-page">
-      <h1 className="title">Lista de la compra</h1>
-      <p className="notice">
-        Una compra gorda al empezar y dos reposiciones por el camino. Marca lo
-        que vayas metiendo en el carro — se guarda en este dispositivo.
-      </p>
+      <h1 className="title">{t("shopping.title")}</h1>
+      <p className="notice">{t("shopping.intro")}</p>
 
       {shopping.map((stop) => (
         <section

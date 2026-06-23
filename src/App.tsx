@@ -11,12 +11,7 @@ import type {
 } from "./types";
 import { animals } from "./data/animals";
 import { filterAnimals, countSeen } from "./lib/search";
-import {
-  getZone,
-  categoriesOf,
-  DIFFICULTY_ORDER,
-  DIFFICULTY_LABEL,
-} from "./lib/zones";
+import { getZone, categoriesOf, DIFFICULTY_ORDER } from "./lib/zones";
 import {
   loadSeen,
   saveSeen,
@@ -34,6 +29,8 @@ import { Settings } from "./components/Settings";
 import { Itinerary } from "./components/Itinerary";
 import { SafariTips } from "./components/SafariTips";
 import { ShoppingList } from "./components/ShoppingList";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { useI18n } from "./i18n";
 
 type View =
   | { name: "list" }
@@ -48,6 +45,7 @@ type View =
 const nowIso = () => new Date().toISOString();
 
 export default function App() {
+  const { t } = useI18n();
   const [seenState, setSeenState] = useState<SeenState>(() => loadSeen());
   const [journal, setJournal] = useState<JournalState>(() => loadJournal());
   const [shoppingChecked, setShoppingChecked] = useState<ShoppingState>(() =>
@@ -134,9 +132,9 @@ export default function App() {
         onBack={() => setView(from)}
         backLabel={
           from.name === "zone"
-            ? `Volver a ${from.zone.short}`
+            ? t("detail.backZone", { zone: from.zone.short })
             : from.name === "itinerary"
-              ? "Volver al cuaderno"
+              ? t("detail.backLogbook")
               : undefined
         }
       />
@@ -174,11 +172,11 @@ export default function App() {
 
   // The top-level tabs, in display order (Catálogo stays last).
   const tabs = [
-    { name: "map", label: "Mapa" },
-    { name: "itinerary", label: "Cuaderno" },
-    { name: "tips", label: "Trucos" },
-    { name: "shopping", label: "Compra" },
-    { name: "list", label: "Catálogo" },
+    { name: "map", labelKey: "tab.map" },
+    { name: "itinerary", labelKey: "tab.itinerary" },
+    { name: "tips", labelKey: "tab.tips" },
+    { name: "shopping", labelKey: "tab.shopping" },
+    { name: "list", labelKey: "tab.list" },
   ] as const;
 
   function goTab(name: (typeof tabs)[number]["name"]) {
@@ -190,37 +188,31 @@ export default function App() {
   return (
     <>
       <header className="app-header">
+        <LanguageSwitcher />
         <h1>Namibia Wildlife</h1>
-        <div className="subtitle">Guía de campo</div>
+        <div className="subtitle">{t("app.subtitle")}</div>
         <div className="counter">
-          {seenCount} de {animals.length} vistos
+          {t("app.counter", { seen: seenCount, total: animals.length })}
         </div>
       </header>
 
       <nav className="tabs">
-        {tabs.map((t) => (
+        {tabs.map((tab) => (
           <button
-            key={t.name}
-            className={`tab ${view.name === t.name ? "active" : ""}`}
-            onClick={() => goTab(t.name)}
+            key={tab.name}
+            className={`tab ${view.name === tab.name ? "active" : ""}`}
+            onClick={() => goTab(tab.name)}
           >
-            {t.label}
+            {t(tab.labelKey)}
           </button>
         ))}
       </nav>
 
-      {!storageOk && (
-        <p className="notice">
-          Este navegador no guarda datos: los animales marcados se perderán al
-          cerrar. Prueba a instalar la app en la pantalla de inicio.
-        </p>
-      )}
+      {!storageOk && <p className="notice">{t("app.storageWarning")}</p>}
 
       {view.name === "map" && (
         <>
-          <p className="map-intro">
-            Toca una zona de Namibia para ver qué animales esperar allí.
-          </p>
+          <p className="map-intro">{t("app.mapIntro")}</p>
           <NamibiaMap
             animals={animals}
             seenState={seenState}
@@ -259,7 +251,7 @@ export default function App() {
             <input
               className="search-input"
               type="search"
-              placeholder="Buscar por nombre…"
+              placeholder={t("controls.searchPlaceholder")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
@@ -271,24 +263,24 @@ export default function App() {
                   onClick={() => setFilter(mode)}
                 >
                   {mode === "all"
-                    ? "Todos"
+                    ? t("controls.all")
                     : mode === "seen"
-                      ? "Vistos"
-                      : "Pendientes"}
+                      ? t("controls.seen")
+                      : t("controls.pending")}
                 </button>
               ))}
             </div>
 
             <div className="catalogue-filter">
               <span className="label catalogue-filter-label">
-                Fáciles de ver
+                {t("controls.easyToSee")}
               </span>
               <div className="chips">
                 <button
                   className={`chip ${difficulty === null ? "active" : ""}`}
                   onClick={() => setDifficulty(null)}
                 >
-                  Todas
+                  {t("controls.allFem")}
                 </button>
                 {DIFFICULTY_ORDER.map((d) => (
                   <button
@@ -296,7 +288,7 @@ export default function App() {
                     className={`chip chip-${d} ${difficulty === d ? "active" : ""}`}
                     onClick={() => setDifficulty(difficulty === d ? null : d)}
                   >
-                    {DIFFICULTY_LABEL[d]}
+                    {t(`difficulty.${d}`)}
                   </button>
                 ))}
               </div>
@@ -304,14 +296,14 @@ export default function App() {
 
             <div className="catalogue-filter">
               <span className="label catalogue-filter-label">
-                Categoría
+                {t("controls.category")}
               </span>
               <div className="chips">
                 <button
                   className={`chip ${category === "" ? "active" : ""}`}
                   onClick={() => setCategory("")}
                 >
-                  Todas
+                  {t("controls.allFem")}
                 </button>
                 {categories.map((c) => (
                   <button
@@ -339,7 +331,7 @@ export default function App() {
 
       <nav className="foot-nav">
         <button onClick={() => setView({ name: "settings" })}>
-          Copia de seguridad
+          {t("app.backup")}
         </button>
       </nav>
     </>

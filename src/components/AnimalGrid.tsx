@@ -1,5 +1,6 @@
 import type { Animal, SeenState } from "../types";
 import { AnimalImage } from "./AnimalImage";
+import { useT } from "../i18n";
 
 type Props = {
   animals: Animal[];
@@ -38,6 +39,7 @@ function Card({
   onSelect: (animal: Animal) => void;
   onToggleSeen: (id: string) => void;
 }) {
+  const t = useT();
   return (
     <div className={`specimen ${seen ? "is-seen" : "is-pending"}`}>
       <button className="specimen-open" onClick={() => onSelect(animal)}>
@@ -55,11 +57,11 @@ function Card({
         aria-pressed={seen}
         aria-label={
           seen
-            ? `Marcar ${animal.commonName} como no visto`
-            : `Marcar ${animal.commonName} como visto`
+            ? t("grid.markUnseenAria", { name: animal.commonName })
+            : t("grid.markSeenAria", { name: animal.commonName })
         }
       >
-        {seen ? "✓ Visto" : "Marcar visto"}
+        {seen ? t("grid.seen") : t("grid.markSeen")}
       </button>
     </div>
   );
@@ -72,8 +74,9 @@ export function AnimalGrid({
   onToggleSeen,
   grouped = true,
 }: Props) {
+  const t = useT();
   if (animals.length === 0) {
-    return <p className="empty">Ningún animal coincide con la búsqueda.</p>;
+    return <p className="empty">{t("grid.empty")}</p>;
   }
 
   const cards = (items: Animal[]) => (
