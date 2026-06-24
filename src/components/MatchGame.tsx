@@ -117,14 +117,35 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
     [animals],
   );
 
-  // Animals available to the game, ordered most-worth-learning-first.
-  const pool = useMemo(
-    () =>
-      animalGameRank
-        .map((r) => animalById.get(r.id))
-        .filter((a): a is Animal => Boolean(a)),
-    [animalById],
-  );
+  // Animals available to the game. Base order is most-worth-learning-first,
+  // but each confusable's partner is pulled to immediately follow it — so when
+  // one of a look-alike pair is introduced, the other shows up the very next
+  // level. That keeps both on the same 9-card board for a while (good practice)
+  // and lets the duel fire right when the second one appears.
+  const pool = useMemo(() => {
+    const ranked = animalGameRank
+      .map((r) => animalById.get(r.id))
+      .filter((a): a is Animal => Boolean(a));
+    const partner = new Map<string, string>();
+    for (const c of confusables) {
+      partner.set(c.a, c.b);
+      partner.set(c.b, c.a);
+    }
+    const placed = new Set<string>();
+    const seq: Animal[] = [];
+    for (const a of ranked) {
+      if (placed.has(a.id)) continue;
+      seq.push(a);
+      placed.add(a.id);
+      const p = partner.get(a.id);
+      const partnerAnimal = p ? animalById.get(p) : undefined;
+      if (partnerAnimal && !placed.has(partnerAnimal.id)) {
+        seq.push(partnerAnimal);
+        placed.add(partnerAnimal.id);
+      }
+    }
+    return seq;
+  }, [animalById]);
 
   const maxLevel = Math.max(1, pool.length - (BASE_PAIRS - 1));
 
