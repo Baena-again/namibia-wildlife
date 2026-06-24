@@ -1197,3 +1197,209 @@ h3,
   max-width: 620px;
   margin: 0 auto;
 }
+
+/* ------------------------------- mini-game --------------------------- */
+.game {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0.6rem;
+}
+
+.game-intro {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.game-title {
+  font-family: "Cinzel", "EB Garamond", serif;
+  color: var(--ink);
+  margin: 0 0 0.6rem;
+}
+
+.game-lead {
+  color: var(--sepia);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  max-width: 38rem;
+  margin: 0 auto 1.4rem;
+}
+
+.game-btn {
+  font-family: "Cinzel", "EB Garamond", serif;
+  border: 1px solid var(--terracotta);
+  background: var(--terracotta);
+  color: var(--ivory);
+  border-radius: 6px;
+  padding: 0.6rem 1.1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 200ms ease, transform 120ms ease;
+}
+.game-btn:hover {
+  background: var(--terracotta-deep);
+}
+.game-btn:active {
+  transform: scale(0.96);
+}
+.game-btn-big {
+  font-size: 1.2rem;
+  padding: 0.8rem 1.6rem;
+}
+
+/* HUD */
+.game-hud {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--ivory-deep);
+  margin-bottom: 0.5rem;
+}
+.game-level {
+  font-family: "Cinzel", "EB Garamond", serif;
+  font-weight: 600;
+  color: var(--ink);
+}
+.game-progress {
+  color: var(--sepia);
+}
+.game-mistakes {
+  color: var(--olive);
+  font-size: 0.95rem;
+}
+.game-mute {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Toast feedback */
+.game-toast {
+  text-align: center;
+  min-height: 1.6rem;
+  font-family: "Cinzel", "EB Garamond", serif;
+  font-size: 1.1rem;
+  color: var(--terracotta);
+}
+
+/* Board: two columns, names left, photos right */
+.game-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  align-items: start;
+}
+.game-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.game-name {
+  text-align: left;
+  background: var(--ivory);
+  border: 1.5px solid var(--ivory-deep);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+  cursor: pointer;
+  font-family: "EB Garamond", serif;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  transition: border-color 150ms ease, background 150ms ease,
+    transform 120ms ease;
+}
+.game-name-es {
+  font-variant: small-caps;
+  font-size: 1.1rem;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.game-name-en {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--stone);
+}
+
+.game-photo {
+  padding: 0;
+  border: 1.5px solid var(--ivory-deep);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--ivory);
+  aspect-ratio: 4 / 3;
+  transition: border-color 150ms ease, transform 120ms ease;
+}
+.game-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.game-name:hover,
+.game-photo:hover {
+  border-color: var(--stone);
+}
+
+.game-name.is-selected,
+.game-photo.is-selected {
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 2px rgba(176, 84, 59, 0.25);
+}
+
+.game-name.is-matched,
+.game-photo.is-matched {
+  border-color: var(--olive);
+  opacity: 0.55;
+  cursor: default;
+}
+.game-name.is-matched {
+  background: rgba(109, 111, 68, 0.12);
+}
+
+.game-name.is-wrong,
+.game-photo.is-wrong {
+  border-color: #c0392b;
+  animation: game-shake 0.4s ease;
+}
+
+@keyframes game-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* Level complete / retry overlay */
+.game-overlay {
+  text-align: center;
+  padding: 2.4rem 1rem;
+  background: var(--ivory);
+  border: 1.5px dashed var(--ivory-deep);
+  border-radius: 10px;
+}
+.game-overlay-title {
+  font-family: "Cinzel", "EB Garamond", serif;
+  font-size: 1.3rem;
+  color: var(--ink);
+  margin: 0 0 0.4rem;
+}
+.game-overlay-sub {
+  color: var(--sepia);
+  margin: 0 0 1.2rem;
+}
+
+.game-hint {
+  text-align: center;
+  color: var(--stone);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 0.9rem;
+}
