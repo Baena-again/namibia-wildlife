@@ -248,7 +248,7 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
   // Reward card lingers a touch longer so the fact can be read.
   useEffect(() => {
     if (!reward) return;
-    const t = setTimeout(() => setReward(""), 2600);
+    const t = setTimeout(() => setReward(""), 3600);
     return () => clearTimeout(t);
   }, [reward]);
 

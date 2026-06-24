@@ -1448,25 +1448,41 @@ h3,
   color: var(--stone);
   margin: 0.7rem 0 0.4rem;
 }
-/* Two facing columns: names on the left, photos on the right. */
+/* Mobile-first: a stacked board — names in a 2-col grid (always bilingual)
+   above the photos in a 3-col grid. Keeps everything visible with little
+   scrolling. On wider screens it becomes two facing columns. */
 .game-board {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.7rem;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 .game-side {
   min-width: 0;
 }
 .game-names {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
 }
 .game-photos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
+}
+
+@media (min-width: 620px) {
+  .game-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+    align-items: start;
+  }
+  .game-names {
+    grid-template-columns: 1fr;
+  }
+  .game-photos {
+    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  }
 }
 
 /* Matched cards get a little pop. */
@@ -1527,17 +1543,28 @@ h3,
   background: linear-gradient(transparent, rgba(176, 60, 43, 0.92));
 }
 
-/* Reward fact card after a correct match. */
+/* Reward fact after a correct match — pinned to the bottom of the viewport
+   so the "curiosidad" is always visible, even mid-board on a phone. */
 .game-reward {
-  margin-top: 0.9rem;
-  padding: 0.6rem 0.8rem;
-  background: rgba(109, 111, 68, 0.1);
-  border-left: 3px solid var(--olive);
-  border-radius: 4px;
-  color: var(--ink);
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  width: min(540px, calc(100vw - 24px));
+  box-sizing: border-box;
+  z-index: 50;
+  padding: 0.7rem 0.9rem;
+  background: var(--ink);
+  color: var(--ivory);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
   font-size: 0.95rem;
   line-height: 1.4;
-  animation: game-name-in 0.25s ease;
+  animation: game-reward-in 0.25s ease;
+}
+@keyframes game-reward-in {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
 }
 
 /* Confetti — pure CSS, used on level-up and on winning. */
