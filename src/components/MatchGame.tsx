@@ -392,7 +392,8 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
           )}
         </div>
       ) : (
-        <>
+        <div className="game-board">
+          <div className="game-side">
           <div className="game-col-label">Nombres</div>
           <div className="game-names">
             {nameCards.map((c) => {
@@ -419,7 +420,9 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
               );
             })}
           </div>
+          </div>
 
+          <div className="game-side">
           <div className="game-col-label">Fotos</div>
           <div className="game-photos">
             {imageCards.map((c) => {
@@ -446,7 +449,8 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
               );
             })}
           </div>
-        </>
+          </div>
+        </div>
       )}
 
       {reward && !outcome && (
