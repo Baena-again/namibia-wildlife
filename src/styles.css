@@ -1403,3 +1403,159 @@ h3,
   font-style: italic;
   margin-top: 0.9rem;
 }
+
+/* --------------------- mini-game v2 (quiz + learning) ---------------- */
+.game-cta {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.game-btn-ghost {
+  background: transparent;
+  color: var(--terracotta);
+}
+.game-btn-ghost:hover {
+  background: rgba(176, 84, 59, 0.08);
+}
+.game-learned {
+  margin-top: 1.1rem;
+  color: var(--sepia);
+}
+.game-learned-mini {
+  color: var(--stone);
+  font-size: 0.85rem;
+}
+.game-mistakes.has-miss {
+  color: var(--terracotta-deep);
+}
+
+/* Column labels + responsive grids (mobile-friendly, wrap instead of two
+   tall single-file columns). */
+.game-col-label {
+  font-family: "Cinzel", "EB Garamond", serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin: 0.7rem 0 0.4rem;
+}
+.game-names {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+.game-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 0.5rem;
+}
+
+/* Matched cards get a little pop. */
+.game-name.is-matched,
+.game-photo.is-matched {
+  animation: game-pop 0.32s ease;
+}
+@keyframes game-pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* "repasa" flag on the retry of a failed level. */
+.game-name.is-review {
+  border-style: dashed;
+  border-color: var(--terracotta);
+}
+.game-review-tag {
+  position: absolute;
+  top: -8px;
+  right: 6px;
+  background: var(--terracotta);
+  color: var(--ivory);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+.game-name {
+  position: relative;
+}
+
+/* Name overlaid on a photo: shown when matched, or flashed on a miss. */
+.game-photo {
+  position: relative;
+}
+.game-photo-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.25rem 0.3rem;
+  font-size: 0.78rem;
+  font-variant: small-caps;
+  letter-spacing: 0.02em;
+  color: var(--ivory);
+  background: linear-gradient(transparent, rgba(43, 38, 29, 0.85));
+  animation: game-name-in 0.2s ease;
+}
+@keyframes game-name-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* When the reveal is from a miss (card not matched) tint it red. */
+.game-photo.is-wrong .game-photo-name {
+  background: linear-gradient(transparent, rgba(176, 60, 43, 0.92));
+}
+
+/* Reward fact card after a correct match. */
+.game-reward {
+  margin-top: 0.9rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(109, 111, 68, 0.1);
+  border-left: 3px solid var(--olive);
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  animation: game-name-in 0.25s ease;
+}
+
+/* Confetti — pure CSS, used on level-up and on winning. */
+.game-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.game-overlay,
+.game-intro {
+  position: relative;
+  overflow: hidden;
+}
+.confetti-bit {
+  position: absolute;
+  top: -12px;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  opacity: 0.9;
+  animation: confetti-fall 1.5s linear forwards;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-12px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(360px) rotate(540deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-name.is-matched,
+  .game-photo.is-matched,
+  .game-name.is-wrong,
+  .game-photo.is-wrong,
+  .confetti-bit,
+  .game-photo-name,
+  .game-reward {
+    animation: none !important;
+  }
+}
