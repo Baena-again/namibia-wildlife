@@ -1448,14 +1448,24 @@ h3,
   color: var(--stone);
   margin: 0.7rem 0 0.4rem;
 }
-.game-names {
+/* Two facing columns: names on the left, photos on the right. */
+.game-board {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  align-items: start;
+}
+.game-side {
+  min-width: 0;
+}
+.game-names {
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
 }
 .game-photos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(116px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
   gap: 0.5rem;
 }
 
