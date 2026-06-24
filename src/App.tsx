@@ -34,6 +34,7 @@ import { Settings } from "./components/Settings";
 import { Itinerary } from "./components/Itinerary";
 import { SafariTips } from "./components/SafariTips";
 import { ShoppingList } from "./components/ShoppingList";
+import { MatchGame } from "./components/MatchGame";
 
 type View =
   | { name: "list" }
@@ -43,7 +44,8 @@ type View =
   | { name: "settings" }
   | { name: "itinerary" }
   | { name: "tips" }
-  | { name: "shopping" };
+  | { name: "shopping" }
+  | { name: "game" };
 
 const nowIso = () => new Date().toISOString();
 
@@ -178,6 +180,7 @@ export default function App() {
     { name: "itinerary", label: "Cuaderno" },
     { name: "tips", label: "Trucos" },
     { name: "shopping", label: "Compra" },
+    { name: "game", label: "Juego" },
     { name: "list", label: "Catálogo" },
   ] as const;
 
@@ -244,6 +247,8 @@ export default function App() {
       )}
 
       {view.name === "tips" && <SafariTips />}
+
+      {view.name === "game" && <MatchGame animals={animals} />}
 
       {view.name === "shopping" && (
         <ShoppingList
