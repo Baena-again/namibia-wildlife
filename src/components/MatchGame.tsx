@@ -22,7 +22,23 @@ import { animalGameRank } from "../data/gameRank";
  */
 
 const BASE_PAIRS = 5; // level 1 = 5 pairs
+const MAX_PAIRS = 9; // board caps at 9 pairs; then it becomes a sliding window
 const STORAGE_KEY = "namibia-game-v1";
+
+/**
+ * Which slice of the ranked pool a level shows.
+ * Levels grow 5,6,7,8,9 pairs; once at 9 the window slides one animal at a
+ * time toward the harder end — each new level adds the next (harder) animal
+ * and drops the oldest (easiest) one — until it reaches the last animal.
+ */
+function levelWindow(level: number, poolLen: number) {
+  const want = level + (BASE_PAIRS - 1); // 5, 6, 7, …
+  const end = Math.min(want, poolLen);
+  const count = Math.min(want, MAX_PAIRS, poolLen);
+  const start = end - count;
+  return { start, end, count };
+}
+
 
 const WIN_CHEERS = [
   "¡Toma! / Nailed it!",
@@ -125,10 +141,11 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
   // Set once a level is finished: did the player earn the next level?
   const [outcome, setOutcome] = useState<null | { advanced: boolean }>(null);
 
-  const pairsThisLevel = Math.min(level + (BASE_PAIRS - 1), pool.length);
+  const pairsThisLevel = levelWindow(level, pool.length).count;
 
   function dealLevel(lvl: number, review: Set<string>) {
-    const chosen = pool.slice(0, Math.min(lvl + (BASE_PAIRS - 1), pool.length));
+    const { start, end } = levelWindow(lvl, pool.length);
+    const chosen = pool.slice(start, end);
     const make = (a: Animal): Card => ({
       uid: a.id,
       animalId: a.id,
@@ -208,7 +225,8 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
     const perfect = mistakes === 0;
     if (perfect) {
       // Mark this level's animals as mastered.
-      const chosen = pool.slice(0, pairsThisLevel);
+      const { start, end } = levelWindow(level, pool.length);
+      const chosen = pool.slice(start, end);
       setMastered((prev) => {
         const next = new Set(prev);
         chosen.forEach((a) => next.add(a.id));
@@ -270,9 +288,10 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
         <p className="game-lead">
           Une cada <strong>nombre</strong> (español e inglés) con su{" "}
           <strong>foto</strong>. Aprenderás primero los animales que más se ven
-          y más fáciles son de reconocer en Namibia. Empiezas con 5 y cada
-          nivel suma uno. ¿Fallas? Te enseña la respuesta y, para subir,
-          tendrás que clavar el nivel. 🐘🦓🦒
+          y más fáciles son de reconocer en Namibia. Empiezas con 5 y el
+          tablero crece hasta 9; luego van entrando los más difíciles y saliendo
+          los más fáciles, hasta dominarlos todos. ¿Fallas? Te enseña la
+          respuesta y, para subir, tendrás que clavar el nivel. 🐘🦓🦒
         </p>
         <div className="game-cta">
           <button
