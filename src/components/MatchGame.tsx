@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { Animal } from "../types";
 import { AnimalImage } from "./AnimalImage";
 import { animalGameRank } from "../data/gameRank";
+import { confusables } from "../data/confusables";
 
 /**
  * "Empareja y aprende" — a silly-but-educational matching mini-game to learn
@@ -101,6 +102,14 @@ function saveSaved(s: Saved) {
 type Card = { uid: string; animalId: string; matched: boolean };
 type Selection = { col: "name" | "image"; uid: string } | null;
 type Status = "start" | "playing" | "won";
+// A look-alike face-off shown before a level when both animals are on the
+// board: ask which photo is `askId`, then reveal the differences.
+type Duel = {
+  askId: string;
+  otherId: string;
+  diff: string;
+  order: string[]; // the two photos, in display order
+};
 
 export function MatchGame({ animals }: { animals: Animal[] }) {
   const animalById = useMemo(
@@ -118,6 +127,26 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
   );
 
   const maxLevel = Math.max(1, pool.length - (BASE_PAIRS - 1));
+
+  // Which look-alike duels fire at each level. A pair's duel is shown at the
+  // level that introduces the *later* (harder/rarer) of the two — i.e. when
+  // you first meet the look-alike — even if its partner isn't on this board,
+  // because the two are rarely close enough in the ranking to share one.
+  const duelsByLevel = useMemo(() => {
+    const pos = new Map(pool.map((a, i) => [a.id, i]));
+    const byLevel = new Map<number, { a: string; b: string; diff: string }[]>();
+    for (const c of confusables) {
+      const pa = pos.get(c.a);
+      const pb = pos.get(c.b);
+      if (pa === undefined || pb === undefined) continue;
+      // Level whose newly-introduced animal is the later member.
+      const lvl = Math.max(1, Math.max(pa, pb) - (BASE_PAIRS - 2));
+      const list = byLevel.get(lvl) ?? [];
+      list.push(c);
+      byLevel.set(lvl, list);
+    }
+    return byLevel;
+  }, [pool]);
 
   const [saved] = useState<Saved>(() => loadSaved());
   const [mastered, setMastered] = useState<Set<string>>(
@@ -140,10 +169,15 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
   const [reward, setReward] = useState("");
   // Set once a level is finished: did the player earn the next level?
   const [outcome, setOutcome] = useState<null | { advanced: boolean }>(null);
+  // Look-alike duels to clear before the board starts, and the current one.
+  const [duels, setDuels] = useState<Duel[]>([]);
+  const [duelIdx, setDuelIdx] = useState(0);
+  // null = awaiting answer; otherwise whether the player picked correctly.
+  const [duelAnswer, setDuelAnswer] = useState<null | boolean>(null);
 
   const pairsThisLevel = levelWindow(level, pool.length).count;
 
-  function dealLevel(lvl: number, review: Set<string>) {
+  function dealLevel(lvl: number, review: Set<string>, withDuels: boolean) {
     const { start, end } = levelWindow(lvl, pool.length);
     const chosen = pool.slice(start, end);
     const make = (a: Animal): Card => ({
@@ -154,6 +188,19 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
     setNameCards(shuffle(chosen.map(make)));
     setImageCards(shuffle(chosen.map(make)));
     setReviewIds(review);
+
+    // Build the duel queue for this level (look-alikes introduced here).
+    const queue: Duel[] = withDuels
+      ? (duelsByLevel.get(lvl) ?? []).map((c) => {
+          const askId = Math.random() < 0.5 ? c.a : c.b;
+          const otherId = askId === c.a ? c.b : c.a;
+          return { askId, otherId, diff: c.diff, order: shuffle([c.a, c.b]) };
+        })
+      : [];
+    setDuels(queue);
+    setDuelIdx(0);
+    setDuelAnswer(null);
+
     setSelected(null);
     setWrongPair([]);
     setRevealUid(null);
@@ -168,7 +215,21 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
   function startGame(fromLevel: number) {
     setLevel(fromLevel);
     setStatus("playing");
-    dealLevel(fromLevel, new Set());
+    dealLevel(fromLevel, new Set(), true);
+  }
+
+  // We're in the duel phase while there are unfinished duels queued.
+  const inDuel = duels.length > 0 && duelIdx < duels.length;
+  const currentDuel = inDuel ? duels[duelIdx] : null;
+
+  function answerDuel(pickedId: string) {
+    if (!currentDuel || duelAnswer !== null) return;
+    setDuelAnswer(pickedId === currentDuel.askId);
+  }
+
+  function nextDuel() {
+    setDuelAnswer(null);
+    setDuelIdx((i) => i + 1);
   }
 
   function handleCard(col: "name" | "image", card: Card) {
@@ -249,10 +310,11 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
     if (outcome.advanced) {
       const next = level + 1;
       setLevel(next);
-      dealLevel(next, new Set());
+      dealLevel(next, new Set(), true);
     } else {
       // Replay the same level; flag the ones we missed as "repasa".
-      dealLevel(level, missedIds);
+      // No duels on a retry — they were just shown.
+      dealLevel(level, missedIds, false);
     }
   }
 
@@ -343,6 +405,72 @@ export function MatchGame({ animals }: { animals: Animal[] }) {
         <button className="game-btn game-btn-big" onClick={() => startGame(1)}>
           Jugar otra vez
         </button>
+      </section>
+    );
+  }
+
+  // Duel phase — shown before the level when look-alikes share the board.
+  if (inDuel && currentDuel) {
+    const ask = animalById.get(currentDuel.askId)!;
+    const answered = duelAnswer !== null;
+    const last = duelIdx === duels.length - 1;
+    return (
+      <section className="game game-duel">
+        <div className="game-duel-head">
+          <span className="game-duel-tag">⚔️ Duelo de parecidos</span>
+          {duels.length > 1 && (
+            <span className="game-duel-count">
+              {duelIdx + 1} / {duels.length}
+            </span>
+          )}
+        </div>
+        <p className="game-duel-q">
+          ¿Cuál es el <strong>{ask.commonName}</strong>
+          {ask.commonNameEn ? ` (${ask.commonNameEn})` : ""}?
+        </p>
+        <div className="game-duel-pair">
+          {currentDuel.order.map((id) => {
+            const a = animalById.get(id)!;
+            const isCorrect = id === currentDuel.askId;
+            const cls = answered
+              ? isCorrect
+                ? "is-right"
+                : "is-wrong"
+              : "";
+            return (
+              <button
+                key={id}
+                className={`game-duel-photo ${cls}`}
+                disabled={answered}
+                onClick={() => answerDuel(id)}
+                aria-label={answered ? a.commonName : "elige este"}
+              >
+                <AnimalImage src={a.image} alt="" />
+                {answered && (
+                  <span className="game-duel-photo-name">{a.commonName}</span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {answered ? (
+          <>
+            <p
+              className={`game-duel-verdict ${
+                duelAnswer ? "ok" : "no"
+              }`}
+            >
+              {duelAnswer ? "¡Correcto! 🎯" : "Casi… fíjate bien 👇"}
+            </p>
+            <p className="game-duel-diff">{currentDuel.diff}</p>
+            <button className="game-btn game-btn-big" onClick={nextDuel}>
+              {last ? "Empezar nivel →" : "Siguiente duelo →"}
+            </button>
+          </>
+        ) : (
+          <p className="game-duel-hint">Toca la foto correcta.</p>
+        )}
       </section>
     );
   }

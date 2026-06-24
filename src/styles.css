@@ -1604,3 +1604,108 @@ h3,
     animation: none !important;
   }
 }
+
+/* ----------------------------- duel (look-alikes) ------------------- */
+.game-duel {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.game-duel-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.4rem 0 0.8rem;
+}
+.game-duel-tag {
+  font-family: "Cinzel", "EB Garamond", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--terracotta-deep);
+}
+.game-duel-count {
+  color: var(--stone);
+  font-size: 0.85rem;
+}
+.game-duel-q {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+.game-duel-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+.game-duel-photo {
+  position: relative;
+  padding: 6px;
+  border: 2px solid var(--ivory-deep);
+  border-radius: 10px;
+  background: var(--ivory);
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: border-color 150ms ease, transform 120ms ease;
+}
+.game-duel-photo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.game-duel-photo:not(:disabled):hover {
+  border-color: var(--stone);
+}
+.game-duel-photo:not(:disabled):active {
+  transform: scale(0.98);
+}
+.game-duel-photo.is-right {
+  border-color: var(--olive);
+  box-shadow: 0 0 0 3px rgba(109, 111, 68, 0.3);
+}
+.game-duel-photo.is-wrong {
+  border-color: #c0392b;
+  opacity: 0.6;
+}
+.game-duel-photo-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.25rem 0.3rem;
+  font-size: 0.85rem;
+  font-variant: small-caps;
+  color: var(--ivory);
+  background: linear-gradient(transparent, rgba(43, 38, 29, 0.85));
+}
+.game-duel-verdict {
+  font-family: "Cinzel", "EB Garamond", serif;
+  font-size: 1.1rem;
+  margin: 0 0 0.6rem;
+}
+.game-duel-verdict.ok {
+  color: var(--olive);
+}
+.game-duel-verdict.no {
+  color: var(--terracotta-deep);
+}
+.game-duel-diff {
+  background: rgba(109, 111, 68, 0.1);
+  border-left: 3px solid var(--olive);
+  border-radius: 4px;
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0 0 1.1rem;
+}
+.game-duel-hint {
+  color: var(--stone);
+  font-style: italic;
+}
