@@ -1709,3 +1709,80 @@ h3,
   color: var(--stone);
   font-style: italic;
 }
+
+/* --------------------------- explain (new animal) ------------------- */
+.game-explain {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+.game-explain-tag {
+  font-family: "Cinzel", "EB Garamond", serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta-deep);
+  margin: 0.4rem 0 0.8rem;
+}
+.game-explain-photo {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-explain-photo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.game-explain-name {
+  font-family: "Cinzel", "EB Garamond", serif;
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin: 0.4rem 0 0;
+}
+.game-explain-en {
+  font-style: italic;
+  color: var(--sepia);
+  margin-top: 0.1rem;
+}
+.game-explain-sci {
+  font-style: italic;
+  color: var(--stone);
+  font-size: 0.9rem;
+  margin-top: 0.1rem;
+}
+.game-explain-desc {
+  color: var(--ink);
+  line-height: 1.5;
+  text-align: left;
+  margin: 1rem 0 0.6rem;
+}
+.game-explain-diff {
+  background: rgba(109, 111, 68, 0.1);
+  border-left: 3px solid var(--olive);
+  border-radius: 4px;
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0 0 1.2rem;
+}
+
+/* exit button in the HUD */
+.game-exit {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--stone);
+  font-family: "EB Garamond", serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.2rem 0.3rem;
+}
+.game-exit:hover {
+  color: var(--terracotta);
+}
