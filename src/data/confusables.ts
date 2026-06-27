@@ -99,9 +99,24 @@ export const confusables: Confusable[] = [
     b: "flamingo",
     diff: "Común: mayor y más pálido, pico claro de punta negra y patas rosadas. Enano: menor, rosa más intenso, pico oscuro casi negro y patas rojizas.",
   },
+  {
+    a: "blue-wildebeest",
+    b: "african-buffalo",
+    diff: "Ñu azul: gris pizarra con melena y cola negras, cuernos curvados hacia los lados; esbelto y en grandes manadas que corren. Búfalo cafre: negro, mucho más macizo y pesado, con cuernos que forman un escudo frontal continuo.",
+  },
+  {
+    a: "kori-bustard",
+    b: "ruppells-bustard",
+    diff: "Avutarda kori: enorme (hasta 19 kg), cuello grueso gris y patas largas. Avutarda de Rüppell: mucho menor (~60 cm), con líneas negras a los lados del cuello y raya facial sobre fondo gris-arenoso.",
+  },
+  {
+    a: "grey-crowned-crane",
+    b: "wattled-crane",
+    diff: "Grulla coronada: penacho de plumas doradas y mejillas blancas. Grulla carunculada: carúnculas blancas colgantes, cuello blanco y cara roja, sin penacho dorado.",
+  },
+  {
+    a: "african-marabou",
+    b: "saddle-billed-stork",
+    diff: "Marabú: cabeza y cuello desnudos, saco gular colgante, manto gris y vientre blanco; aire de carroñero. Cigüeña ensillada: pico enorme rojo-negro-amarillo y plumaje limpio blanco y negro.",
+  },
 ];
-
-/** Confusable pairs whose BOTH members are in the given set of animal ids. */
-export function confusablesIn(ids: Set<string>): Confusable[] {
-  return confusables.filter((c) => ids.has(c.a) && ids.has(c.b));
-}
