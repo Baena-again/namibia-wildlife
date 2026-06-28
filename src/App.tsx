@@ -4,6 +4,7 @@ import type {
   Difficulty,
   FilterMode,
   JournalState,
+  PackingState,
   SeenState,
   ShoppingState,
   Zone,
@@ -25,6 +26,8 @@ import {
   saveJournal,
   loadShopping,
   saveShopping,
+  loadPacking,
+  savePacking,
 } from "./lib/storage";
 import { AnimalGrid } from "./components/AnimalGrid";
 import { AnimalDetail } from "./components/AnimalDetail";
@@ -34,6 +37,7 @@ import { Settings } from "./components/Settings";
 import { Itinerary } from "./components/Itinerary";
 import { SafariTips } from "./components/SafariTips";
 import { ShoppingList } from "./components/ShoppingList";
+import { Packing } from "./components/Packing";
 import { MatchGame } from "./components/MatchGame";
 
 type View =
@@ -45,6 +49,7 @@ type View =
   | { name: "itinerary" }
   | { name: "tips" }
   | { name: "shopping" }
+  | { name: "packing" }
   | { name: "game" };
 
 const nowIso = () => new Date().toISOString();
@@ -54,6 +59,9 @@ export default function App() {
   const [journal, setJournal] = useState<JournalState>(() => loadJournal());
   const [shoppingChecked, setShoppingChecked] = useState<ShoppingState>(() =>
     loadShopping(),
+  );
+  const [packingChecked, setPackingChecked] = useState<PackingState>(() =>
+    loadPacking(),
   );
   const [storageOk, setStorageOk] = useState(true);
   const [query, setQuery] = useState("");
@@ -78,6 +86,11 @@ export default function App() {
   useEffect(() => {
     saveShopping(shoppingChecked);
   }, [shoppingChecked]);
+
+  // Persist the packing checks as they're ticked.
+  useEffect(() => {
+    savePacking(packingChecked);
+  }, [packingChecked]);
 
   const categories = useMemo(() => categoriesOf(animals), []);
   const visible = useMemo(
@@ -109,6 +122,10 @@ export default function App() {
 
   function handleToggleShopping(key: string) {
     setShoppingChecked((prev) => ({ ...prev, [key]: !prev[key] }));
+  }
+
+  function handleTogglePacking(key: string) {
+    setPackingChecked((prev) => ({ ...prev, [key]: !prev[key] }));
   }
 
   function handleImport(
@@ -180,6 +197,7 @@ export default function App() {
     { name: "itinerary", label: "Cuaderno" },
     { name: "tips", label: "Trucos" },
     { name: "shopping", label: "Compra" },
+    { name: "packing", label: "Maleta" },
     { name: "game", label: "Juego" },
     { name: "list", label: "Catálogo" },
   ] as const;
@@ -247,6 +265,10 @@ export default function App() {
       )}
 
       {view.name === "tips" && <SafariTips />}
+
+      {view.name === "packing" && (
+        <Packing checked={packingChecked} onToggle={handleTogglePacking} />
+      )}
 
       {view.name === "game" && <MatchGame animals={animals} />}
 

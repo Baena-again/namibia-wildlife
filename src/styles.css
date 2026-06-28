@@ -1165,6 +1165,81 @@ h3,
   color: var(--stone);
 }
 
+/* ------------------------------ packing ------------------------------ */
+
+.packing-count {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--sepia);
+  font-size: 1rem;
+  margin: 0 0 1rem;
+}
+
+.packing-group {
+  border-bottom: 1px solid var(--ivory-deep);
+}
+
+.packing-group > ul {
+  list-style: none;
+  margin: 0 0 0.6rem;
+  padding: 0;
+}
+
+.packing-summary {
+  font-family: "Cinzel", "EB Garamond", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0.75rem 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Hide the native disclosure marker; draw our own caret. */
+.packing-summary::-webkit-details-marker {
+  display: none;
+}
+
+.packing-summary::before {
+  content: "›";
+  color: var(--terracotta);
+  font-size: 1.1rem;
+  transition: transform 200ms ease;
+}
+
+.packing-group[open] > .packing-summary::before {
+  transform: rotate(90deg);
+}
+
+.packing-group .shopping-group-note {
+  margin-top: 0;
+}
+
+.packing-info {
+  list-style: none;
+  margin: 0 0 0.7rem;
+  padding: 0;
+}
+
+.packing-info li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--sepia);
+}
+
+.packing-info li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--stone);
+}
+
 .journal-field {
   display: block;
   margin-top: 1.1rem;
