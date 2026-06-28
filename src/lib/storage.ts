@@ -3,11 +3,13 @@ import type {
   SeenRecord,
   JournalState,
   ShoppingState,
+  PackingState,
 } from "../types";
 
 const STORAGE_KEY = "namibia-wildlife:seen:v1";
 const JOURNAL_KEY = "namibia-wildlife:journal:v1";
 const SHOPPING_KEY = "namibia-wildlife:shopping:v1";
+const PACKING_KEY = "namibia-wildlife:packing:v1";
 const EXPORT_VERSION = 1;
 
 export type BackupFile = {
@@ -222,6 +224,29 @@ export function loadShopping(): ShoppingState {
 export function saveShopping(state: ShoppingState): boolean {
   try {
     localStorage.setItem(SHOPPING_KEY, JSON.stringify(state));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function loadPacking(): PackingState {
+  try {
+    const raw = localStorage.getItem(PACKING_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object"
+      ? (parsed as PackingState)
+      : {};
+  } catch {
+    return {};
+  }
+}
+
+/** Persist the packing checks. Returns false if storage is unavailable. */
+export function savePacking(state: PackingState): boolean {
+  try {
+    localStorage.setItem(PACKING_KEY, JSON.stringify(state));
     return true;
   } catch {
     return false;
